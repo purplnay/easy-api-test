@@ -1,10 +1,20 @@
 {
   "name": "easy-api-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "repository": "https://github.com/purplnay/easy-api-test.git",
   "author": "Nay <nay@purpltag.com>",
   "license": "MIT",
+  "description": "API testing, but it's easy. No extra configuration, no CLI, no extra dependencies",
+  "keywords": [
+    "api",
+    "json",
+    "test",
+    "testing",
+    "e2e",
+    "end-to-end",
+    "easy"
+  ],
   "scripts": {
     "build": "tsc --rootDir src --outDir dist -d --stripInternal",
     "docs": "typedoc --mode file --stripInternal --out docs src",
