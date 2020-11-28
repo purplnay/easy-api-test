@@ -1,1 +1,7 @@
 docs/
+src/
+test/
+.gitignore
+.prettierignore
+CODE_OF_CONDUCT.md
+tsconfig.json
