@@ -1,4 +1,4 @@
-import { setLog } from '../src'
+import { disableLogs } from '../src'
 
 // Disable logging
-setLog(false)
+disableLogs()
