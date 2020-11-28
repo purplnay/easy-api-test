@@ -3,6 +3,10 @@ import { config } from './config'
 import { queue, setContext, getContext } from './queue'
 import { Resolvable } from './utils'
 
+/**
+ * A test.
+ * @internal
+ */
 export interface EasyTest {
   name: string
   fn: Resolvable

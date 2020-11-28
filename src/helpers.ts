@@ -15,6 +15,7 @@ export const sleep = (time: number): Promise<void> => {
 
 /**
  * Local storage interface.
+ * @internal
  */
 export interface LocalStorage {
   /**

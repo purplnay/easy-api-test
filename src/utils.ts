@@ -10,6 +10,7 @@ export type Resolvable = () => Promise<void> | void
 /**
  * Convert hrtime's [second, nanoseconds] to milliseconds.
  * @param time The returned value from `hrtime()`.
+ * @internal
  */
 export const hrtimeToMs = (time: number[]): number => {
   const seconds = time[0] * 1_000_000_000 // Seconds to nanoseconds
@@ -23,8 +24,9 @@ export const hrtimeToMs = (time: number[]): number => {
 /**
  * Format the test name depending on the context.
  * @param name The name of the test.
+ * @internal
  */
-export const formatTestName = (test: EasyTest) => {
+export const formatTestName = (test: EasyTest): string => {
   if (getContext() === null) {
     return `- ${test.name}`
   }
@@ -35,6 +37,7 @@ export const formatTestName = (test: EasyTest) => {
 /**
  * Resolve a Resolvable function.
  * @param fn The function to resolve.
+ * @internal
  */
 export const resolveFn = (fn: Resolvable): Promise<void> => {
   return new Promise((resolve, reject) => {

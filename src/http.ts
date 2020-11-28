@@ -4,6 +4,7 @@ import { config } from './config'
 
 /**
  * Get the config's server or throw an error if none was set.
+ * @internal
  */
 export const getServer = (): Server | Function => {
   if (config.app === null) {
@@ -40,6 +41,7 @@ export interface IRequest extends supertest.Request {
  * Generate a SuperTest requets and add some helper functions.
  * @param path The path to execute the request to.
  * @param method The method used for this request.
+ * @internal
  */
 export const getRequest = (
   path: string,

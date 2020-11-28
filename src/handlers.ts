@@ -2,6 +2,7 @@ import { Resolvable } from './utils'
 
 /**
  * Setup and teardown functions.
+ * @internal
  */
 export interface Handlers {
   start: Resolvable[]
@@ -10,6 +11,7 @@ export interface Handlers {
 
 /**
  * The start and end handlers for the test session.
+ * @internal
  */
 export const handlers: Handlers = {
   start: [],

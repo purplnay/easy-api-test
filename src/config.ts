@@ -2,13 +2,14 @@ import { Server } from 'http'
 
 /**
  * The test session configuration.
+ * @internal
  */
 export const config: {
-  exitOnFailure: boolean
+  exitOnFail: boolean
   log: boolean
   app: Server | Function | null
 } = {
-  exitOnFailure: false,
+  exitOnFail: false,
   log: true,
   app: null,
 }
@@ -16,7 +17,7 @@ export const config: {
 /**
  * Disable the logs to the console.
  */
-export const disableLogs = () => {
+export const disableLogs = (): void => {
   config.log = false
 }
 
@@ -25,7 +26,7 @@ export const disableLogs = () => {
  * The end handlers would still be executed before exiting.
  */
 export const exitOnFailure = (): void => {
-  config.exitOnFailure = false
+  config.exitOnFail = false
 }
 
 /**
