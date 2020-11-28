@@ -16,7 +16,7 @@ Uses the great **[SuperTest](https://www.npmjs.com/package/supertest)** package 
 
 ## Documentation
 
-You can find the full API reference [here](https://purplnay.github.io/easy-api-test/globals.html).
+You can find the full API reference [here](https://purplnay.github.io/easy-api-test).
 
 ## Installation
 
