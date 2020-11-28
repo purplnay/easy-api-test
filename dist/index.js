@@ -1,6 +1,6 @@
 'use strict'
 Object.defineProperty(exports, '__esModule', { value: true })
-exports.suite = exports.test = exports.run = exports.del = exports.patch = exports.put = exports.post = exports.get = exports.localStorage = exports.sleep = exports.end = exports.start = exports.use = exports.exitOnFailure = exports.disableLogs = void 0
+exports.suite = exports.test = exports.run = exports.head = exports.options = exports.del = exports.patch = exports.put = exports.post = exports.get = exports.localStorage = exports.sleep = exports.end = exports.start = exports.use = exports.exitOnFailure = exports.disableLogs = void 0
 var config_1 = require('./config')
 Object.defineProperty(exports, 'disableLogs', {
   enumerable: true,
@@ -46,34 +46,47 @@ Object.defineProperty(exports, 'localStorage', {
     return helpers_1.localStorage
   },
 })
+var http_1 = require('./http')
 Object.defineProperty(exports, 'get', {
   enumerable: true,
   get: function () {
-    return helpers_1.get
+    return http_1.get
   },
 })
 Object.defineProperty(exports, 'post', {
   enumerable: true,
   get: function () {
-    return helpers_1.post
+    return http_1.post
   },
 })
 Object.defineProperty(exports, 'put', {
   enumerable: true,
   get: function () {
-    return helpers_1.put
+    return http_1.put
   },
 })
 Object.defineProperty(exports, 'patch', {
   enumerable: true,
   get: function () {
-    return helpers_1.patch
+    return http_1.patch
   },
 })
 Object.defineProperty(exports, 'del', {
   enumerable: true,
   get: function () {
-    return helpers_1.del
+    return http_1.del
+  },
+})
+Object.defineProperty(exports, 'options', {
+  enumerable: true,
+  get: function () {
+    return http_1.options
+  },
+})
+Object.defineProperty(exports, 'head', {
+  enumerable: true,
+  get: function () {
+    return http_1.head
   },
 })
 var queue_1 = require('./queue')
