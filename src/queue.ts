@@ -126,7 +126,7 @@ export const run = async (): Promise<void> => {
     if (Array.isArray(item.tests)) {
       // Set suite context
       setContext(item.name)
-      config.log && process.stdout.write(`\n\n${getContext()}:\n`)
+      config.log && process.stdout.write(`${getContext()}:\n`)
 
       // Run the tests
       for (let test of item.tests) {
