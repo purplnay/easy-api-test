@@ -23,12 +23,12 @@ You can find the full API reference [here](https://purplnay.github.io/easy-api-t
 - Using **NPM**:
 
   ```bash
-  npm install -D easy-api-tests
+  npm install -D easy-api-test
   ```
 
 - Using **Yarn**:
   ```bash
-  yarn add -D easy-api-tests
+  yarn add -D easy-api-test
   ```
 
 ## Usage
