@@ -25,7 +25,7 @@ export const disableLogs = (): void => {
  * Exit the test session if a test fails.
  * The end handlers would still be executed before exiting.
  */
-export const exitOnFailure = (): void => {
+export const exitOnFail = (): void => {
   config.exitOnFail = false
 }
 
