@@ -28,6 +28,10 @@ export declare const getRequest: (
   method: 'get' | 'post' | 'put' | 'patch' | 'delete' | 'head' | 'options'
 ) => IRequest
 /**
+ * The SuperTest object.
+ */
+export declare const request: typeof supertest
+/**
  * Run a GET request using SuperTest and the server set with `use()`.
  * @param path The path to get.
  */

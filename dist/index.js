@@ -1,6 +1,6 @@
 'use strict'
 Object.defineProperty(exports, '__esModule', { value: true })
-exports.suite = exports.test = exports.run = exports.head = exports.options = exports.del = exports.patch = exports.put = exports.post = exports.get = exports.localStorage = exports.sleep = exports.end = exports.start = exports.use = exports.exitOnFailure = exports.disableLogs = void 0
+exports.suite = exports.test = exports.run = exports.head = exports.options = exports.del = exports.patch = exports.put = exports.post = exports.get = exports.request = exports.localStorage = exports.sleep = exports.end = exports.start = exports.use = exports.exitOnFailure = exports.disableLogs = void 0
 var config_1 = require('./config')
 Object.defineProperty(exports, 'disableLogs', {
   enumerable: true,
@@ -47,6 +47,12 @@ Object.defineProperty(exports, 'localStorage', {
   },
 })
 var http_1 = require('./http')
+Object.defineProperty(exports, 'request', {
+  enumerable: true,
+  get: function () {
+    return http_1.request
+  },
+})
 Object.defineProperty(exports, 'get', {
   enumerable: true,
   get: function () {

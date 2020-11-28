@@ -5,7 +5,7 @@ var __importDefault =
     return mod && mod.__esModule ? mod : { default: mod }
   }
 Object.defineProperty(exports, '__esModule', { value: true })
-exports.head = exports.options = exports.del = exports.patch = exports.put = exports.post = exports.get = exports.getRequest = exports.getServer = void 0
+exports.head = exports.options = exports.del = exports.patch = exports.put = exports.post = exports.get = exports.request = exports.getRequest = exports.getServer = void 0
 var supertest_1 = __importDefault(require('supertest'))
 var config_1 = require('./config')
 /**
@@ -44,6 +44,10 @@ var getRequest = function (path, method) {
   return request
 }
 exports.getRequest = getRequest
+/**
+ * The SuperTest object.
+ */
+exports.request = supertest_1.default
 /**
  * Run a GET request using SuperTest and the server set with `use()`.
  * @param path The path to get.

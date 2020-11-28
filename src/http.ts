@@ -63,6 +63,11 @@ export const getRequest = (
 }
 
 /**
+ * The SuperTest object.
+ */
+export const request = supertest
+
+/**
  * Run a GET request using SuperTest and the server set with `use()`.
  * @param path The path to get.
  */
