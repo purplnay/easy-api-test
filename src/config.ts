@@ -7,7 +7,7 @@ import { Server } from 'http'
 export const config: {
   exitOnFail: boolean
   log: boolean
-  app: Server | Function | null
+  app: Server | Function | 'string' | null
 } = {
   exitOnFail: false,
   log: true,

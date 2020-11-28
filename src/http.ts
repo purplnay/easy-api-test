@@ -1,25 +1,6 @@
-import { Server } from 'http'
+import { parse } from 'url'
 import supertest from 'supertest'
 import { config } from './config'
-
-/**
- * Get the config's server or throw an error if none was set.
- * @internal
- */
-export const getServer = (): Server | Function => {
-  if (config.app === null) {
-    if (config.log) {
-      process.stdout.write(
-        `\nYou must declare which server to use in order to use requests.\n`.red
-      )
-      process.stdout.write('You can declare it with the `use()` function.\n')
-    }
-
-    throw new Error('No server provided.')
-  }
-
-  return config.app
-}
 
 /**
  * A SuperTest Request object with some helper functions.
@@ -48,8 +29,22 @@ export const getRequest = (
   method: 'get' | 'post' | 'put' | 'patch' | 'delete' | 'head' | 'options'
 ): IRequest => {
   // Build the request
-  const server = getServer()
-  const request = (supertest(server)[method](path) as unknown) as IRequest
+  let app: supertest.SuperTest<supertest.Test>
+  const url = parse(path)
+
+  if (url.host) {
+    app = supertest(`${url.protocol}//${url.host}`)
+  } else {
+    if (typeof config.app === 'undefined') {
+      throw new Error(
+        `No target server or function provided for the requet and ${path} does not contain a hostname.`
+      )
+    }
+
+    app = supertest(config.app)
+  }
+
+  const request = (app[method](path) as unknown) as IRequest
 
   // Add the `bearer()` method.
   request.bearer = (token: string): IRequest => {

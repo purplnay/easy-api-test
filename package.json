@@ -1,6 +1,6 @@
 {
   "name": "easy-api-test",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "repository": "https://github.com/purplnay/easy-api-test.git",
   "author": "Nay <nay@purpltag.com>",
