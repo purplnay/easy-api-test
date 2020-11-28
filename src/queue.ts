@@ -117,7 +117,7 @@ export const run = async (): Promise<void> => {
   await runHandlers(handlers.start)
 
   if (config.log) {
-    process.stdout.write('\n\n')
+    process.stdout.write('\n')
   }
 
   // Run the tests
@@ -139,7 +139,7 @@ export const run = async (): Promise<void> => {
       }
 
       // Reset the context
-      config.log && process.stdout.write('\n\n')
+      config.log && process.stdout.write('\n')
       setContext(null)
     } else {
       const error = await runTest(item as EasyTest)
