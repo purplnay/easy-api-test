@@ -21,9 +21,25 @@ export const sleep = (time: number): Promise<void> => {
  * Local storage interface.
  */
 export interface LocalStorage {
+  /**
+   * Get an item from the local storage.
+   * @param key The key of the item to get.
+   */
   getItem: (key: string) => any
+  /**
+   * Create or update an item in the local storage.
+   * @param key The key of the item to set.
+   * @param value The value of the item to set.
+   */
   setItem: (key: string, value: any) => void
+  /**
+   * Remove an item from the local storage.
+   * @param key The key of the item to remove.
+   */
   removeItem: (key: string) => void
+  /**
+   * Remove all the items from the local storage.
+   */
   clear: () => void
   [key: string]: any
 }
@@ -33,47 +49,30 @@ export interface LocalStorage {
  * stores values as JSON objects, not as strings.
  */
 export const localStorage: LocalStorage = {
-  /**
-   * Get an item from the local storage.
-   * @param key The key of the item to get.
-   */
   getItem(key: string) {
     const value = this[key]
-
     if (value !== undefined) {
       return value
     }
   },
 
-  /**
-   * Create or update an item in the local storage.
-   * @param key The key of the item to set.
-   * @param value The value of the item to set.
-   */
   setItem(key: string, value: any) {
     if (typeof this[key] === 'function') return
 
     this[key] = JSON.parse(JSON.stringify(value))
   },
 
-  /**
-   * Remove an item from the local storage.
-   * @param key The key of the item to remove.
-   */
   removeItem(key: string) {
-    if (typeof this[key] === 'function') return
-
-    delete this[key]
+    if (typeof this[key] !== 'function') {
+      delete this[key]
+    }
   },
 
-  /**
-   * Remove all the items from the local storage.
-   */
   clear() {
     Object.keys(this).forEach(key => {
-      if (typeof this[key] === 'function') return
-
-      delete this[key]
+      if (typeof this[key] !== 'function') {
+        delete this[key]
+      }
     })
   },
 }

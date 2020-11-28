@@ -28,41 +28,27 @@ exports.sleep = sleep
  * stores values as JSON objects, not as strings.
  */
 exports.localStorage = {
-  /**
-   * Get an item from the local storage.
-   * @param key The key of the item to get.
-   */
   getItem: function (key) {
     var value = this[key]
     if (value !== undefined) {
       return value
     }
   },
-  /**
-   * Create or update an item in the local storage.
-   * @param key The key of the item to set.
-   * @param value The value of the item to set.
-   */
   setItem: function (key, value) {
     if (typeof this[key] === 'function') return
     this[key] = JSON.parse(JSON.stringify(value))
   },
-  /**
-   * Remove an item from the local storage.
-   * @param key The key of the item to remove.
-   */
   removeItem: function (key) {
-    if (typeof this[key] === 'function') return
-    delete this[key]
+    if (typeof this[key] !== 'function') {
+      delete this[key]
+    }
   },
-  /**
-   * Remove all the items from the local storage.
-   */
   clear: function () {
     var _this = this
     Object.keys(this).forEach(function (key) {
-      if (typeof _this[key] === 'function') return
-      delete _this[key]
+      if (typeof _this[key] !== 'function') {
+        delete _this[key]
+      }
     })
   },
 }
