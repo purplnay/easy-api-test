@@ -234,3 +234,11 @@ Make sure to use a runner that can handle your code (e.g node, babel-node, ts-no
 Anyways, you can know easily add new endpoints to your API, write some simple tests, run the tests, and make sure everything is working properly!
 
 <!-- prettier-ignore-end -->
+
+## Contributions
+
+The Code of Conduct is available [here](./CODE_OF_CONDUCT.md).
+
+If you wish to help to improve Easy API Test by adding new features, performance improvements or documentation corrections, you can do so by forking the [repository](https://github.com/purplnay/easy-api-test), applying your changes and sending a pull request.
+
+If you enconter any issue regarding the repository, or wish to suggest new features, you can fill an [issue](https://github.com/purplnay/easy-api-test/issues). Make sure to check that your issue doesn't exist yet.
