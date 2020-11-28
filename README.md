@@ -8,7 +8,7 @@
 
 <br>
 
-Easy API Test lets you write tests to check that you're API is behaving the way you'd expect it to.
+Easy API Test lets you write tests to check that you're API is behaving the way you expect it to.
 
 The libary's API is meant to be simple. No configuration, no CLI, no need to install extra dependencies to get your Babel or Typescript tests to work.
 
@@ -16,24 +16,24 @@ Uses the great **[SuperTest](https://www.npmjs.com/package/supertest)** package 
 
 ## Documentation
 
-You can find the full API reference [here](https://purplnay.github.io/easy-api-test/global.html).
+You can find the full API reference [here](https://purplnay.github.io/easy-api-test/globals.html).
 
 ## Installation
 
 - Using **NPM**:
 
-```bash
-npm install -D easy-api-tests
-```
+  ```bash
+  npm install -D easy-api-tests
+  ```
 
 - Using **Yarn**:
-
-```bash
-yarn add -D easy-api-tests
-```
+  ```bash
+  yarn add -D easy-api-tests
+  ```
 
 ## Usage
 
+<!-- prettier-ignore-start -->
 ```javascript
 // test.js
 
@@ -54,7 +54,7 @@ test('Get a nice recipe', async () => {
 
 // And another one
 test('Get a secret recipe with a bearer token', async () => {
-  await get('/recipes/secret)
+  await get('/recipes/secret')
     .bearer('My Bearer Token')
     .expect(200, {
       isSecretRecipe: true
@@ -64,26 +64,26 @@ test('Get a secret recipe with a bearer token', async () => {
 // Run the tests
 run()
 ```
+<!-- prettier-ignore-end -->
 
 To run the tests that you wrote in `test.js`, you simply need to execute the script:
 
 - With **JavaScript** (node):
 
-```bash
-node test.js
-```
+  ```bash
+  node test.js
+  ```
 
 - With **ES6+** ([Babel](https://www.npmjs.com/package/@babel/node)):
 
-```bash
-babel-node test.js
-```
+  ```bash
+  babel-node test.js
+  ```
 
 - With **Typescript** ([ts-node](https://www.npmjs.com/package/ts-node)):
-
-```bash
-ts-node test.ts
-```
+  ```bash
+  ts-node test.ts
+  ```
 
 ## Example
 
@@ -97,9 +97,7 @@ GET   /users/:id - Get a user by id
 PATCH /users     - Updates a user using a bearer token
 ```
 
-Also, let's assume this API returns JSON.
-
-We can create a new file `test/index.js` to test our _/users_ endpoint.
+We can create a new file `test/index.js` with this content:
 
 ```javascript
 // test/index.js
@@ -138,7 +136,7 @@ run()
 
 We can write our tests directly in `test/index.js`, but let's avoid loooong files of code.
 
-We'll write the tests for the `/auth` endpoint in the file `test/auth.js` and the tests for the `/users` endpoint in the file `test/users.js`.
+Instead, we'll write the tests for the `/auth` endpoint in the file `test/auth.js` and the tests for the `/users` endpoint in the file `test/users.js`.
 
 ```javascript
 // test/auth.js
@@ -152,15 +150,15 @@ suite('Auth Endpoint', () => {
     const response = await get('/auth')
 
     // Test if we received a response
-    assert(typeof response.body === 'string')
+    assert(typeof response.body.token === 'string')
 
     // This is a helper object that behaves like localStorage
-    localStorage.setItem('token', response.body)
+    localStorage.setItem('token', response.body.token)
   })
 })
 ```
 
-Now let's write the tests for the `/users` endpoint:
+Now, let's write the tests for the `/users` endpoint:
 
 ```javascript
 // test/users.js
@@ -179,9 +177,11 @@ suite('Users Endpoint', () => {
   test('Get one user by id', async () => {
     // Easy API Test uses SuperTest under the hood, so all the methods
     // available in SuperTest are available here as well.
-    await get('/users/1').json().expect(200, {
-      id: 1,
-    })
+    await get('/users/1')
+      .json()
+      .expect(200, {
+        id: 1
+      })
   })
 
   test('Update a user using a bearer token', async () => {
@@ -223,13 +223,13 @@ import './users'
 run()
 ```
 
-That's it! Now you can run your tests using the command-line:
+That's it! Now you can run your tests using the command line:
 
 ```
-node test/index.ts
+node test/index.js
 ```
 
-Make sure to use a runner that can handle your code version (e.g node, babel-node, ts-node). I used `node` here just as an example.
+Make sure to use a runner that can handle your code (e.g node, babel-node, ts-node). I used `node` here just as an example.
 
 Anyways, you can know easily add new endpoints to your API, write some simple tests, run the tests, and make sure everything is working properly!
 
