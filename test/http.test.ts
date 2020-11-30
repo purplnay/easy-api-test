@@ -1,6 +1,7 @@
 import expect from 'expect'
 import express from 'express'
 import { createServer, Server } from 'http'
+import { AddressInfo } from 'net'
 import { get, post, use } from '../src'
 
 describe('HTTP request/response helper functions', () => {
@@ -25,9 +26,11 @@ describe('HTTP request/response helper functions', () => {
 
       // Create an HTTP server and start it
       server = createServer(app)
-      server.listen(() => done())
-
-      use(server)
+      server.listen(() => {
+        // Set it as base URL
+        use(`http://localhost:${(server.address() as AddressInfo).port}/`)
+        done()
+      })
     })
 
     after(done => {

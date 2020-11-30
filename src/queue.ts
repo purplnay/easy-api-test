@@ -133,8 +133,9 @@ export const run = async (): Promise<void> => {
         const error = await runTest(test)
 
         if (error) {
+          // Run the end handlers and throw the error
           await runHandlers(handlers.end)
-          return process.exit()
+          throw error
         }
       }
 
@@ -145,8 +146,9 @@ export const run = async (): Promise<void> => {
       const error = await runTest(item as EasyTest)
 
       if (error) {
+        // Run the end handlers and throw the error
         await runHandlers(handlers.end)
-        return process.exit()
+        throw error
       }
     }
   }
