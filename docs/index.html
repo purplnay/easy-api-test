@@ -97,33 +97,33 @@
 					<h2>Usage</h2>
 				</a>
 				<!-- prettier-ignore-start -->
-				<pre><code class="language-javascript">// test.js
+				<pre><code class="language-javascript"><span class="hljs-comment">// test.js</span>
 
-const { use, test, get, localStorage } = require(&#x27;easy-api-test&#x27;)
+<span class="hljs-keyword">const</span> { use, test, get, <span class="hljs-built_in">localStorage</span> } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
 
-// Tell Easy API Test which URL we&#x27;ll be testing
-use(&#x27;http://localhost:3000/)
+<span class="hljs-comment">// Tell Easy API Test which URL we&#x27;ll be testing</span>
+use(<span class="hljs-string">&#x27;http://localhost:3000/&#x27;</span>)
 
-// Define a first test
-test(&#x27;Create a user&#x27;, async () =&gt; {
-  const response = await post(&#x27;/users&#x27;)
-    .send({ username: &#x27;Nay&#x27; })
-    .expect(200)
+<span class="hljs-comment">// Define a first test</span>
+test(<span class="hljs-string">&#x27;Create a user&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> post(<span class="hljs-string">&#x27;/users&#x27;</span>)
+    .send({ <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;Nay&#x27;</span> })
+    .expect(<span class="hljs-number">200</span>)
 
-  // Save the user for later use
-  localStorage.setItem(&#x27;user&#x27;, response.body)
+  <span class="hljs-comment">// Save the user for later use</span>
+  <span class="hljs-built_in">localStorage</span>.setItem(<span class="hljs-string">&#x27;user&#x27;</span>, response.body)
 })
 
-// Define a second test
-test(&#x27;Get a user&#x27;, async () =&gt; {
-  // Tests run in the defined order, so localStorage will always contain the user.
-  const user = localStorage.getItem(&#x27;user&#x27;)
+<span class="hljs-comment">// Define a second test</span>
+test(<span class="hljs-string">&#x27;Get a user&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-comment">// Tests run in the defined order, so localStorage will always contain the user.</span>
+  <span class="hljs-keyword">const</span> user = <span class="hljs-built_in">localStorage</span>.getItem(<span class="hljs-string">&#x27;user&#x27;</span>)
 
-  await get(`/users/${user.id}`)
-    .expect(200, user)
+  <span class="hljs-keyword">await</span> get(<span class="hljs-string">`/users/<span class="hljs-subst">${user.id}</span>`</span>)
+    .expect(<span class="hljs-number">200</span>, user)
 })
 
-// Run the tests
+<span class="hljs-comment">// Run the tests</span>
 run()</code></pre>
 				<!-- prettier-ignore-end -->
 				<p>To run the tests that you wrote in <code>test.js</code>, you simply need to execute the script:</p>

@@ -41,7 +41,7 @@ You can find the full API reference [here](https://purplnay.github.io/easy-api-t
 const { use, test, get, localStorage } = require('easy-api-test')
 
 // Tell Easy API Test which URL we'll be testing
-use('http://localhost:3000/)
+use('http://localhost:3000/')
 
 // Define a first test
 test('Create a user', async () => {
