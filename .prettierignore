@@ -1,4 +1,5 @@
 build/
+example/
 docs/
 *.yml
 *.json

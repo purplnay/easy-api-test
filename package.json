@@ -19,7 +19,8 @@
   "scripts": {
     "build": "tsc --rootDir src --outDir dist -d --stripInternal",
     "docs": "typedoc --mode file --stripInternal --out docs src",
-    "test": "ts-mocha --file test/index.ts test/*.test.ts"
+    "test": "ts-mocha --file test/index.ts test/*.test.ts && npm run build && node example/test/index.js",
+    "prepublish": "npm run build"
   },
   "prettier": {
     "arrowParens": "avoid",
