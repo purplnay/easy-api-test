@@ -1,3 +1,4 @@
+import 'colors'
 import { hrtime } from 'process'
 import { config } from './config'
 import { handlers } from './handlers'
@@ -99,11 +100,13 @@ export const runTest = async (test: EasyTest): Promise<Error | void> => {
 
   if (duration > 300) {
     textTimer = textTimer.yellow
+  } else {
+    textTimer = textTimer.grey
   }
 
   if (config.log) {
     clearLine()
-    writeLine(`${formatTestName(test)}: ${'SUCCESS'.green.bold} ${textTimer}`)
+    writeLine(`${formatTestName(test)}: ${'PASS'.green.bold} ${textTimer}`)
     newLine()
   }
 }
@@ -125,7 +128,7 @@ export const run = async (): Promise<void> => {
     if (Array.isArray(item.tests)) {
       // Set suite context
       setContext(item.name)
-      writeLine(`${getContext()}:`)
+      writeLine(`${getContext()}:`.grey)
       newLine()
 
       // Run the tests
