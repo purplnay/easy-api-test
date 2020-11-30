@@ -131,7 +131,7 @@ export const run = async (): Promise<void> => {
       for (let test of item.tests) {
         const error = await runTest(test)
 
-        if (error && config.exitOnFail) {
+        if (error) {
           await runHandlers(handlers.end)
           return process.exit()
         }
@@ -143,7 +143,7 @@ export const run = async (): Promise<void> => {
     } else {
       const error = await runTest(item as EasyTest)
 
-      if (error && config.exitOnFail) {
+      if (error) {
         await runHandlers(handlers.end)
         return process.exit()
       }

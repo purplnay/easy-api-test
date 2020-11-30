@@ -1,4 +1,4 @@
-export { disableLogs, exitOnFail, use } from './config'
+export { disableLogs, use } from './config'
 export { start, end } from './handlers'
 export { sleep, localStorage } from './helpers'
 export {

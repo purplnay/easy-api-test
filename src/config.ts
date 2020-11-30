@@ -1,17 +1,13 @@
-import { Server } from 'http'
-
 /**
  * The test session configuration.
  * @internal
  */
 export const config: {
-  exitOnFail: boolean
   log: boolean
-  app: Server | Function | 'string' | null
+  url: string | null
 } = {
-  exitOnFail: false,
   log: true,
-  app: null,
+  url: null,
 }
 
 /**
@@ -22,17 +18,14 @@ export const disableLogs = (): void => {
 }
 
 /**
- * Exit the test session if a test fails.
- * The end handlers would still be executed before exiting.
+ * Define which base URL to use for the request helper functions.
+ * @param app The base URL to use.
  */
-export const exitOnFail = (): void => {
-  config.exitOnFail = false
-}
-
-/**
- * Define which server or server handler (e.g an Express app) to use.
- * @param app The server instance or server handler to use.
- */
-export const use = (app: Server | Function): void => {
-  config.app = app
+export const use = (url: string): void => {
+  // Remove last slash if any
+  if (url.endsWith('/')) {
+    config.url = url.replace(/[/]+$/i, '')
+  } else {
+    config.url = url
+  }
 }

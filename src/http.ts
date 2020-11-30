@@ -5,7 +5,7 @@ import { config } from './config'
 /**
  * A SuperTest Request object with some helper functions.
  */
-export interface IRequest extends supertest.Request {
+export interface IRequest extends supertest.Test {
   /**
    * Helper function that adds an authorization header with value 'Bearer <token>'.
    * @param token The bearer token to add.
@@ -35,13 +35,13 @@ export const getRequest = (
   if (url.host) {
     app = supertest(`${url.protocol}//${url.host}`)
   } else {
-    if (typeof config.app === 'undefined') {
+    if (config.url === null) {
       throw new Error(
-        `No target server or function provided for the requet and ${path} does not contain a hostname.`
+        `No target URL provided for the request and ${path} does not contain a hostname.`
       )
     }
 
-    app = supertest(config.app)
+    app = supertest(config.url)
   }
 
   const request = (app[method](path) as unknown) as IRequest
