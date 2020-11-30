@@ -1,5 +1,5 @@
 /**
- * The test session configuration.
+ * The test session's configuration.
  * @internal
  */
 export const config: {
@@ -11,7 +11,7 @@ export const config: {
 }
 
 /**
- * Disable the logs to the console.
+ * Disable logging to the console.
  */
 export const disableLogs = (): void => {
   config.log = false

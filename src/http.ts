@@ -19,7 +19,7 @@ export interface IRequest extends supertest.Test {
 }
 
 /**
- * Generate a SuperTest requets and add some helper functions.
+ * Generate a SuperTest request and add some helper functions.
  * @param path The path to execute the request to.
  * @param method The method used for this request.
  * @internal
@@ -37,7 +37,7 @@ export const getRequest = (
   } else {
     if (config.url === null) {
       throw new Error(
-        `No target URL provided for the request and ${path} does not contain a hostname.`
+        `No target URL provided for the request and ${path} is not a absolute URL.`
       )
     }
 
@@ -65,7 +65,7 @@ export const getRequest = (
 export const request = supertest
 
 /**
- * Run a GET request using SuperTest and the server set with `use()`.
+ * Run a GET request using SuperTest.
  * @param path The path to get.
  */
 export const get = (path: string): IRequest => {
@@ -73,7 +73,7 @@ export const get = (path: string): IRequest => {
 }
 
 /**
- * Run a POST request using SuperTest and the server set with `use()`.
+ * Run a POST request using SuperTest.
  * @param path The path to post to.
  */
 export const post = (path: string): IRequest => {
@@ -81,7 +81,7 @@ export const post = (path: string): IRequest => {
 }
 
 /**
- * Run a PUT request using SuperTest and the server set with `use()`.
+ * Run a PUT request using SuperTest.
  * @param path The path to request.
  */
 export const put = (path: string): IRequest => {
@@ -89,7 +89,7 @@ export const put = (path: string): IRequest => {
 }
 
 /**
- * Run a PATCH request using SuperTest and the server set with `use()`.
+ * Run a PATCH request using SuperTest.
  * @param path The path to request.
  */
 export const patch = (path: string): IRequest => {
@@ -97,7 +97,7 @@ export const patch = (path: string): IRequest => {
 }
 
 /**
- * Run a DELETE request using SuperTest and the server set with `use()`.
+ * Run a DELETE request using SuperTest.
  * @param path The path to request.
  */
 export const del = (path: string): IRequest => {
@@ -105,7 +105,7 @@ export const del = (path: string): IRequest => {
 }
 
 /**
- * Run an OPTIONS request using SuperTest and the server set with `use()`.
+ * Run an OPTIONS request using SuperTest.
  * @param path The path to request.
  */
 export const options = (path: string): IRequest => {
@@ -113,7 +113,7 @@ export const options = (path: string): IRequest => {
 }
 
 /**
- * Run an HEAD request using SuperTest and the server set with `use()`.
+ * Run an HEAD request using SuperTest.
  * @param path The path to request.
  */
 export const head = (path: string): IRequest => {

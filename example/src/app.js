@@ -23,12 +23,16 @@ app.get('/recipes', (req, res) => {
   res.json(recipes)
 })
 
-// We return a recipe by id, or 404 if it does no exist
+// We return a recipe by id
 app.get('/recipes/:id', (req, res) => {
-  if (recipes[req.params.id]) {
-    return res.json(recipes[req.params.id])
+  const id = req.params.id
+
+  // Check if the recipe exists
+  if (recipes[id]) {
+    return res.json(recipes[id])
   }
 
+  // Send a 404 'Not found' error if the id does not exist.
   res.statusCode = 404
   res.end()
 })

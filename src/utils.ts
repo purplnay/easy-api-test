@@ -8,7 +8,7 @@ import { EasyTest } from './register'
 export type Resolvable = () => Promise<void> | void
 
 /**
- * Convert hrtime's [second, nanoseconds] to milliseconds.
+ * Convert hrtime's [seconds, nanoseconds] to milliseconds.
  * @param time The returned value from `hrtime()`.
  * @internal
  */
@@ -23,7 +23,7 @@ export const hrtimeToMs = (time: number[]): number => {
 
 /**
  * Format the test name depending on the context.
- * @param name The name of the test.
+ * @param test The test to format the name of.
  * @internal
  */
 export const formatTestName = (test: EasyTest): string => {
