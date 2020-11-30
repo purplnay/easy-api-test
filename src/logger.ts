@@ -1,10 +1,14 @@
+import { config } from './config'
+
 /**
  * Write a line to stdout.
  * @param text The text to write to stdout.
  * @internal
  */
 export const writeLine = (text: string) => {
-  process.stdout.write(text)
+  if (config.log) {
+    process.stdout.write(text)
+  }
 }
 
 /**
@@ -12,7 +16,9 @@ export const writeLine = (text: string) => {
  * @internal
  */
 export const clearLine = () => {
-  process.stdout.cursorTo(0)
+  if (config.log) {
+    process.stdout.cursorTo(0)
+  }
 }
 
 /**
@@ -20,5 +26,7 @@ export const clearLine = () => {
  * @internal
  */
 export const newLine = () => {
-  process.stdout.write('\n')
+  if (config.log) {
+    process.stdout.write('\n')
+  }
 }
