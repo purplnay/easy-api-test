@@ -1,7 +1,8 @@
 # Easy API Test
 
-![License](https://img.shields.io/npm/l/easy-api-test)
 ![Version](https://img.shields.io/npm/v/easy-api-test)
+[![Build Status](https://travis-ci.com/purplnay/easy-api-test.svg?branch=main)](https://travis-ci.com/purplnay/easy-api-test)
+![License](https://img.shields.io/npm/l/easy-api-test)
 ![Love](https://img.shields.io/badge/Made%20with-%E2%9D%A4%20-purple)
 
 ## API testing, but it's easy.
