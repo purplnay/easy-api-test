@@ -26,13 +26,13 @@ describe('Helper functions', () => {
       })
 
       it("should return undefined on items that don't exist.", () => {
-        expect(localStorage.getItem("item that doesn't exist")).toBeUndefined()
+        expect(localStorage.getItem("item that doesn't exist")).toBeNull()
       })
     })
 
     describe('#setItem()', () => {
       it('should save an item', () => {
-        expect(localStorage.getItem('ayaya')).toBeUndefined()
+        expect(localStorage.getItem('ayaya')).toBeNull()
         localStorage.setItem('ayaya', 'clap')
         expect(localStorage.getItem('ayaya')).toBe('clap')
       })

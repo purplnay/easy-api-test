@@ -1,6 +1,8 @@
+import 'colors'
 import { hrtime } from 'process'
 import { config } from './config'
 import { handlers } from './handlers'
+import { clearLine, newLine, writeLine } from './logger'
 import { EasyTest } from './register'
 import { formatTestName, hrtimeToMs, Resolvable, resolveFn } from './utils'
 
@@ -66,7 +68,7 @@ export const runTest = async (test: EasyTest): Promise<Error | void> => {
   let textTimer
 
   if (config.log) {
-    process.stdout.write(`${formatTestName(test)}: ${'RUNNING'.yellow}`)
+    writeLine(`${formatTestName(test)}: ${'RUNNING'.yellow}`)
   }
 
   try {
@@ -82,12 +84,11 @@ export const runTest = async (test: EasyTest): Promise<Error | void> => {
     }
 
     if (config.log) {
-      process.stdout.cursorTo(0)
-      process.stdout.write(
-        `${formatTestName(test)}: ${'FAIL'.red.bold} ${textTimer}\n`
-      )
-
-      process.stdout.write(`${error}\n`)
+      clearLine()
+      writeLine(`${formatTestName(test)}: ${'FAIL'.red.bold} ${textTimer}`)
+      newLine()
+      writeLine(`${error}`)
+      newLine()
     }
 
     return error
@@ -99,13 +100,14 @@ export const runTest = async (test: EasyTest): Promise<Error | void> => {
 
   if (duration > 300) {
     textTimer = textTimer.yellow
+  } else {
+    textTimer = textTimer.grey
   }
 
   if (config.log) {
-    process.stdout.cursorTo(0)
-    process.stdout.write(
-      `${formatTestName(test)}: ${'SUCCESS'.green.bold} ${textTimer}\n`
-    )
+    clearLine()
+    writeLine(`${formatTestName(test)}: ${'PASS'.green.bold} ${textTimer}`)
+    newLine()
   }
 }
 
@@ -117,7 +119,7 @@ export const run = async (): Promise<void> => {
   await runHandlers(handlers.start)
 
   if (config.log) {
-    process.stdout.write('\n')
+    newLine()
   }
 
   // Run the tests
@@ -126,27 +128,30 @@ export const run = async (): Promise<void> => {
     if (Array.isArray(item.tests)) {
       // Set suite context
       setContext(item.name)
-      config.log && process.stdout.write(`${getContext()}:\n`)
+      writeLine(`${getContext()}:`.grey)
+      newLine()
 
       // Run the tests
       for (let test of item.tests) {
         const error = await runTest(test)
 
-        if (error && config.exitOnFail) {
+        if (error) {
+          // Run the end handlers and throw the error
           await runHandlers(handlers.end)
-          return process.exit()
+          throw error
         }
       }
 
       // Reset the context
-      config.log && process.stdout.write('\n')
+      newLine()
       setContext(null)
     } else {
       const error = await runTest(item as EasyTest)
 
-      if (error && config.exitOnFail) {
+      if (error) {
+        // Run the end handlers and throw the error
         await runHandlers(handlers.end)
-        return process.exit()
+        throw error
       }
     }
   }

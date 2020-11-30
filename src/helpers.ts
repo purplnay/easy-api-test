@@ -19,14 +19,20 @@ export const sleep = (time: number): Promise<void> => {
  */
 export interface LocalStorage {
   /**
+   * The number of key/value pairs stored in the storage.
+   */
+  readonly length: number
+  /**
    * Get an item from the local storage.
    * @param key The key of the item to get.
+   * @return The value or `null` if the key does not exist.
    */
   getItem: (key: string) => any
   /**
    * Create or update an item in the local storage.
    * @param key The key of the item to set.
    * @param value The value of the item to set.
+   *
    */
   setItem: (key: string, value: any) => void
   /**
@@ -46,28 +52,35 @@ export interface LocalStorage {
  * stores values as JSON objects, not as strings.
  */
 export const localStorage: LocalStorage = {
+  get length(): number {
+    return Object.keys(this).length - 5
+  },
+
   getItem(key: string) {
     const value = this[key]
-    if (value !== undefined) {
+
+    if (value !== undefined && value !== 'function' && key !== 'length') {
       return value
     }
+
+    return null
   },
 
   setItem(key: string, value: any) {
-    if (typeof this[key] === 'function') return
+    if (typeof this[key] === 'function' || key === 'length') return
 
     this[key] = JSON.parse(JSON.stringify(value))
   },
 
   removeItem(key: string) {
-    if (typeof this[key] !== 'function') {
+    if (typeof this[key] !== 'function' && key !== 'length') {
       delete this[key]
     }
   },
 
   clear() {
     Object.keys(this).forEach(key => {
-      if (typeof this[key] !== 'function') {
+      if (typeof this[key] !== 'function' && key !== 'length') {
         delete this[key]
       }
     })

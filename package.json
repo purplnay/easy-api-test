@@ -1,12 +1,12 @@
 {
   "name": "easy-api-test",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "main": "dist/index.js",
   "repository": "https://github.com/purplnay/easy-api-test.git",
   "author": "Nay <nay@purpltag.com>",
   "license": "MIT",
   "homepage": "https://purplnay.github.io/easy-api-test/",
-  "description": "API testing, but it's easy. No extra configuration, no CLI, no extra dependencies",
+  "description": "API testing, but it's easy. No extra configuration, no CLI, no extra dependencies.",
   "keywords": [
     "api",
     "json",
@@ -19,7 +19,8 @@
   "scripts": {
     "build": "tsc --rootDir src --outDir dist -d --stripInternal",
     "docs": "typedoc --mode file --stripInternal --out docs src",
-    "test": "ts-mocha --file test/index.ts test/*.test.ts"
+    "test": "ts-mocha --file test/index.ts test/*.test.ts && npm run build && node example/test/index.js",
+    "prepublish": "npm run build"
   },
   "prettier": {
     "arrowParens": "avoid",

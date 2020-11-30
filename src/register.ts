@@ -1,5 +1,6 @@
 import 'colors'
 import { config } from './config'
+import { newLine, writeLine } from './logger'
 import { queue, setContext, getContext } from './queue'
 import { Resolvable } from './utils'
 
@@ -33,11 +34,13 @@ export const test = (name: string, fn: Resolvable): void => {
 export const suite = (name: string, fn: () => void): void => {
   if (getContext() !== null) {
     if (config.log) {
-      process.stdout.write(
-        `\nSuite "${name.bold}" cannot be declared inside "${
+      newLine()
+      writeLine(
+        `Suite "${name.bold}" cannot be declared inside "${
           (getContext() as string).bold
-        }".\n`.red
+        }".`.red
       )
+      newLine()
     }
 
     throw new Error('Suites cannot be nested.')

@@ -91,7 +91,6 @@
 								<li class="tsd-kind-function"><a href="globals.html#del" class="tsd-kind-icon">del</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#disablelogs" class="tsd-kind-icon">disable<wbr>Logs</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#end" class="tsd-kind-icon">end</a></li>
-								<li class="tsd-kind-function"><a href="globals.html#exitonfail" class="tsd-kind-icon">exit<wbr>OnFail</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#get" class="tsd-kind-icon">get</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#head" class="tsd-kind-icon">head</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#options" class="tsd-kind-icon">options</a></li>
@@ -123,7 +122,7 @@
 					<div class="tsd-signature tsd-kind-icon">Resolvable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/utils.ts#L8">src/utils.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/utils.ts#L8">src/utils.ts:8</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -157,7 +156,7 @@
 					<div class="tsd-signature tsd-kind-icon">request<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">supertest</span><span class="tsd-signature-symbol"> = supertest</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/http.ts#L65">src/http.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/http.ts#L65">src/http.ts:65</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -179,12 +178,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/http.ts#L103">src/http.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/http.ts#L103">src/http.ts:103</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Run a DELETE request using SuperTest and the server set with <code>use()</code>.</p>
+									<p>Run a DELETE request using SuperTest.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -212,12 +211,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/config.ts#L20">src/config.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/config.ts#L16">src/config.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Disable the logs to the console.</p>
+									<p>Disable logging to the console.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -234,7 +233,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/handlers.ts#L42">src/handlers.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/handlers.ts#L42">src/handlers.ts:42</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -256,29 +255,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="exitonfail" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> exit<wbr>OnFail</h3>
-					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">exit<wbr>OnFail<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/config.ts#L28">src/config.ts:28</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Exit the test session if a test fails.
-									The end handlers would still be executed before exiting.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="get" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> get</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -288,12 +264,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/http.ts#L71">src/http.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/http.ts#L71">src/http.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Run a GET request using SuperTest and the server set with <code>use()</code>.</p>
+									<p>Run a GET request using SuperTest.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -321,12 +297,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/http.ts#L119">src/http.ts:119</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/http.ts#L119">src/http.ts:119</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Run an HEAD request using SuperTest and the server set with <code>use()</code>.</p>
+									<p>Run an HEAD request using SuperTest.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -354,12 +330,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/http.ts#L111">src/http.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/http.ts#L111">src/http.ts:111</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Run an OPTIONS request using SuperTest and the server set with <code>use()</code>.</p>
+									<p>Run an OPTIONS request using SuperTest.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -387,12 +363,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/http.ts#L95">src/http.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/http.ts#L95">src/http.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Run a PATCH request using SuperTest and the server set with <code>use()</code>.</p>
+									<p>Run a PATCH request using SuperTest.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -420,12 +396,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/http.ts#L79">src/http.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/http.ts#L79">src/http.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Run a POST request using SuperTest and the server set with <code>use()</code>.</p>
+									<p>Run a POST request using SuperTest.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -453,12 +429,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/http.ts#L87">src/http.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/http.ts#L87">src/http.ts:87</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Run a PUT request using SuperTest and the server set with <code>use()</code>.</p>
+									<p>Run a PUT request using SuperTest.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -486,7 +462,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/queue.ts#L115">src/queue.ts:115</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/queue.ts#L117">src/queue.ts:117</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -508,7 +484,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/helpers.ts#L5">src/helpers.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/helpers.ts#L5">src/helpers.ts:5</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -541,7 +517,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/handlers.ts#L30">src/handlers.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/handlers.ts#L30">src/handlers.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -577,7 +553,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/register.ts#L33">src/register.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/register.ts#L34">src/register.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -630,7 +606,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/register.ts#L20">src/register.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/register.ts#L21">src/register.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -665,29 +641,24 @@
 					<a name="use" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> use</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">use<span class="tsd-signature-symbol">(</span>app<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Server</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">use<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/config.ts#L36">src/config.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/config.ts#L24">src/config.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Define which server or server handler (e.g an Express app) to use.</p>
+									<p>Define which base URL to use for the request helper functions.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>app: <span class="tsd-signature-type">Server</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Function</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>The server instance or server handler to use.</p>
-										</div>
-									</div>
+									<h5>url: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -703,7 +674,7 @@
 					<div class="tsd-signature tsd-kind-icon">local<wbr>Storage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/helpers.ts#L48">src/helpers.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/helpers.ts#L54">src/helpers.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -722,7 +693,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/helpers.ts#L68">src/helpers.ts:68</a></li>
+										<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/helpers.ts#L81">src/helpers.ts:81</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -739,7 +710,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/helpers.ts#L49">src/helpers.ts:49</a></li>
+										<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/helpers.ts#L59">src/helpers.ts:59</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-parameters-title">Parameters</h4>
@@ -762,7 +733,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/helpers.ts#L62">src/helpers.ts:62</a></li>
+										<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/helpers.ts#L75">src/helpers.ts:75</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-parameters-title">Parameters</h4>
@@ -785,7 +756,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/7d92330/src/helpers.ts#L56">src/helpers.ts:56</a></li>
+										<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/helpers.ts#L69">src/helpers.ts:69</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-parameters-title">Parameters</h4>
@@ -798,6 +769,23 @@
 									</li>
 								</ul>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							</li>
+						</ul>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-object-literal">
+						<a name="localstorage.length" class="tsd-anchor"></a>
+						<h3>length</h3>
+						<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-object-literal">
+							<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> length<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/purplnay/easy-api-test/blob/750c7e1/src/helpers.ts#L55">src/helpers.ts:55</a></li>
+									</ul>
+								</aside>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 							</li>
 						</ul>
 					</section>
@@ -831,9 +819,6 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#end" class="tsd-kind-icon">end</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#exitonfail" class="tsd-kind-icon">exit<wbr>OnFail</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#get" class="tsd-kind-icon">get</a>

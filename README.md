@@ -9,9 +9,9 @@
 
 <br>
 
-Easy API Test lets you write tests to check that you're API is behaving the way you expect it to.
+Easy API Test lets you write tests to check that you're API is behaving the way you expect it to. The tests are run in the order you decide, so you easily can test an entire user flow.
 
-The libary's API is meant to be simple. No configuration, no CLI, no need to install extra dependencies to get your Babel or Typescript tests to work.
+The libary's API is meant to be simple. No CLI and no need to do extra configuration to get your Babel or Typescript tests to work.
 
 Uses the great **[SuperTest](https://www.npmjs.com/package/supertest)** package for the request helper functions.
 
@@ -38,28 +38,28 @@ You can find the full API reference [here](https://purplnay.github.io/easy-api-t
 ```javascript
 // test.js
 
-import expect from 'expect'
-import { use, test, get } from 'easy-api-test'
-import { server } from './src/server.js'
+const { use, test, get, localStorage } = require('easy-api-test')
 
-// Tell Easy API Test which server we'll be using
-use(server)
+// Tell Easy API Test which URL we'll be testing
+use('http://localhost:3000/)
 
-// Define a test
-test('Get a nice recipe', async () => {
-  const response = await get('/recipes/nice')
-  const recipe = response.body
-
-  expect(recipe).toBe('nice')
+// Define a first test
+test('Create a user', async () => {
+  const response = await post('/users')
+    .send({ username: 'Nay' })
+    .expect(200)
+  
+  // Save the user for later use
+  localStorage.setItem('user', response.body)
 })
 
-// And another one
-test('Get a secret recipe with a bearer token', async () => {
-  await get('/recipes/secret')
-    .bearer('My Bearer Token')
-    .expect(200, {
-      isSecretRecipe: true
-    })
+// Define a second test
+test('Get a user', async () => {
+  // Tests run in the defined order, so localStorage will always contain the user.
+  const user = localStorage.getItem('user')
+
+  await get(`/users/${user.id}`)
+    .expect(200, user)
 })
 
 // Run the tests
@@ -75,7 +75,7 @@ To run the tests that you wrote in `test.js`, you simply need to execute the scr
   node test.js
   ```
 
-- With **ES6+** ([Babel](https://www.npmjs.com/package/@babel/node)):
+- With **ES6+** or **Flow** ([babel-node](https://www.npmjs.com/package/@babel/node)):
 
   ```bash
   babel-node test.js
@@ -89,156 +89,392 @@ To run the tests that you wrote in `test.js`, you simply need to execute the scr
 ## Example
 
 <!-- prettier-ignore-start -->
-Let's say we are building an Express app that exposes an API like this:
 
-```text
-GET   /auth      - Get a bearer token
-GET   /users     - Get all the users
-GET   /users/:id - Get a user by id
-PATCH /users     - Updates a user using a bearer token
-```
+The code of the example is available [here](https://github.com/purplnay/easy-api-test/tree/main/example).
 
-We can create a new file `test/index.js` with this content:
+- ### Creating a project
 
-```javascript
-// test/index.js
+  Let's say we are building an express app that exposes this API:
 
-import assert from 'assert'
-import { use, exitOnFail, start, end, run } from 'easy-api-test'
-import { app } from '../src/app' // Our express app
-import { db } from '../src/db' // Some DB module
+  ```text
+  - /             {*}     -> Say 'hello'
+  - /recipes      {GET}   -> Get all the recipes
+  - /recipes/:id  {GET}   -> Get a recipe by ID
+  - /recipes      {POST}  -> Create a recipe
+  ```
 
-// Tell Easy API Test which server to use
-use(app)
+  First, let's create a new folder:
 
-// End the test session if one test fails
-exitOnFail()
+  ```bash
+  mkdir my-recipe-api
+  ```
 
-// Everything defined in `start()` will run before the tests start.
-start(async () => {
-  await db.connect() // Connect to our db before the tests start
-})
+  Move to the project's directory:
 
-// Same as `start()`, but this runs when the tests have ended, or
-// after a test has failed if you used `exitOnFail()`.
-end(async () => {
-  await db.disconnect()
-})
+  ```bash
+  cd my-recipe-api
+  ```
 
-/**
- *
- * We will put our tests here, just before run().
- *
- */
+  Initialize a new NPM project:
 
-// Run the tests
-run()
-```
+  ```bash
+  npm init -y
+  ```
 
-We can write our tests directly in `test/index.js`, but let's avoid loooong files of code.
+- ### Installing the dependencies
 
-Instead, we'll write the tests for the `/auth` endpoint in the file `test/auth.js` and the tests for the `/users` endpoint in the file `test/users.js`.
+  ***
 
-```javascript
-// test/auth.js
+  We are going to use [express](https://www.npmjs.com/package/express), and [body-parser](https://www.npmjs.com/package/body-parser) to parse JSON. Let's install them:
 
-import assert from 'assert'
-import { get, test, suite, localStorage } from 'easy-api-test'
+  ```bash
+  npm install --save express body-parser
+  ```
 
-// Suites let you group tests together, under a same 'namespace'.
-suite('Auth Endpoint', () => {
-  test('Get a bearer token', async () => {
-    const response = await get('/auth')
+  And for our tests, [easy-api-test](https://www.npmjs.com/package/easy-api-test) is all that we will need, let's install it as a dev dependency:
 
-    // Test if we received a response
-    assert(typeof response.body.token === 'string')
+  ```bash
+  npm install --save-dev easy-api-test
+  ```
 
-    // This is a helper object that behaves like localStorage
-    localStorage.setItem('token', response.body.token)
-  })
-})
-```
+- ### Writing the app
 
-Now, let's write the tests for the `/users` endpoint:
+  To keep things clean, we are going to create an `src/` folder that will contain our code, and a `test/` folder that will contain our test files.
 
-```javascript
-// test/users.js
+  Let's start by writing our app in the `src/` folder, in a file that we will name `app.js`.
 
-import assert from 'assert'
-import { suite, test, get, patch, localStorage } from 'easy-api-test'
+  ```javascript
+  // src/app.js
 
-suite('Users Endpoint', () => {
-  test('Get all the users', async () => {
-    // .json() asks the server for a JSON resposne (Accept: application/json)
-    const response = await get('/users').json()
+  const http = require('http')
 
-    assert(Array.isArray(response.body))
+  // Import express and body-parser
+  const express = require('express')
+  const bodyParser = require('body-parser')
+
+  // Create a new express app
+  const app = express()
+
+  // This is were we will store the recipes
+  const recipes = []
+
+  // Add the bodyParser's json middleware to our app
+  app.use(bodyParser.json())
+
+  // We return 'hello' at the root, regardless of the method
+  app.all('/', (req, res) => {
+    res.end('hello')
   })
 
-  test('Get one user by id', async () => {
-    // Easy API Test uses SuperTest under the hood, so all the methods
-    // available in SuperTest are available here as well.
-    await get('/users/1')
-      .json()
-      .expect(200, {
-        id: 1
-      })
+  // We return all the recipes at /recipes
+  app.get('/recipes', (req, res) => {
+    res.json(recipes)
   })
 
-  test('Update a user using a bearer token', async () => {
-    await patch('/users')
-      .json()
-      .bearer(localStorage.token) // using .getItem() or .setItem() is optional
-      .expect(200)
+  // We return a recipe by id
+  app.get('/recipes/:id', (req, res) => {
+    const id = req.params.id
+
+    // Check if the recipe exists
+    if (recipes[id]) {
+      return res.json(recipes[id])
+    }
+
+    // Send a 404 'Not found' error if the id does not exist.
+    res.statusCode = 404
+    res.end()
   })
-})
-```
 
-Our tests are ready! Let's now add them to our `test/index.js` file, before the `run()` function. The tests will be executed in the same order as they were added.
+  // We create a new recipe
+  app.post('/recipes', (req, res) => {
+    // Check if the fields are correct
+    if (req.body.name && req.body.content) {
+      // Create the recipe
+      const recipe = {
+        id: recipes.length,
+        name: req.body.name,
+        content: req.body.content,
+      }
 
-```javascript
-// test/index.js (final result)
+      recipes.push(recipe)
 
-import assert from 'assert'
-import { use, exitOnFail, start, end, run } from 'easy-api-test'
-import { app } from '../src/app' // Our express app
-import { db } from '../src/db' // Some DB module
+      // And return it
+      return res.json(recipe)
+    }
 
-use(app)
-exitOnFail()
+    // Send a 400 'Bad request' error if the fields were not correct
+    res.statusCode = 400
+    res.end()
+  })
 
-start(async () => {
-  await db.connect()
-})
+  // Wrap the app into a Server instance and export it
+  module.exports = http.createServer(app)
+  ```
 
-end(async () => {
-  await db.disconnect()
-})
+  We can create an `src/index.js` file to run our app:
 
+  ```javascript
+  // src/index.js
 
-// Import the tests in the order we wish to run them.
-import './auth'
-import './users'
+  const app = require('./app')
 
-// Run the tests
-run()
-```
+  // Start the app
+  app.listen()
+  ```
 
-That's it! Now you can run your tests using the command line:
+- ### Writing the tests
 
-```
-node test/index.js
-```
+  Our tests will be written in the `test/` folder, let's start by creating a `test/index.js` file:
 
-Make sure to use a runner that can handle your code (e.g node, babel-node, ts-node). I used `node` here just as an example.
+  ```javascript
+  // test/index.js
 
-Anyways, you can know easily add new endpoints to your API, write some simple tests, run the tests, and make sure everything is working properly!
+  // Import what we'll need and our server
+  const { use, start, end, run } = require('easy-api-test')
+  const app = require('../src/app')
 
-<!-- prettier-ignore-end -->
+  // We can tell Easy API Test which URL to test,
+  // here we will use the port 3000
+  use('http://localhost:3000/')
+
+  // Any function passed to `start()` will run before the tests
+  start(() => {
+    // Return a promise that resolves once the server started
+    return new Promise(resolve => {
+      app.listen(3000, resolve)
+    })
+  })
+
+  // Any function passed to `stop()` will run after the tests, even
+  // if a test has failed.
+  end(() => {
+    app.close()
+  })
+
+  /**
+   * We will import our tests here
+   */
+
+  // Run the tests.
+  run()
+  ```
+
+  What this file does, for now, is:
+
+  - Telling Easy API Test that we will be testing `http://localhost:3000/`.
+  - Start the server before the tests begin
+  - Close the server after the tests ran, or after a test failed.
+
+  Now, we will write our tests! Let's start by testing the root `/` path of our API. Remember? It should always return 'hello', let's write a test in `test/root.js`:
+
+  ```javascript
+  //test/root.js
+
+  const { suite, test, get, post } = require('easy-api-test')
+
+  // Suites are optional, but they let us group tests together, which
+  // makes visual feedback clearer
+  suite('/ Root', () => {
+    // Tests require a name, and a function to run
+    test('Say hello', async () => {
+      await get('/').expect(200, 'hello') // Expect status 200 and content 'hello'
+    })
+
+    test('Say hello even with the POST method', async () => {
+      await post('/').expect(200, 'hello')
+    })
+  })
+  ```
+
+  Tests will run in the same order as you declared them.
+
+  Here, we used `get()` and `post()`. These are helper methods built on top of [SuperTest](https://www.npmjs.com/package/supertest), hence SuperTest's API is available for you to use, along with some [extra methods](https://purplnay.github.io/easy-api-test/interfaces/irequest.html).
+
+  Anything that throws will work in the tests, so feel free to use any library you wish!
+
+  So, we created our tests for `/`, but we now need to add them to our test pipeline in `test/index.js`:
+
+  ```javascript
+  // test/index.js
+
+  const { use, start, end, run } = require('easy-api-test')
+  const app = require('../src/app')
+
+  use('http://localhost:3000/')
+
+  start(() => {
+    return new Promise(resolve => {
+      app.listen(3000, resolve)
+    })
+  })
+
+  end(() => {
+    app.close()
+  })
+
+  /**
+   * We import our tests here
+   */
+  require('./root') // <====== here
+
+  run()
+  ```
+
+  Next, we want to test our `/recipes` endpoint. We don't have any recipe yet, so let's test if our API creates recipes as expected in a new file `test/create-recipe.js`:
+
+  ```javascript
+  // test/create-recipe.js
+
+  const assert = require('assert')
+  const { suite, test, post, localStorage } = require('easy-api-test')
+
+  suite('/recipes Create new recipes', () => {
+    // Let's first see if our API rejects invalid recipes
+    test('Reject an invalid recipe', async () => {
+      // We expect a 400 error in case of incorrect fields
+      await post('/recipes').send({ ayaya: 'clap' }).expect(400)
+    })
+
+    // Now let's test creating a recipe
+    test('Create a valid recipe', async () => {
+      const recipe = {
+        name: 'tomatoes',
+        content: 'Put tomatoes in a plate.',
+      }
+
+      const response = await post('/recipes').send(recipe)
+
+      // We can use `assert` to test anything
+      assert.strictEqual(response.status, 200)
+      assert.strictEqual(response.body.name, recipe.name)
+
+      // localStorage is a helper object from Easy API Test, to store data
+      // and retrieve it easily in later tests.
+      localStorage.setItem('recipe', response.body)
+    })
+  })
+  ```
+
+  It might sound scary to have stateful tests where one test requires the result of another test, but don't worry, this actually is intended! We are not testing units of our application, we are testing an actual user flow through the API. If one test crashes, the test suites will end, so you will not have a test missing some external data.
+
+  Let's add this new suite to our pipeline in `test/index.js`:
+
+  ```javascript
+  // test/index.js
+
+  const { use, start, end, run } = require('easy-api-test')
+  const app = require('../src/app')
+
+  use('http://localhost:3000/')
+
+  start(() => {
+    return new Promise(resolve => {
+      app.listen(3000, resolve)
+    })
+  })
+
+  end(() => {
+    app.close()
+  })
+
+  /**
+   * We import our tests here
+   */
+  require('./root')
+  require('./create-recipe') // <====== here
+
+  run()
+  ```
+
+  And let's finish by writing tests for the `/recipes` GET endpoint, and `/recipes/:id` endpoint in a file nammed `test/get-recipe.js`:
+
+  ```javascript
+  // test/get-recipe.js
+
+  const assert = require('assert')
+  const { suite, test, get, localStorage } = require('easy-api-test')
+
+  suite('/recipes Get recipes', () => {
+    // This will run after we have created our recipe, so if the endpoint works,
+    // it should return an array with at least 1 element.
+    test('Get all the recipes', async () => {
+      const response = await get('/recipes')
+
+      assert(response.body.length > 0)
+    })
+
+    test('Get a recipe by id', async () => {
+      // Our recipe is in the localStorage, so we can grab its ID
+      const recipe = localStorage.getItem('recipe')
+
+      await get(`/recipes/${recipe.id}`).expect(200, recipe)
+    })
+
+    // Check if an invalid ID returns 404
+    test('Get 404 when the recipe does not exist', async () => {
+      await get('/recipes/ayaya').expect(404)
+    })
+  })
+  ```
+
+  And again, add this to our pipeline:
+
+  ```javascript
+  // test/index.js
+
+  const { use, start, end, run } = require('easy-api-test')
+  const app = require('../src/app')
+
+  use('http://localhost:3000/')
+
+  start(() => {
+    return new Promise(resolve => {
+      app.listen(3000, resolve)
+    })
+  })
+
+  end(() => {
+    app.close()
+  })
+
+  /**
+   * We import our tests here
+   */
+  require('./root')
+  require('./create-recipe')
+  require('./get-recipe') // <====== here
+
+  run()
+  ```
+
+  That's it! Now let's see if our app works as expected by running the tests:
+
+  ```bash
+  node test/index.js
+  ```
+
+  and the result:
+
+  ```bash
+  / Root:
+    - Say hello: PASS (29ms)
+    - Say hello even with the POST method: PASS (4ms)
+
+  /recipes Create new recipes:
+    - Reject an invalid recipe: PASS (15ms)
+    - Create a valid recipe: PASS (6ms)
+
+  /recipes Get recipes:
+    - Get all the recipes: PASS (3ms)
+    - Get a recipe by id: PASS (4ms)
+    - Get 404 when the recipe does not exist: PASS (2ms)
+  ```
+
+  <!-- prettier-ignore-end -->
 
 ## Contributions
 
-The Code of Conduct is available [here](./CODE_OF_CONDUCT.md).
+The Code of Conduct is available [here](https://github.com/purplnay/easy-api-test/blob/main/CODE_OF_CONDUCT.md).
 
 If you wish to help to improve Easy API Test by adding new features, performance improvements or documentation corrections, you can do so by forking the [repository](https://github.com/purplnay/easy-api-test), applying your changes and sending a pull request.
 

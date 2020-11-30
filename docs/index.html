@@ -67,15 +67,16 @@
 				<a href="#easy-api-test" id="easy-api-test" style="color: inherit; text-decoration: none;">
 					<h1>Easy API Test</h1>
 				</a>
-				<p><img src="https://img.shields.io/npm/l/easy-api-test" alt="License">
-					<img src="https://img.shields.io/npm/v/easy-api-test" alt="Version">
+				<p><img src="https://img.shields.io/npm/v/easy-api-test" alt="Version">
+					<a href="https://travis-ci.com/purplnay/easy-api-test"><img src="https://travis-ci.com/purplnay/easy-api-test.svg?branch=main" alt="Build Status"></a>
+					<img src="https://img.shields.io/npm/l/easy-api-test" alt="License">
 				<img src="https://img.shields.io/badge/Made%20with-%E2%9D%A4%20-purple" alt="Love"></p>
 				<a href="#api-testing-but-it39s-easy" id="api-testing-but-it39s-easy" style="color: inherit; text-decoration: none;">
 					<h2>API testing, but it&#39;s easy.</h2>
 				</a>
 				<br>
-				<p>Easy API Test lets you write tests to check that you&#39;re API is behaving the way you expect it to.</p>
-				<p>The libary&#39;s API is meant to be simple. No configuration, no CLI, no need to install extra dependencies to get your Babel or Typescript tests to work.</p>
+				<p>Easy API Test lets you write tests to check that you&#39;re API is behaving the way you expect it to. The tests are run in the order you decide, so you easily can test an entire user flow.</p>
+				<p>The libary&#39;s API is meant to be simple. No CLI and no need to do extra configuration to get your Babel or Typescript tests to work.</p>
 				<p>Uses the great <strong><a href="https://www.npmjs.com/package/supertest">SuperTest</a></strong> package for the request helper functions.</p>
 				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
 					<h2>Documentation</h2>
@@ -96,33 +97,33 @@
 					<h2>Usage</h2>
 				</a>
 				<!-- prettier-ignore-start -->
-				<pre><code class="language-javascript"><span class="hljs-comment">// test.js</span>
+				<pre><code class="language-javascript">// test.js
 
-<span class="hljs-keyword">import</span> expect <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;expect&#x27;</span>
-<span class="hljs-keyword">import</span> { use, test, get } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;easy-api-test&#x27;</span>
-<span class="hljs-keyword">import</span> { server } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./src/server.js&#x27;</span>
+const { use, test, get, localStorage } = require(&#x27;easy-api-test&#x27;)
 
-<span class="hljs-comment">// Tell Easy API Test which server we&#x27;ll be using</span>
-use(server)
+// Tell Easy API Test which URL we&#x27;ll be testing
+use(&#x27;http://localhost:3000/)
 
-<span class="hljs-comment">// Define a test</span>
-test(<span class="hljs-string">&#x27;Get a nice recipe&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-  <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> get(<span class="hljs-string">&#x27;/recipes/nice&#x27;</span>)
-  <span class="hljs-keyword">const</span> recipe = response.body
+// Define a first test
+test(&#x27;Create a user&#x27;, async () =&gt; {
+  const response = await post(&#x27;/users&#x27;)
+    .send({ username: &#x27;Nay&#x27; })
+    .expect(200)
 
-  expect(recipe).toBe(<span class="hljs-string">&#x27;nice&#x27;</span>)
+  // Save the user for later use
+  localStorage.setItem(&#x27;user&#x27;, response.body)
 })
 
-<span class="hljs-comment">// And another one</span>
-test(<span class="hljs-string">&#x27;Get a secret recipe with a bearer token&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-  <span class="hljs-keyword">await</span> get(<span class="hljs-string">&#x27;/recipes/secret&#x27;</span>)
-    .bearer(<span class="hljs-string">&#x27;My Bearer Token&#x27;</span>)
-    .expect(<span class="hljs-number">200</span>, {
-      <span class="hljs-attr">isSecretRecipe</span>: <span class="hljs-literal">true</span>
-    })
+// Define a second test
+test(&#x27;Get a user&#x27;, async () =&gt; {
+  // Tests run in the defined order, so localStorage will always contain the user.
+  const user = localStorage.getItem(&#x27;user&#x27;)
+
+  await get(`/users/${user.id}`)
+    .expect(200, user)
 })
 
-<span class="hljs-comment">// Run the tests</span>
+// Run the tests
 run()</code></pre>
 				<!-- prettier-ignore-end -->
 				<p>To run the tests that you wrote in <code>test.js</code>, you simply need to execute the script:</p>
@@ -130,7 +131,7 @@ run()</code></pre>
 					<li><p>With <strong>JavaScript</strong> (node):</p>
 						<pre><code class="language-bash">node test.js</code></pre>
 					</li>
-					<li><p>With <strong>ES6+</strong> (<a href="https://www.npmjs.com/package/@babel/node">Babel</a>):</p>
+					<li><p>With <strong>ES6+</strong> or <strong>Flow</strong> (<a href="https://www.npmjs.com/package/@babel/node">babel-node</a>):</p>
 						<pre><code class="language-bash">babel-node test.js</code></pre>
 					</li>
 					<li><p>With <strong>Typescript</strong> (<a href="https://www.npmjs.com/package/ts-node">ts-node</a>):</p>
@@ -141,129 +142,330 @@ run()</code></pre>
 					<h2>Example</h2>
 				</a>
 				<!-- prettier-ignore-start -->
-				<p>Let&#39;s say we are building an Express app that exposes an API like this:</p>
-				<pre><code class="language-text">GET   /auth      - Get a bearer token
-GET   /users     - Get all the users
-GET   /users/:id - Get a user by id
-PATCH /users     - Updates a user using a bearer token</code></pre>
-				<p>We can create a new file <code>test/index.js</code> with this content:</p>
-				<pre><code class="language-javascript"><span class="hljs-comment">// test/index.js</span>
+				<p>The code of the example is available <a href="https://github.com/purplnay/easy-api-test/tree/main/example">here</a>.</p>
+				<ul>
+					<li>
+						<a href="#creating-a-project" id="creating-a-project" style="color: inherit; text-decoration: none;">
+							<h3>Creating a project</h3>
+						</a>
+						<p>Let&#39;s say we are building an express app that exposes this API:</p>
+						<pre><code class="language-text">- /             {*}     -&gt; Say &#x27;hello&#x27;
+- /recipes      {GET}   -&gt; Get all the recipes
+- /recipes/:id  {GET}   -&gt; Get a recipe by ID
+- /recipes      {POST}  -&gt; Create a recipe</code></pre>
+						<p>First, let&#39;s create a new folder:</p>
+						<pre><code class="language-bash">mkdir my-recipe-api</code></pre>
+						<p>Move to the project&#39;s directory:</p>
+						<pre><code class="language-bash"><span class="hljs-built_in">cd</span> my-recipe-api</code></pre>
+						<p>Initialize a new NPM project:</p>
+						<pre><code class="language-bash">npm init -y</code></pre>
+					</li>
+					<li>
+						<a href="#installing-the-dependencies" id="installing-the-dependencies" style="color: inherit; text-decoration: none;">
+							<h3>Installing the dependencies</h3>
+						</a>
+						<hr>
+						<p>We are going to use <a href="https://www.npmjs.com/package/express">express</a>, and <a href="https://www.npmjs.com/package/body-parser">body-parser</a> to parse JSON. Let&#39;s install them:</p>
+						<pre><code class="language-bash">npm install --save express body-parser</code></pre>
+						<p>And for our tests, <a href="https://www.npmjs.com/package/easy-api-test">easy-api-test</a> is all that we will need, let&#39;s install it as a dev dependency:</p>
+						<pre><code class="language-bash">npm install --save-dev easy-api-test</code></pre>
+					</li>
+					<li>
+						<a href="#writing-the-app" id="writing-the-app" style="color: inherit; text-decoration: none;">
+							<h3>Writing the app</h3>
+						</a>
+						<p>To keep things clean, we are going to create an <code>src/</code> folder that will contain our code, and a <code>test/</code> folder that will contain our test files.</p>
+						<p>Let&#39;s start by writing our app in the <code>src/</code> folder, in a file that we will name <code>app.js</code>.</p>
+						<pre><code class="language-javascript"><span class="hljs-comment">// src/app.js</span>
 
-<span class="hljs-keyword">import</span> assert <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;assert&#x27;</span>
-<span class="hljs-keyword">import</span> { use, exitOnFail, start, end, run } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;easy-api-test&#x27;</span>
-<span class="hljs-keyword">import</span> { app } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../src/app&#x27;</span> <span class="hljs-comment">// Our express app</span>
-<span class="hljs-keyword">import</span> { db } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../src/db&#x27;</span> <span class="hljs-comment">// Some DB module</span>
+<span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>)
 
-<span class="hljs-comment">// Tell Easy API Test which server to use</span>
-use(app)
+<span class="hljs-comment">// Import express and body-parser</span>
+<span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>)
+<span class="hljs-keyword">const</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;body-parser&#x27;</span>)
 
-<span class="hljs-comment">// End the test session if one test fails</span>
-exitOnFail()
+<span class="hljs-comment">// Create a new express app</span>
+<span class="hljs-keyword">const</span> app = express()
 
-<span class="hljs-comment">// Everything defined in `start()` will run before the tests start.</span>
-start(<span class="hljs-keyword">async</span> () =&gt; {
-  <span class="hljs-keyword">await</span> db.connect() <span class="hljs-comment">// Connect to our db before the tests start</span>
+<span class="hljs-comment">// This is were we will store the recipes</span>
+<span class="hljs-keyword">const</span> recipes = []
+
+<span class="hljs-comment">// Add the bodyParser&#x27;s json middleware to our app</span>
+app.use(bodyParser.json())
+
+<span class="hljs-comment">// We return &#x27;hello&#x27; at the root, regardless of the method</span>
+app.all(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.end(<span class="hljs-string">&#x27;hello&#x27;</span>)
 })
 
-<span class="hljs-comment">// Same as `start()`, but this runs when the tests have ended, or</span>
-<span class="hljs-comment">// after a test has failed if you used `exitOnFail()`.</span>
-end(<span class="hljs-keyword">async</span> () =&gt; {
-  <span class="hljs-keyword">await</span> db.disconnect()
+<span class="hljs-comment">// We return all the recipes at /recipes</span>
+app.get(<span class="hljs-string">&#x27;/recipes&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.json(recipes)
+})
+
+<span class="hljs-comment">// We return a recipe by id</span>
+app.get(<span class="hljs-string">&#x27;/recipes/:id&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> id = req.params.id
+
+  <span class="hljs-comment">// Check if the recipe exists</span>
+  <span class="hljs-keyword">if</span> (recipes[id]) {
+    <span class="hljs-keyword">return</span> res.json(recipes[id])
+  }
+
+  <span class="hljs-comment">// Send a 404 &#x27;Not found&#x27; error if the id does not exist.</span>
+  res.statusCode = <span class="hljs-number">404</span>
+  res.end()
+})
+
+<span class="hljs-comment">// We create a new recipe</span>
+app.post(<span class="hljs-string">&#x27;/recipes&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-comment">// Check if the fields are correct</span>
+  <span class="hljs-keyword">if</span> (req.body.name &amp;&amp; req.body.content) {
+    <span class="hljs-comment">// Create the recipe</span>
+    <span class="hljs-keyword">const</span> recipe = {
+      <span class="hljs-attr">id</span>: recipes.length,
+      <span class="hljs-attr">name</span>: req.body.name,
+      <span class="hljs-attr">content</span>: req.body.content,
+    }
+
+    recipes.push(recipe)
+
+    <span class="hljs-comment">// And return it</span>
+    <span class="hljs-keyword">return</span> res.json(recipe)
+  }
+
+  <span class="hljs-comment">// Send a 400 &#x27;Bad request&#x27; error if the fields were not correct</span>
+  res.statusCode = <span class="hljs-number">400</span>
+  res.end()
+})
+
+<span class="hljs-comment">// Wrap the app into a Server instance and export it</span>
+<span class="hljs-built_in">module</span>.exports = http.createServer(app)</code></pre>
+						<p>We can create an <code>src/index.js</code> file to run our app:</p>
+						<pre><code class="language-javascript"><span class="hljs-comment">// src/index.js</span>
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./app&#x27;</span>)
+
+<span class="hljs-comment">// Start the app</span>
+app.listen()</code></pre>
+					</li>
+					<li>
+						<a href="#writing-the-tests" id="writing-the-tests" style="color: inherit; text-decoration: none;">
+							<h3>Writing the tests</h3>
+						</a>
+						<p>Our tests will be written in the <code>test/</code> folder, let&#39;s start by creating a <code>test/index.js</code> file:</p>
+						<pre><code class="language-javascript"><span class="hljs-comment">// test/index.js</span>
+
+<span class="hljs-comment">// Import what we&#x27;ll need and our server</span>
+<span class="hljs-keyword">const</span> { use, start, end, run } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
+<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../src/app&#x27;</span>)
+
+<span class="hljs-comment">// We can tell Easy API Test which URL to test,</span>
+<span class="hljs-comment">// here we will use the port 3000</span>
+use(<span class="hljs-string">&#x27;http://localhost:3000/&#x27;</span>)
+
+<span class="hljs-comment">// Any function passed to `start()` will run before the tests</span>
+start(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-comment">// Return a promise that resolves once the server started</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
+    app.listen(<span class="hljs-number">3000</span>, resolve)
+  })
+})
+
+<span class="hljs-comment">// Any function passed to `stop()` will run after the tests, even</span>
+<span class="hljs-comment">// if a test has failed.</span>
+end(<span class="hljs-function">() =&gt;</span> {
+  app.close()
 })
 
 <span class="hljs-comment">/**
- *
- * We will put our tests here, just before run().
- *
+ * We will import our tests here
  */</span>
 
-<span class="hljs-comment">// Run the tests</span>
+<span class="hljs-comment">// Run the tests.</span>
 run()</code></pre>
-				<p>We can write our tests directly in <code>test/index.js</code>, but let&#39;s avoid loooong files of code.</p>
-				<p>Instead, we&#39;ll write the tests for the <code>/auth</code> endpoint in the file <code>test/auth.js</code> and the tests for the <code>/users</code> endpoint in the file <code>test/users.js</code>.</p>
-				<pre><code class="language-javascript"><span class="hljs-comment">// test/auth.js</span>
+						<p>What this file does, for now, is:</p>
+						<ul>
+							<li>Telling Easy API Test that we will be testing <code>http://localhost:3000/</code>.</li>
+							<li>Start the server before the tests begin</li>
+							<li>Close the server after the tests ran, or after a test failed.</li>
+						</ul>
+						<p>Now, we will write our tests! Let&#39;s start by testing the root <code>/</code> path of our API. Remember? It should always return &#39;hello&#39;, let&#39;s write a test in <code>test/root.js</code>:</p>
+						<pre><code class="language-javascript"><span class="hljs-comment">//test/root.js</span>
 
-<span class="hljs-keyword">import</span> assert <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;assert&#x27;</span>
-<span class="hljs-keyword">import</span> { get, test, suite, <span class="hljs-built_in">localStorage</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;easy-api-test&#x27;</span>
+<span class="hljs-keyword">const</span> { suite, test, get, post } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
 
-<span class="hljs-comment">// Suites let you group tests together, under a same &#x27;namespace&#x27;.</span>
-suite(<span class="hljs-string">&#x27;Auth Endpoint&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-  test(<span class="hljs-string">&#x27;Get a bearer token&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> get(<span class="hljs-string">&#x27;/auth&#x27;</span>)
+<span class="hljs-comment">// Suites are optional, but they let us group tests together, which</span>
+<span class="hljs-comment">// makes visual feedback clearer</span>
+suite(<span class="hljs-string">&#x27;/ Root&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-comment">// Tests require a name, and a function to run</span>
+  test(<span class="hljs-string">&#x27;Say hello&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">await</span> get(<span class="hljs-string">&#x27;/&#x27;</span>).expect(<span class="hljs-number">200</span>, <span class="hljs-string">&#x27;hello&#x27;</span>) <span class="hljs-comment">// Expect status 200 and content &#x27;hello&#x27;</span>
+  })
 
-    <span class="hljs-comment">// Test if we received a response</span>
-    assert(<span class="hljs-keyword">typeof</span> response.body.token === <span class="hljs-string">&#x27;string&#x27;</span>)
-
-    <span class="hljs-comment">// This is a helper object that behaves like localStorage</span>
-    <span class="hljs-built_in">localStorage</span>.setItem(<span class="hljs-string">&#x27;token&#x27;</span>, response.body.token)
+  test(<span class="hljs-string">&#x27;Say hello even with the POST method&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">await</span> post(<span class="hljs-string">&#x27;/&#x27;</span>).expect(<span class="hljs-number">200</span>, <span class="hljs-string">&#x27;hello&#x27;</span>)
   })
 })</code></pre>
-				<p>Now, let&#39;s write the tests for the <code>/users</code> endpoint:</p>
-				<pre><code class="language-javascript"><span class="hljs-comment">// test/users.js</span>
+						<p>Tests will run in the same order as you declared them.</p>
+						<p>Here, we used <code>get()</code> and <code>post()</code>. These are helper methods built on top of <a href="https://www.npmjs.com/package/supertest">SuperTest</a>, hence SuperTest&#39;s API is available for you to use, along with some <a href="https://purplnay.github.io/easy-api-test/interfaces/irequest.html">extra methods</a>.</p>
+						<p>Anything that throws will work in the tests, so feel free to use any library you wish!</p>
+						<p>So, we created our tests for <code>/</code>, but we now need to add them to our test pipeline in <code>test/index.js</code>:</p>
+						<pre><code class="language-javascript"><span class="hljs-comment">// test/index.js</span>
 
-<span class="hljs-keyword">import</span> assert <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;assert&#x27;</span>
-<span class="hljs-keyword">import</span> { suite, test, get, patch, <span class="hljs-built_in">localStorage</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;easy-api-test&#x27;</span>
+<span class="hljs-keyword">const</span> { use, start, end, run } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
+<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../src/app&#x27;</span>)
 
-suite(<span class="hljs-string">&#x27;Users Endpoint&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-  test(<span class="hljs-string">&#x27;Get all the users&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">// .json() asks the server for a JSON resposne (Accept: application/json)</span>
-    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> get(<span class="hljs-string">&#x27;/users&#x27;</span>).json()
+use(<span class="hljs-string">&#x27;http://localhost:3000/&#x27;</span>)
 
-    assert(<span class="hljs-built_in">Array</span>.isArray(response.body))
+start(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
+    app.listen(<span class="hljs-number">3000</span>, resolve)
+  })
+})
+
+end(<span class="hljs-function">() =&gt;</span> {
+  app.close()
+})
+
+<span class="hljs-comment">/**
+ * We import our tests here
+ */</span>
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./root&#x27;</span>) <span class="hljs-comment">// &lt;====== here</span>
+
+run()</code></pre>
+						<p>Next, we want to test our <code>/recipes</code> endpoint. We don&#39;t have any recipe yet, so let&#39;s test if our API creates recipes as expected in a new file <code>test/create-recipe.js</code>:</p>
+						<pre><code class="language-javascript"><span class="hljs-comment">// test/create-recipe.js</span>
+
+<span class="hljs-keyword">const</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;assert&#x27;</span>)
+<span class="hljs-keyword">const</span> { suite, test, post, <span class="hljs-built_in">localStorage</span> } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
+
+suite(<span class="hljs-string">&#x27;/recipes Create new recipes&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-comment">// Let&#x27;s first see if our API rejects invalid recipes</span>
+  test(<span class="hljs-string">&#x27;Reject an invalid recipe&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// We expect a 400 error in case of incorrect fields</span>
+    <span class="hljs-keyword">await</span> post(<span class="hljs-string">&#x27;/recipes&#x27;</span>).send({ <span class="hljs-attr">ayaya</span>: <span class="hljs-string">&#x27;clap&#x27;</span> }).expect(<span class="hljs-number">400</span>)
   })
 
-  test(<span class="hljs-string">&#x27;Get one user by id&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">// Easy API Test uses SuperTest under the hood, so all the methods</span>
-    <span class="hljs-comment">// available in SuperTest are available here as well.</span>
-    <span class="hljs-keyword">await</span> get(<span class="hljs-string">&#x27;/users/1&#x27;</span>)
-      .json()
-      .expect(<span class="hljs-number">200</span>, {
-        <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>
-      })
-  })
+  <span class="hljs-comment">// Now let&#x27;s test creating a recipe</span>
+  test(<span class="hljs-string">&#x27;Create a valid recipe&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> recipe = {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;tomatoes&#x27;</span>,
+      <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;Put tomatoes in a plate.&#x27;</span>,
+    }
 
-  test(<span class="hljs-string">&#x27;Update a user using a bearer token&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-keyword">await</span> patch(<span class="hljs-string">&#x27;/users&#x27;</span>)
-      .json()
-      .bearer(<span class="hljs-built_in">localStorage</span>.token) <span class="hljs-comment">// using .getItem() or .setItem() is optional</span>
-      .expect(<span class="hljs-number">200</span>)
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> post(<span class="hljs-string">&#x27;/recipes&#x27;</span>).send(recipe)
+
+    <span class="hljs-comment">// We can use `assert` to test anything</span>
+    assert.strictEqual(response.status, <span class="hljs-number">200</span>)
+    assert.strictEqual(response.body.name, recipe.name)
+
+    <span class="hljs-comment">// localStorage is a helper object from Easy API Test, to store data</span>
+    <span class="hljs-comment">// and retrieve it easily in later tests.</span>
+    <span class="hljs-built_in">localStorage</span>.setItem(<span class="hljs-string">&#x27;recipe&#x27;</span>, response.body)
   })
 })</code></pre>
-				<p>Our tests are ready! Let&#39;s now add them to our <code>test/index.js</code> file, before the <code>run()</code> function. The tests will be executed in the same order as they were added.</p>
-				<pre><code class="language-javascript"><span class="hljs-comment">// test/index.js (final result)</span>
+						<p>It might sound scary to have stateful tests where one test requires the result of another test, but don&#39;t worry, this actually is intended! We are not testing units of our application, we are testing an actual user flow through the API. If one test crashes, the test suites will end, so you will not have a test missing some external data.</p>
+						<p>Let&#39;s add this new suite to our pipeline in <code>test/index.js</code>:</p>
+						<pre><code class="language-javascript"><span class="hljs-comment">// test/index.js</span>
 
-<span class="hljs-keyword">import</span> assert <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;assert&#x27;</span>
-<span class="hljs-keyword">import</span> { use, exitOnFail, start, end, run } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;easy-api-test&#x27;</span>
-<span class="hljs-keyword">import</span> { app } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../src/app&#x27;</span> <span class="hljs-comment">// Our express app</span>
-<span class="hljs-keyword">import</span> { db } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../src/db&#x27;</span> <span class="hljs-comment">// Some DB module</span>
+<span class="hljs-keyword">const</span> { use, start, end, run } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
+<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../src/app&#x27;</span>)
 
-use(app)
-exitOnFail()
+use(<span class="hljs-string">&#x27;http://localhost:3000/&#x27;</span>)
 
-start(<span class="hljs-keyword">async</span> () =&gt; {
-  <span class="hljs-keyword">await</span> db.connect()
+start(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
+    app.listen(<span class="hljs-number">3000</span>, resolve)
+  })
 })
 
-end(<span class="hljs-keyword">async</span> () =&gt; {
-  <span class="hljs-keyword">await</span> db.disconnect()
+end(<span class="hljs-function">() =&gt;</span> {
+  app.close()
 })
 
+<span class="hljs-comment">/**
+ * We import our tests here
+ */</span>
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./root&#x27;</span>)
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./create-recipe&#x27;</span>) <span class="hljs-comment">// &lt;====== here</span>
 
-<span class="hljs-comment">// Import the tests in the order we wish to run them.</span>
-<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./auth&#x27;</span>
-<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./users&#x27;</span>
-
-<span class="hljs-comment">// Run the tests</span>
 run()</code></pre>
-				<p>That&#39;s it! Now you can run your tests using the command line:</p>
-				<pre><code><span class="hljs-keyword">node</span> <span class="hljs-title">test</span>/index.js</code></pre>
-				<p>Make sure to use a runner that can handle your code (e.g node, babel-node, ts-node). I used <code>node</code> here just as an example.</p>
-				<p>Anyways, you can know easily add new endpoints to your API, write some simple tests, run the tests, and make sure everything is working properly!</p>
-				<!-- prettier-ignore-end -->
+						<p>And let&#39;s finish by writing tests for the <code>/recipes</code> GET endpoint, and <code>/recipes/:id</code> endpoint in a file nammed <code>test/get-recipe.js</code>:</p>
+						<pre><code class="language-javascript"><span class="hljs-comment">// test/get-recipe.js</span>
+
+<span class="hljs-keyword">const</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;assert&#x27;</span>)
+<span class="hljs-keyword">const</span> { suite, test, get, <span class="hljs-built_in">localStorage</span> } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
+
+suite(<span class="hljs-string">&#x27;/recipes Get recipes&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-comment">// This will run after we have created our recipe, so if the endpoint works,</span>
+  <span class="hljs-comment">// it should return an array with at least 1 element.</span>
+  test(<span class="hljs-string">&#x27;Get all the recipes&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> get(<span class="hljs-string">&#x27;/recipes&#x27;</span>)
+
+    assert(response.body.length &gt; <span class="hljs-number">0</span>)
+  })
+
+  test(<span class="hljs-string">&#x27;Get a recipe by id&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// Our recipe is in the localStorage, so we can grab its ID</span>
+    <span class="hljs-keyword">const</span> recipe = <span class="hljs-built_in">localStorage</span>.getItem(<span class="hljs-string">&#x27;recipe&#x27;</span>)
+
+    <span class="hljs-keyword">await</span> get(<span class="hljs-string">`/recipes/<span class="hljs-subst">${recipe.id}</span>`</span>).expect(<span class="hljs-number">200</span>, recipe)
+  })
+
+  <span class="hljs-comment">// Check if an invalid ID returns 404</span>
+  test(<span class="hljs-string">&#x27;Get 404 when the recipe does not exist&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">await</span> get(<span class="hljs-string">&#x27;/recipes/ayaya&#x27;</span>).expect(<span class="hljs-number">404</span>)
+  })
+})</code></pre>
+						<p>And again, add this to our pipeline:</p>
+						<pre><code class="language-javascript"><span class="hljs-comment">// test/index.js</span>
+
+<span class="hljs-keyword">const</span> { use, start, end, run } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
+<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../src/app&#x27;</span>)
+
+use(<span class="hljs-string">&#x27;http://localhost:3000/&#x27;</span>)
+
+start(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
+    app.listen(<span class="hljs-number">3000</span>, resolve)
+  })
+})
+
+end(<span class="hljs-function">() =&gt;</span> {
+  app.close()
+})
+
+<span class="hljs-comment">/**
+ * We import our tests here
+ */</span>
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./root&#x27;</span>)
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./create-recipe&#x27;</span>)
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./get-recipe&#x27;</span>) <span class="hljs-comment">// &lt;====== here</span>
+
+run()</code></pre>
+						<p>That&#39;s it! Now let&#39;s see if our app works as expected by running the tests:</p>
+						<pre><code class="language-bash">node <span class="hljs-built_in">test</span>/index.js</code></pre>
+						<p>and the result:</p>
+						<pre><code class="language-bash">/ Root:
+  - Say hello: PASS (29ms)
+  - Say hello even with the POST method: PASS (4ms)
+
+/recipes Create new recipes:
+  - Reject an invalid recipe: PASS (15ms)
+  - Create a valid recipe: PASS (6ms)
+
+/recipes Get recipes:
+  - Get all the recipes: PASS (3ms)
+  - Get a recipe by id: PASS (4ms)
+  - Get 404 when the recipe does not exist: PASS (2ms)</code></pre>
+						<!-- prettier-ignore-end -->
+					</li>
+				</ul>
 				<a href="#contributions" id="contributions" style="color: inherit; text-decoration: none;">
 					<h2>Contributions</h2>
 				</a>
-				<p>The Code of Conduct is available <a href="./CODE_OF_CONDUCT.md">here</a>.</p>
+				<p>The Code of Conduct is available <a href="https://github.com/purplnay/easy-api-test/blob/main/CODE_OF_CONDUCT.md">here</a>.</p>
 				<p>If you wish to help to improve Easy API Test by adding new features, performance improvements or documentation corrections, you can do so by forking the <a href="https://github.com/purplnay/easy-api-test">repository</a>, applying your changes and sending a pull request.</p>
 				<p>If you enconter any issue regarding the repository, or wish to suggest new features, you can fill an <a href="https://github.com/purplnay/easy-api-test/issues">issue</a>. Make sure to check that your issue doesn&#39;t exist yet.</p>
 			</div>
@@ -295,9 +497,6 @@ run()</code></pre>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#end" class="tsd-kind-icon">end</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#exitonfail" class="tsd-kind-icon">exit<wbr>OnFail</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#get" class="tsd-kind-icon">get</a>
