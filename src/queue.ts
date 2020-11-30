@@ -1,6 +1,7 @@
 import { hrtime } from 'process'
 import { config } from './config'
 import { handlers } from './handlers'
+import { clearLine, newLine, writeLine } from './logger'
 import { EasyTest } from './register'
 import { formatTestName, hrtimeToMs, Resolvable, resolveFn } from './utils'
 
@@ -66,7 +67,7 @@ export const runTest = async (test: EasyTest): Promise<Error | void> => {
   let textTimer
 
   if (config.log) {
-    process.stdout.write(`${formatTestName(test)}: ${'RUNNING'.yellow}`)
+    writeLine(`${formatTestName(test)}: ${'RUNNING'.yellow}`)
   }
 
   try {
@@ -82,12 +83,11 @@ export const runTest = async (test: EasyTest): Promise<Error | void> => {
     }
 
     if (config.log) {
-      process.stdout.cursorTo(0)
-      process.stdout.write(
-        `${formatTestName(test)}: ${'FAIL'.red.bold} ${textTimer}\n`
-      )
-
-      process.stdout.write(`${error}\n`)
+      clearLine()
+      writeLine(`${formatTestName(test)}: ${'FAIL'.red.bold} ${textTimer}`)
+      newLine()
+      writeLine(`${error}`)
+      newLine()
     }
 
     return error
@@ -102,10 +102,9 @@ export const runTest = async (test: EasyTest): Promise<Error | void> => {
   }
 
   if (config.log) {
-    process.stdout.cursorTo(0)
-    process.stdout.write(
-      `${formatTestName(test)}: ${'SUCCESS'.green.bold} ${textTimer}\n`
-    )
+    clearLine()
+    writeLine(`${formatTestName(test)}: ${'SUCCESS'.green.bold} ${textTimer}`)
+    newLine()
   }
 }
 
@@ -117,7 +116,7 @@ export const run = async (): Promise<void> => {
   await runHandlers(handlers.start)
 
   if (config.log) {
-    process.stdout.write('\n')
+    newLine()
   }
 
   // Run the tests
@@ -126,7 +125,7 @@ export const run = async (): Promise<void> => {
     if (Array.isArray(item.tests)) {
       // Set suite context
       setContext(item.name)
-      config.log && process.stdout.write(`${getContext()}:\n`)
+      config.log && writeLine(`${getContext()}:`) && newLine()
 
       // Run the tests
       for (let test of item.tests) {
@@ -139,7 +138,7 @@ export const run = async (): Promise<void> => {
       }
 
       // Reset the context
-      config.log && process.stdout.write('\n')
+      config.log && newLine()
       setContext(null)
     } else {
       const error = await runTest(item as EasyTest)
