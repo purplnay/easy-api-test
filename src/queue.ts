@@ -125,7 +125,8 @@ export const run = async (): Promise<void> => {
     if (Array.isArray(item.tests)) {
       // Set suite context
       setContext(item.name)
-      config.log && writeLine(`${getContext()}:`) && newLine()
+      writeLine(`${getContext()}:`)
+      newLine()
 
       // Run the tests
       for (let test of item.tests) {
@@ -138,7 +139,7 @@ export const run = async (): Promise<void> => {
       }
 
       // Reset the context
-      config.log && newLine()
+      newLine()
       setContext(null)
     } else {
       const error = await runTest(item as EasyTest)
