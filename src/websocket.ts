@@ -16,7 +16,6 @@ export const closeConnections = () => {
 
 /**
  * A WebSocket client.
- * @internal
  */
 class WebSocketClient {
   private _raw: ws
