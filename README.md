@@ -265,10 +265,10 @@ The code of the example is available [here](https://github.com/purplnay/easy-api
   - Start the server before the tests begin
   - Close the server after the tests ran, or after a test failed.
 
-  Now, we will write our tests! Let's start by testing the root `/` path of our API. Remember? It should always return 'hello', let's write a test in `test/root.js`:
+  Now, we will write our tests! Let's start by testing the root `/` path of our API. Remember? It should always return 'hello', let's write a test in `test/01-root.js`:
 
   ```javascript
-  //test/root.js
+  //test/01-root.js
 
   const { suite, test, get, post } = require('easy-api-test')
 
@@ -287,6 +287,8 @@ The code of the example is available [here](https://github.com/purplnay/easy-api
   ```
 
   Tests will run in the same order as you declared them.
+
+  It is a good idea to start your test file names with a number so your file explorer or text editor or brain can list them in ascending order.
 
   Here, we used `get()` and `post()`. These are helper methods built on top of [SuperTest](https://www.npmjs.com/package/supertest), hence SuperTest's API is available for you to use, along with some [extra methods](https://purplnay.github.io/easy-api-test/interfaces/irequest.html).
 
@@ -315,7 +317,7 @@ The code of the example is available [here](https://github.com/purplnay/easy-api
   /**
    * We import our tests here
    */
-  require('./root') // <====== here
+  require('./01-root') // <====== here
 
   run()
   ```
@@ -323,7 +325,7 @@ The code of the example is available [here](https://github.com/purplnay/easy-api
   Next, we want to test our `/recipes` endpoint. We don't have any recipe yet, so let's test if our API creates recipes as expected in a new file `test/create-recipe.js`:
 
   ```javascript
-  // test/create-recipe.js
+  // test/02-create-recipe.js
 
   const assert = require('assert')
   const { suite, test, post, localStorage } = require('easy-api-test')
@@ -380,8 +382,8 @@ The code of the example is available [here](https://github.com/purplnay/easy-api
   /**
    * We import our tests here
    */
-  require('./root')
-  require('./create-recipe') // <====== here
+  require('./01-root')
+  require('./02-create-recipe') // <====== here
 
   run()
   ```
@@ -389,7 +391,7 @@ The code of the example is available [here](https://github.com/purplnay/easy-api
   And let's finish by writing tests for the `/recipes` GET endpoint, and `/recipes/:id` endpoint in a file nammed `test/get-recipe.js`:
 
   ```javascript
-  // test/get-recipe.js
+  // test/03-get-recipe.js
 
   const assert = require('assert')
   const { suite, test, get, localStorage } = require('easy-api-test')
@@ -440,9 +442,9 @@ The code of the example is available [here](https://github.com/purplnay/easy-api
   /**
    * We import our tests here
    */
-  require('./root')
-  require('./create-recipe')
-  require('./get-recipe') // <====== here
+  require('./01-root')
+  require('./02-create-recipe')
+  require('./03-get-recipe') // <====== here
 
   run()
   ```
@@ -470,8 +472,6 @@ The code of the example is available [here](https://github.com/purplnay/easy-api
     - Get 404 when the recipe does not exist: PASS (2ms)
   ```
 
-  <!-- prettier-ignore-end -->
-
 ## Example 2 (WebSocket)
 
 It is common to have data go through both an HTTP API and WebSocket events, but how to test, for example, that a certain HTTP request from a user will trigger a WebSocket event to another user? This is what we are going to see now.
@@ -482,7 +482,7 @@ All the code for this example is available [here](https://github.com/purplnay/ea
 
   We'll write a very minimal example here, just to show you how to use the WebSocket testing utility. Our application will consist of some kind of echo server. It will send back every message it receives, prepended with 'You said: '.
 
-  For example, if we send "Hello Server", we would receive "You said: Hello Server".
+  For example, if we send 'Hello Server', we would receive 'You said: Hello Server'.
 
   - Let's first create a new directory:
 
@@ -521,7 +521,7 @@ All the code for this example is available [here](https://github.com/purplnay/ea
   wss.on('connection', ws => {
     // Listen to socket message events
     ws.on('message', data => {
-      // Send 'You said :' followed by the message.
+      // Send 'You said: ' followed by the message.
       ws.send(`You said: ${data.toString()}`)
     })
   })
@@ -579,8 +579,8 @@ All the code for this example is available [here](https://github.com/purplnay/ea
 
   So, to create a WebSocket connection, simply _import_ WebSocket from `easy-api-test`, and call the function. It returns a promise that resolves into a WebSocketClient object.
 
-  The WebSocketClient object lets you easily get the incoming WebSocket messages, send message and even automatically parse and serialize the messages.
-  Every opened WebSocketClient are closed automatically upon tests ending or failing, so no need to manually close those connections.
+  The WebSocketClient object lets you easily get the incoming WebSocket messages, send messages and even automatically parse and serialize the messages.
+  Every opened WebSocketClient is closed automatically upon tests ending or failing, so no need to manually close those connections.
 
   - We can now run our tests:
 
@@ -599,6 +599,23 @@ All the code for this example is available [here](https://github.com/purplnay/ea
     ```bash
     node src/index.js
     ```
+
+  Of course, you can test API calls using the `get`, `post`, etc... helpers and WebSocket messages using the `WebSocket` utility together in the same tests. Let's say you want to test a realtime chat that uses HTTP to send messages, and WebSocket to receive messages, you could send a message using:
+
+  ```javascript
+  post('path/to/messages')
+    .send({ message: 'Hello uwu' })
+  ```
+
+  and listen to the WebSocket's next message using:
+  
+  ```javascript
+  const message = await ws.message
+  ```
+  
+  just like we did just before. Make sure to use `await ws.message` **after** `post()` otherwise the `await` keyword will block execution.
+
+<!-- prettier-ignore-end -->
 
 ## Contributions
 

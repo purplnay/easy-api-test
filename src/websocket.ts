@@ -40,12 +40,12 @@ class WebSocketClient {
     // Send pong when a ping is received
     this._raw.on('ping', () => this._raw.pong())
 
-    // Parse a register the incoming message
+    // Parse and register the incoming message
     this._raw.on('message', data => {
       this._message = this._parse(data)
     })
 
-    // Throw error
+    // Throw errors
     this._raw.on('error', error => {
       throw error
     })
@@ -107,7 +107,8 @@ class WebSocketClient {
   }
 
   /**
-   *
+   * Send a ping frame to the server. Returns a promise that resolves once a `pong`
+   * response was received.
    * @param data The data to send along with the ping frame.
    * @param parse Whether to parse and serialize the sent and received data.
    *              Defaults to false.
@@ -166,7 +167,7 @@ export interface WebSocketOptions {
   serialize?: (data: any) => any
 
   /**
-   * HTTP headers to send with the 'Updagrade' HTTP request.
+   * HTTP headers to send with the 'Upgrade' request.
    */
   headers?: { [key: string]: string }
 }
