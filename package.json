@@ -1,12 +1,12 @@
 {
   "name": "easy-api-test",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "main": "dist/index.js",
   "repository": "https://github.com/purplnay/easy-api-test.git",
   "author": "Nay <nay@purpltag.com>",
   "license": "MIT",
   "homepage": "https://purplnay.github.io/easy-api-test/",
-  "description": "API testing, but it's easy. No extra configuration, no CLI, no extra dependencies.",
+  "description": "API and WebSocket testing, but it's easy. No extra configuration, no CLI, no extra dependencies.",
   "keywords": [
     "api",
     "json",

@@ -1,3 +1,7 @@
+## v2.1.0
+
+- Add WebSocket support
+
 ## v2.0.0
 
 - localStorage.getItem() now returns null when the item does not exist.
