@@ -14,7 +14,8 @@
     "testing",
     "e2e",
     "end-to-end",
-    "easy"
+    "easy",
+    "websocket"
   ],
   "scripts": {
     "build": "tsc --rootDir src --outDir dist -d --stripInternal",
