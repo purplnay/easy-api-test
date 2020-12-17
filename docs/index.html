@@ -75,7 +75,7 @@
 					<h2>API testing, but it&#39;s easy.</h2>
 				</a>
 				<br>
-				<p>Easy API Test lets you write tests to check that you&#39;re API is behaving the way you expect it to. The tests are run in the order you decide, so you easily can test an entire user flow.</p>
+				<p>Easy API Test lets you write tests to check that you&#39;re API is behaving the way you expect it to. The tests are run in the order you decide, so you easily can test an entire user flow, and it now supports <em>WebSocket</em>!</p>
 				<p>The libary&#39;s API is meant to be simple. No CLI and no need to do extra configuration to get your Babel or Typescript tests to work.</p>
 				<p>Uses the great <strong><a href="https://www.npmjs.com/package/supertest">SuperTest</a></strong> package for the request helper functions.</p>
 				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
@@ -138,11 +138,11 @@ run()</code></pre>
 						<pre><code class="language-bash">ts-node test.ts</code></pre>
 					</li>
 				</ul>
-				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
-					<h2>Example</h2>
+				<a href="#example-1-http" id="example-1-http" style="color: inherit; text-decoration: none;">
+					<h2>Example #1 (HTTP)</h2>
 				</a>
 				<!-- prettier-ignore-start -->
-				<p>The code of the example is available <a href="https://github.com/purplnay/easy-api-test/tree/main/example">here</a>.</p>
+				<p>The code of the example is available <a href="https://github.com/purplnay/easy-api-test/tree/main/examples/http">here</a>.</p>
 				<ul>
 					<li>
 						<a href="#creating-a-project" id="creating-a-project" style="color: inherit; text-decoration: none;">
@@ -290,8 +290,8 @@ run()</code></pre>
 							<li>Start the server before the tests begin</li>
 							<li>Close the server after the tests ran, or after a test failed.</li>
 						</ul>
-						<p>Now, we will write our tests! Let&#39;s start by testing the root <code>/</code> path of our API. Remember? It should always return &#39;hello&#39;, let&#39;s write a test in <code>test/root.js</code>:</p>
-						<pre><code class="language-javascript"><span class="hljs-comment">//test/root.js</span>
+						<p>Now, we will write our tests! Let&#39;s start by testing the root <code>/</code> path of our API. Remember? It should always return &#39;hello&#39;, let&#39;s write a test in <code>test/01-root.js</code>:</p>
+						<pre><code class="language-javascript"><span class="hljs-comment">//test/01-root.js</span>
 
 <span class="hljs-keyword">const</span> { suite, test, get, post } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
 
@@ -308,6 +308,7 @@ suite(<span class="hljs-string">&#x27;/ Root&#x27;</span>, <span class="hljs-fun
   })
 })</code></pre>
 						<p>Tests will run in the same order as you declared them.</p>
+						<p>It is a good idea to start your test file names with a number so your file explorer or text editor or brain can list them in ascending order.</p>
 						<p>Here, we used <code>get()</code> and <code>post()</code>. These are helper methods built on top of <a href="https://www.npmjs.com/package/supertest">SuperTest</a>, hence SuperTest&#39;s API is available for you to use, along with some <a href="https://purplnay.github.io/easy-api-test/interfaces/irequest.html">extra methods</a>.</p>
 						<p>Anything that throws will work in the tests, so feel free to use any library you wish!</p>
 						<p>So, we created our tests for <code>/</code>, but we now need to add them to our test pipeline in <code>test/index.js</code>:</p>
@@ -331,11 +332,11 @@ end(<span class="hljs-function">() =&gt;</span> {
 <span class="hljs-comment">/**
  * We import our tests here
  */</span>
-<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./root&#x27;</span>) <span class="hljs-comment">// &lt;====== here</span>
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./01-root&#x27;</span>) <span class="hljs-comment">// &lt;====== here</span>
 
 run()</code></pre>
 						<p>Next, we want to test our <code>/recipes</code> endpoint. We don&#39;t have any recipe yet, so let&#39;s test if our API creates recipes as expected in a new file <code>test/create-recipe.js</code>:</p>
-						<pre><code class="language-javascript"><span class="hljs-comment">// test/create-recipe.js</span>
+						<pre><code class="language-javascript"><span class="hljs-comment">// test/02-create-recipe.js</span>
 
 <span class="hljs-keyword">const</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;assert&#x27;</span>)
 <span class="hljs-keyword">const</span> { suite, test, post, <span class="hljs-built_in">localStorage</span> } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
@@ -387,12 +388,12 @@ end(<span class="hljs-function">() =&gt;</span> {
 <span class="hljs-comment">/**
  * We import our tests here
  */</span>
-<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./root&#x27;</span>)
-<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./create-recipe&#x27;</span>) <span class="hljs-comment">// &lt;====== here</span>
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./01-root&#x27;</span>)
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./02-create-recipe&#x27;</span>) <span class="hljs-comment">// &lt;====== here</span>
 
 run()</code></pre>
 						<p>And let&#39;s finish by writing tests for the <code>/recipes</code> GET endpoint, and <code>/recipes/:id</code> endpoint in a file nammed <code>test/get-recipe.js</code>:</p>
-						<pre><code class="language-javascript"><span class="hljs-comment">// test/get-recipe.js</span>
+						<pre><code class="language-javascript"><span class="hljs-comment">// test/03-get-recipe.js</span>
 
 <span class="hljs-keyword">const</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;assert&#x27;</span>)
 <span class="hljs-keyword">const</span> { suite, test, get, <span class="hljs-built_in">localStorage</span> } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
@@ -439,9 +440,9 @@ end(<span class="hljs-function">() =&gt;</span> {
 <span class="hljs-comment">/**
  * We import our tests here
  */</span>
-<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./root&#x27;</span>)
-<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./create-recipe&#x27;</span>)
-<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./get-recipe&#x27;</span>) <span class="hljs-comment">// &lt;====== here</span>
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./01-root&#x27;</span>)
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./02-create-recipe&#x27;</span>)
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./03-get-recipe&#x27;</span>) <span class="hljs-comment">// &lt;====== here</span>
 
 run()</code></pre>
 						<p>That&#39;s it! Now let&#39;s see if our app works as expected by running the tests:</p>
@@ -459,9 +460,119 @@ run()</code></pre>
   - Get all the recipes: PASS (3ms)
   - Get a recipe by id: PASS (4ms)
   - Get 404 when the recipe does not exist: PASS (2ms)</code></pre>
-						<!-- prettier-ignore-end -->
 					</li>
 				</ul>
+				<a href="#example-2-websocket" id="example-2-websocket" style="color: inherit; text-decoration: none;">
+					<h2>Example 2 (WebSocket)</h2>
+				</a>
+				<p>It is common to have data go through both an HTTP API and WebSocket events, but how to test, for example, that a certain HTTP request from a user will trigger a WebSocket event to another user? This is what we are going to see now.</p>
+				<p>All the code for this example is available <a href="https://github.com/purplnay/easy-api-test/tree/main/examples/websocket">here</a></p>
+				<ul>
+					<li>
+						<a href="#write-the-application" id="write-the-application" style="color: inherit; text-decoration: none;">
+							<h3>Write the application</h3>
+						</a>
+						<p>We&#39;ll write a very minimal example here, just to show you how to use the WebSocket testing utility. Our application will consist of some kind of echo server. It will send back every message it receives, prepended with &#39;You said: &#39;.</p>
+						<p>For example, if we send &#39;Hello Server&#39;, we would receive &#39;You said: Hello Server&#39;.</p>
+						<ul>
+							<li><p>Let&#39;s first create a new directory:</p>
+								<pre><code class="language-bash">mkdir websocket-example</code></pre>
+							</li>
+							<li><p>Initialize a new NPM project:</p>
+								<pre><code class="language-bash">npm init -y</code></pre>
+							</li>
+							<li><p>And install what we will need:</p>
+								<pre><code class="language-bash">npm install ws easy-api-test</code></pre>
+							</li>
+						</ul>
+						<p>We will be using <a href="https://www.npmjs.com/package/ws">ws</a> for the WebSocket server. This is also the library used by Easy API Test for the WebSocket testing utility.</p>
+						<p>Let&#39;s create an <code>src/</code> folder and write some code in it:</p>
+						<pre><code class="language-javascript"><span class="hljs-comment">// src/index.js</span>
+
+<span class="hljs-keyword">const</span> { createServer } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>)
+<span class="hljs-keyword">const</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;ws&#x27;</span>)
+
+<span class="hljs-comment">// Create an HTTP server</span>
+<span class="hljs-keyword">const</span> server = createServer()
+
+<span class="hljs-comment">// Create a websocket server on port 3000</span>
+<span class="hljs-keyword">const</span> wss = <span class="hljs-keyword">new</span> ws.Server({ server })
+
+<span class="hljs-comment">// Listen to connection events</span>
+wss.on(<span class="hljs-string">&#x27;connection&#x27;</span>, <span class="hljs-function"><span class="hljs-params">ws</span> =&gt;</span> {
+  <span class="hljs-comment">// Listen to socket message events</span>
+  ws.on(<span class="hljs-string">&#x27;message&#x27;</span>, <span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
+    <span class="hljs-comment">// Send &#x27;You said: &#x27; followed by the message.</span>
+    ws.send(<span class="hljs-string">`You said: <span class="hljs-subst">${data.toString()}</span>`</span>)
+  })
+})
+
+server.listen(<span class="hljs-number">3000</span>)
+
+<span class="hljs-built_in">module</span>.exports = server</code></pre>
+						<p>This code imports the createServer function from the NodeJS <code>http</code> module, as well as the <code>ws</code> package that will let us create a WebSocket server.</p>
+						<p>We then create an HTTP server, and a WebSocket server attached to that HTTP server, and tell our WebSocket server to listen to socket messages and send them back prepending &#39;You said: &#39; to each of them.</p>
+						<p>The last two instructions make the server listen on port <code>3000</code>, and export the server so that we can <code>require()</code> it in our tests and close it once our tests are done. If we don&#39;t close the server, the NodeJS process will not exit on its own. T-T</p>
+						<p>Now let&#39;s write some tests, we can create a <code>test/</code> directory at the root of our project, and write our tests. We&#39;ll use a single file because there is not much to test:</p>
+						<pre><code class="language-javascript"><span class="hljs-comment">// test/index.js</span>
+
+<span class="hljs-keyword">const</span> { test, WebSocket, end, run } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
+<span class="hljs-keyword">const</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;assert&#x27;</span>)
+
+<span class="hljs-comment">// Import the server</span>
+<span class="hljs-keyword">const</span> server = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../src&#x27;</span>)
+
+test(<span class="hljs-string">&#x27;Connect to WebSocket server&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-comment">// Connect to the websocket server</span>
+  <span class="hljs-keyword">const</span> ws = <span class="hljs-keyword">await</span> WebSocket(<span class="hljs-string">&#x27;ws://localhost:3000&#x27;</span>)
+
+  assert(ws.connected === <span class="hljs-literal">true</span>)
+})
+
+test(<span class="hljs-string">&#x27;Echo the messages sent to the server&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> ws = <span class="hljs-keyword">await</span> WebSocket(<span class="hljs-string">&#x27;ws://localhost:3000&#x27;</span>)
+
+  <span class="hljs-comment">// Send &#x27;Hello&#x27;</span>
+  ws.send(<span class="hljs-string">&#x27;Hello&#x27;</span>)
+
+  <span class="hljs-comment">// Get the next message from the server</span>
+  <span class="hljs-keyword">const</span> message = <span class="hljs-keyword">await</span> ws.message
+
+  <span class="hljs-comment">// Check if it is what we expected</span>
+  assert(message === <span class="hljs-string">&#x27;You said: Hello&#x27;</span>)
+})
+
+end(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-comment">// Close the server after the tests end</span>
+  server.close()
+})
+
+<span class="hljs-comment">// Run the tests</span>
+run()</code></pre>
+						<p>So, to create a WebSocket connection, simply <em>import</em> WebSocket from <code>easy-api-test</code>, and call the function. It returns a promise that resolves into a WebSocketClient object.</p>
+						<p>The WebSocketClient object lets you easily get the incoming WebSocket messages, send messages and even automatically parse and serialize the messages.
+						Every opened WebSocketClient is closed automatically upon tests ending or failing, so no need to manually close those connections.</p>
+						<ul>
+							<li><p>We can now run our tests:</p>
+								<pre><code class="language-bash">node <span class="hljs-built_in">test</span>/index.js</code></pre>
+							</li>
+							<li><p>You should be getting this output:</p>
+								<pre><code class="language-bash">- Connect to WebSocket server: PASS (23ms)
+- Echo the messages sent to the server: PASS (5ms)</code></pre>
+							</li>
+							<li><p>It is working! We can now start our app and enjoy that high quality echo server:</p>
+								<pre><code class="language-bash">node src/index.js</code></pre>
+							</li>
+						</ul>
+						<p>Of course, you can test API calls using the <code>get</code>, <code>post</code>, etc... helpers and WebSocket messages using the <code>WebSocket</code> utility together in the same tests. Let&#39;s say you want to test a realtime chat that uses HTTP to send messages, and WebSocket to receive messages, you could send a message using:</p>
+						<pre><code class="language-javascript">post(<span class="hljs-string">&#x27;path/to/messages&#x27;</span>)
+  .send({ <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Hello uwu&#x27;</span> })</code></pre>
+						<p>and listen to the WebSocket&#39;s next message using:</p>
+						<pre><code class="language-javascript"><span class="hljs-keyword">const</span> message = <span class="hljs-keyword">await</span> ws.message</code></pre>
+						<p>just like we did just before. Make sure to use <code>await ws.message</code> <strong>after</strong> <code>post()</code> otherwise the <code>await</code> keyword will block execution.</p>
+					</li>
+				</ul>
+				<!-- prettier-ignore-end -->
 				<a href="#contributions" id="contributions" style="color: inherit; text-decoration: none;">
 					<h2>Contributions</h2>
 				</a>
@@ -483,11 +594,17 @@ run()</code></pre>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/irequest.html" class="tsd-kind-icon">IRequest</a>
 					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/websocketoptions.html" class="tsd-kind-icon">Web<wbr>Socket<wbr>Options</a>
+					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#resolvable" class="tsd-kind-icon">Resolvable</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#request" class="tsd-kind-icon">request</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#websocket" class="tsd-kind-icon">Web<wbr>Socket</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#del" class="tsd-kind-icon">del</a>

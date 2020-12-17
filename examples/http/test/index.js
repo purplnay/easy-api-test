@@ -1,5 +1,5 @@
 // Import what we'll need and our server
-const { use, start, end, run } = require('../../dist')
+const { use, start, end, run } = require('../../../dist')
 const app = require('../src/app')
 
 // We can tell Easy API Test which URL to test,
@@ -23,9 +23,9 @@ end(() => {
 /**
  * We import our tests here
  */
-require('./root')
-require('./create-recipe')
-require('./get-recipe')
+require('./01-root')
+require('./02-create-recipe')
+require('./03-get-recipe')
 
 // Run the tests.
 run()

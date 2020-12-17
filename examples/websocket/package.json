@@ -1,0 +1,13 @@
+{
+  "name": "easy-api-test-websoket-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "node test/index.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "ws": "^7.4.1"
+  }
+}

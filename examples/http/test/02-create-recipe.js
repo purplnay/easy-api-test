@@ -1,5 +1,5 @@
 const assert = require('assert')
-const { suite, test, post, localStorage } = require('../../dist')
+const { suite, test, post, localStorage } = require('../../../dist')
 
 suite('/recipes Create new recipes', () => {
   // Let's first see if our API rejects invalid recipes

@@ -45,7 +45,7 @@ app.post('/recipes', (req, res) => {
     const recipe = {
       id: recipes.length,
       name: req.body.name,
-      content: req.body.content
+      content: req.body.content,
     }
 
     recipes.push(recipe)

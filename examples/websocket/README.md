@@ -18,10 +18,10 @@ Build the library:
 npm run build
 ```
 
-`cd` to the example directory:
+`cd` to the websocket exmaple directory:
 
 ```bash
-cd example
+cd examples/websocket
 ```
 
 Install the dependencies:

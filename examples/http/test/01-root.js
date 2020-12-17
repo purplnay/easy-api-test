@@ -1,4 +1,4 @@
-const { suite, test, get, post } = require('../../dist')
+const { suite, test, get, post } = require('../../../dist')
 
 // Suites are optional, but they let us group tests together, which
 // makes visual feedback clearer
