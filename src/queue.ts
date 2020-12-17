@@ -5,6 +5,7 @@ import { handlers } from './handlers'
 import { clearLine, newLine, writeLine } from './logger'
 import { EasyTest } from './register'
 import { formatTestName, hrtimeToMs, Resolvable, resolveFn } from './utils'
+import { closeConnections } from './websocket'
 
 /**
  * A test or a suite.
@@ -115,6 +116,11 @@ export const runTest = async (test: EasyTest): Promise<Error | void> => {
  * Run the registered tests and the start/end handlers.
  */
 export const run = async (): Promise<void> => {
+  // Add the WebSocket closing to the end handlers
+  // Add it first to avoid errors when end handlers would close
+  // a WebSocket server.
+  handlers.end.unshift(closeConnections)
+
   // Run the start handlers
   await runHandlers(handlers.start)
 

@@ -15,3 +15,4 @@ export {
 export { run } from './queue'
 export { test, suite } from './register'
 export { Resolvable } from './utils'
+export { WebSocketOptions, WebSocket } from './websocket'
