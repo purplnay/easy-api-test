@@ -22,7 +22,7 @@
     "test:unit": "ts-mocha --file test/index.ts test/*.test.ts",
     "test:http": "node examples/http/test/index.js",
     "test:websocket": "node examples/websocket/test/index.js",
-    "test": "npm run test:unit && npm run test:http && npm run test:websocket",
+    "test": "npm run build && npm run test:unit && npm run test:http && npm run test:websocket",
     "prepublish": "npm run build"
   },
   "prettier": {

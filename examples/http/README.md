@@ -18,10 +18,10 @@ Build the library:
 npm run build
 ```
 
-`cd` to the example directory:
+`cd` to the http example directory:
 
 ```bash
-cd example
+cd examples/http
 ```
 
 Install the dependencies:
