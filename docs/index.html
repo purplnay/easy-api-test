@@ -473,7 +473,7 @@ run()</code></pre>
 							<h3>Write the application</h3>
 						</a>
 						<p>We&#39;ll write a very minimal example here, just to show you how to use the WebSocket testing utility. Our application will consist of some kind of echo server. It will send back every message it receives, prepended with &#39;You said: &#39;.</p>
-						<p>For example, if we send &quot;Hello Server&quot;, we would receive &quot;You said: Hello Server&quot;.</p>
+						<p>For example, if we send &#39;Hello Server&#39;, we would receive &#39;You said: Hello Server&#39;.</p>
 						<ul>
 							<li><p>Let&#39;s first create a new directory:</p>
 								<pre><code class="language-bash">mkdir websocket-example</code></pre>
@@ -502,7 +502,7 @@ run()</code></pre>
 wss.on(<span class="hljs-string">&#x27;connection&#x27;</span>, <span class="hljs-function"><span class="hljs-params">ws</span> =&gt;</span> {
   <span class="hljs-comment">// Listen to socket message events</span>
   ws.on(<span class="hljs-string">&#x27;message&#x27;</span>, <span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
-    <span class="hljs-comment">// Send &#x27;You said :&#x27; followed by the message.</span>
+    <span class="hljs-comment">// Send &#x27;You said: &#x27; followed by the message.</span>
     ws.send(<span class="hljs-string">`You said: <span class="hljs-subst">${data.toString()}</span>`</span>)
   })
 })
@@ -550,8 +550,8 @@ end(<span class="hljs-function">() =&gt;</span> {
 <span class="hljs-comment">// Run the tests</span>
 run()</code></pre>
 						<p>So, to create a WebSocket connection, simply <em>import</em> WebSocket from <code>easy-api-test</code>, and call the function. It returns a promise that resolves into a WebSocketClient object.</p>
-						<p>The WebSocketClient object lets you easily get the incoming WebSocket messages, send message and even automatically parse and serialize the messages.
-						Every opened WebSocketClient are closed automatically upon tests ending or failing, so no need to manually close those connections.</p>
+						<p>The WebSocketClient object lets you easily get the incoming WebSocket messages, send messages and even automatically parse and serialize the messages.
+						Every opened WebSocketClient is closed automatically upon tests ending or failing, so no need to manually close those connections.</p>
 						<ul>
 							<li><p>We can now run our tests:</p>
 								<pre><code class="language-bash">node <span class="hljs-built_in">test</span>/index.js</code></pre>
@@ -564,12 +564,12 @@ run()</code></pre>
 								<pre><code class="language-bash">node src/index.js</code></pre>
 							</li>
 						</ul>
-						<p>Of course, you can test API calls using the <code>get</code>, <code>post</code> etc helpers and WebSocket messages using the <code>WebSocket</code> utility together in the same tests. Let&#39;s say you want to test a realtime chat that uses HTTP to send messages, and WebSocket to receive messages, you could send a message using:</p>
+						<p>Of course, you can test API calls using the <code>get</code>, <code>post</code>, etc... helpers and WebSocket messages using the <code>WebSocket</code> utility together in the same tests. Let&#39;s say you want to test a realtime chat that uses HTTP to send messages, and WebSocket to receive messages, you could send a message using:</p>
 						<pre><code class="language-javascript">post(<span class="hljs-string">&#x27;path/to/messages&#x27;</span>)
   .send({ <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Hello uwu&#x27;</span> })</code></pre>
 						<p>and listen to the WebSocket&#39;s next message using:</p>
-						<pre><code class="language-javascript"><span class="hljs-keyword">await</span> ws.message</code></pre>
-						<p>as we did just before. Make sure to use <code>await ws.message</code> <strong>after</strong> <code>post()</code> otherwise the <code>await</code> keyword will block execution.</p>
+						<pre><code class="language-javascript"><span class="hljs-keyword">const</span> message = <span class="hljs-keyword">await</span> ws.message</code></pre>
+						<p>just like we did just before. Make sure to use <code>await ws.message</code> <strong>after</strong> <code>post()</code> otherwise the <code>await</code> keyword will block execution.</p>
 					</li>
 				</ul>
 				<!-- prettier-ignore-end -->
