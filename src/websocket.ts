@@ -10,14 +10,18 @@ export const clients: WebSocketClient[] = []
  * Close all the active connections.
  * @internal
  */
-export const closeConnections = () => {
-  clients.forEach(client => client.close())
+export const closeConnections = async () => {
+  for (let client of clients) {
+    if (client.connected) {
+      await client.close()
+    }
+  }
 }
 
 /**
  * A WebSocket client.
  */
-class WebSocketClient {
+export class WebSocketClient {
   private _raw: ws
   private _connected: boolean
   private _message: any
@@ -145,9 +149,19 @@ class WebSocketClient {
   /**
    * Close the websocket connection.
    */
-  close(): void {
-    this._connected = false
-    this._raw.close()
+  close(): Promise<void> {
+    return new Promise(resolve => {
+      const onClose = () => {
+        this._raw.removeListener('close', onClose)
+
+        resolve()
+      }
+
+      this._raw.on('close', onClose)
+
+      this._raw.close()
+      this._connected = false
+    })
   }
 }
 

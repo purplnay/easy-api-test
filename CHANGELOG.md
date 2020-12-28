@@ -1,6 +1,11 @@
+## v2.1.2
+
+- `WebSocketClient.close()` now returns a promise.
+- WebSockets now properly closes on end of tests.
+
 ## v2.1.0
 
-- Add WebSocket support
+- Add WebSocket support.
 
 ## v2.0.0
 
