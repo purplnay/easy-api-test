@@ -1,5 +1,6 @@
 ## v2.1.2
 
+- Removed examples/ from the NPM package
 - `WebSocketClient.close()` now returns a promise.
 - WebSockets now properly closes on end of tests.
 
