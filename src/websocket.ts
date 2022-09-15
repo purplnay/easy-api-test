@@ -1,4 +1,4 @@
-import ws from 'ws'
+import { WebSocket as ws } from 'ws'
 
 /**
  * The list of all created clients.
@@ -24,7 +24,7 @@ export const closeConnections = async () => {
 export class WebSocketClient {
   private _raw: ws
   private _connected: boolean
-  private _message: any
+  private _messages: any[] = []
   private _parse: (data: any) => any
   private _serialize: (data: any) => any
 
@@ -45,7 +45,10 @@ export class WebSocketClient {
 
     // Parse and register the incoming message
     this._raw.on('message', data => {
-      this._message = this._parse(data)
+      // Stringify incoming buffer
+      const message = data.toString()
+      // Add message to queue
+      this._messages.push(this._parse(message))
     })
 
     // Throw errors
@@ -82,29 +85,21 @@ export class WebSocketClient {
    */
   get message(): Promise<any> {
     return new Promise(resolve => {
-      // If a message already arrived, return it
-      if (this._message) {
-        resolve(this._message)
-
-        // Clear the message
-        return (this._message = undefined)
+      // If the queue contains a message, shift it
+      if (this._messages.length) {
+        resolve(this._messages.shift())
       } else {
         const listener = () => {
           // Wait for next tick
           process.nextTick(() => {
             // This ensures that the main message listener has
             // been executed
-            resolve(this._message)
-            // Clear the message
-            this._message = undefined
-
-            // Clear the listener
-            this._raw.removeListener('message', listener)
+            resolve(this._messages.shift())
           })
         }
 
-        // Attach the listener
-        this._raw.addListener('message', listener)
+        // Attach the listener to run only on next message
+        this._raw.once('message', listener)
       }
     })
   }
