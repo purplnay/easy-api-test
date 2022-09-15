@@ -1,6 +1,6 @@
 {
   "name": "easy-api-test",
-  "version": "2.1.2",
+  "version": "3.0.0",
   "main": "dist/index.js",
   "repository": "https://github.com/purplnay/easy-api-test.git",
   "author": "Nay <nay@purpltag.com>",
@@ -18,8 +18,8 @@
     "websocket"
   ],
   "scripts": {
-    "build": "tsc --rootDir src --outDir dist -d --stripInternal",
-    "docs": "typedoc --mode file --stripInternal --out docs src",
+    "build": "rimraf dist && tsc --rootDir src --outDir dist -d --stripInternal",
+    "docs": "rimraf docs && typedoc --excludeInternal --out docs src/index.ts",
     "test:unit": "ts-mocha --file test/index.ts test/*.test.ts",
     "test:http": "node examples/http/test/index.js",
     "test:websocket": "node examples/websocket/test/index.js",
@@ -47,6 +47,7 @@
     "express": "^4.18.1",
     "mocha": "^10.0.0",
     "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
     "ts-mocha": "^10.0.0",
     "typedoc": "^0.23.14",
     "typescript": "^4.8.3"
