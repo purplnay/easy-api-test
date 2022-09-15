@@ -1,3 +1,8 @@
+## v3.0.0
+
+- Upgrade dependencies
+- Add message queue for WebSocket
+
 ## v2.1.2
 
 - Removed examples/ from the NPM package

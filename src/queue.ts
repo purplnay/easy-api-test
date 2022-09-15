@@ -62,7 +62,7 @@ export const runHandlers = async (handlers: Resolvable[]): Promise<void> => {
  * @param test The test to run.
  * @internal
  */
-export const runTest = async (test: EasyTest): Promise<Error | void> => {
+export const runTest = async (test: EasyTest): Promise<[boolean, any]> => {
   let startTime
   let endTime
   let duration
@@ -75,7 +75,7 @@ export const runTest = async (test: EasyTest): Promise<Error | void> => {
   try {
     startTime = hrtime()
     await test.fn()
-  } catch (error) {
+  } catch (error: any) {
     endTime = process.hrtime(startTime)
     duration = hrtimeToMs(endTime)
     textTimer = `(${duration}ms)`
@@ -92,7 +92,7 @@ export const runTest = async (test: EasyTest): Promise<Error | void> => {
       newLine()
     }
 
-    return error
+    return [true, error]
   }
 
   endTime = process.hrtime(startTime)
@@ -107,9 +107,11 @@ export const runTest = async (test: EasyTest): Promise<Error | void> => {
 
   if (config.log) {
     clearLine()
-    writeLine(`${formatTestName(test)}: ${'PASS'.green.bold} ${textTimer}`)
+    writeLine(`${formatTestName(test)}: ${'PASS'.green} ${textTimer}`)
     newLine()
   }
+
+  return [false, null]
 }
 
 /**
@@ -139,9 +141,9 @@ export const run = async (): Promise<void> => {
 
       // Run the tests
       for (let test of item.tests) {
-        const error = await runTest(test)
+        const [hasError, error] = await runTest(test)
 
-        if (error) {
+        if (hasError) {
           // Run the end handlers and throw the error
           await runHandlers(handlers.end)
           throw error
@@ -152,9 +154,9 @@ export const run = async (): Promise<void> => {
       newLine()
       setContext(null)
     } else {
-      const error = await runTest(item as EasyTest)
+      const [hasError, error] = await runTest(item as EasyTest)
 
-      if (error) {
+      if (hasError) {
         // Run the end handlers and throw the error
         await runHandlers(handlers.end)
         throw error

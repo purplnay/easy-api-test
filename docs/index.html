@@ -1,688 +1,289 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>easy-api-test</title>
-	<meta name="description" content="Documentation for easy-api-test">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">easy-api-test</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
-			<h1>easy-api-test</h1>
-		</div>
-	</div>
-</header>
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>easy-api-test</title><meta name="description" content="Documentation for easy-api-test"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base=".">
+<div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">easy-api-test</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
 <div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#easy-api-test" id="easy-api-test" style="color: inherit; text-decoration: none;">
-					<h1>Easy API Test</h1>
-				</a>
-				<p><img src="https://img.shields.io/npm/v/easy-api-test" alt="Version">
-					<a href="https://travis-ci.com/purplnay/easy-api-test"><img src="https://travis-ci.com/purplnay/easy-api-test.svg?branch=main" alt="Build Status"></a>
-					<img src="https://img.shields.io/npm/l/easy-api-test" alt="License">
-				<img src="https://img.shields.io/badge/Made%20with-%E2%9D%A4%20-purple" alt="Love"></p>
-				<a href="#api-and-websocket-testing-but-it39s-easy" id="api-and-websocket-testing-but-it39s-easy" style="color: inherit; text-decoration: none;">
-					<h2>API and WebSocket testing, but it&#39;s easy.</h2>
-				</a>
-				<br>
-				<p>Easy API Test lets you write tests to check that you&#39;re API is behaving the way you expect it to. The tests are run in the order you decide, so you easily can test an entire user flow, and it now supports <em>WebSocket</em>!</p>
-				<p>The libary&#39;s API is meant to be simple. No CLI and no need to do extra configuration to get your Babel or Typescript tests to work.</p>
-				<p>Uses the great <strong><a href="https://www.npmjs.com/package/supertest">SuperTest</a></strong> package for the request helper functions.</p>
-				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
-					<h2>Documentation</h2>
-				</a>
-				<p>You can find the full API reference <a href="https://purplnay.github.io/easy-api-test">here</a>.</p>
-				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
-					<h2>Installation</h2>
-				</a>
-				<ul>
-					<li><p>Using <strong>NPM</strong>:</p>
-						<pre><code class="language-bash">npm install -D easy-api-test</code></pre>
-					</li>
-					<li><p>Using <strong>Yarn</strong>:</p>
-						<pre><code class="language-bash">yarn add -D easy-api-test</code></pre>
-					</li>
-				</ul>
-				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-					<h2>Usage</h2>
-				</a>
-				<!-- prettier-ignore-start -->
-				<pre><code class="language-javascript"><span class="hljs-comment">// test.js</span>
+<div class="col-8 col-content">
+<div class="tsd-page-title">
+<h2>easy-api-test</h2></div>
+<div class="tsd-panel tsd-typography">
+<a href="#easy-api-test" id="easy-api-test" style="color: inherit; text-decoration: none;">
+  <h1>Easy API Test</h1>
+</a>
+<p><img src="https://img.shields.io/npm/v/easy-api-test" alt="Version">
+<a href="https://travis-ci.com/purplnay/easy-api-test"><img src="https://travis-ci.com/purplnay/easy-api-test.svg?branch=main" alt="Build Status"></a>
+<img src="https://img.shields.io/npm/l/easy-api-test" alt="License">
+<img src="https://img.shields.io/badge/Made%20with-%E2%9D%A4%20-purple" alt="Love"></p>
 
-<span class="hljs-keyword">const</span> { use, test, get, <span class="hljs-built_in">localStorage</span> } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
+<a href="#api-and-websocket-testing-but-it39s-easy" id="api-and-websocket-testing-but-it39s-easy" style="color: inherit; text-decoration: none;">
+  <h2>API and WebSocket testing, but it&#39;s easy.</h2>
+</a>
+<br>
 
-<span class="hljs-comment">// Tell Easy API Test which URL we&#x27;ll be testing</span>
-use(<span class="hljs-string">&#x27;http://localhost:3000/&#x27;</span>)
+<p>Easy API Test lets you write tests to check that you&#39;re API is behaving the way you expect it to. The tests are run in the order you decide, so you easily can test an entire user flow, and it now supports <em>WebSocket</em>!</p>
+<p>The libary&#39;s API is meant to be simple. No CLI and no need to do extra configuration to get your Babel or Typescript tests to work.</p>
+<p>Uses the great <strong><a href="https://www.npmjs.com/package/supertest">SuperTest</a></strong> package for the request helper functions.</p>
 
-<span class="hljs-comment">// Define a first test</span>
-test(<span class="hljs-string">&#x27;Create a user&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-  <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> post(<span class="hljs-string">&#x27;/users&#x27;</span>)
-    .send({ <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;Nay&#x27;</span> })
-    .expect(<span class="hljs-number">200</span>)
+<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+  <h2>Documentation</h2>
+</a>
+<p>You can find the full API reference <a href="https://purplnay.github.io/easy-api-test">here</a>.</p>
 
-  <span class="hljs-comment">// Save the user for later use</span>
-  <span class="hljs-built_in">localStorage</span>.setItem(<span class="hljs-string">&#x27;user&#x27;</span>, response.body)
-})
+<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+  <h2>Installation</h2>
+</a>
+<ul>
+<li><p>Using <strong>NPM</strong>:</p>
+<pre><code class="language-bash"><span class="hl-0">npm install -D easy-api-test</span>
+</code></pre>
+</li>
+<li><p>Using <strong>Yarn</strong>:</p>
+<pre><code class="language-bash"><span class="hl-0">yarn add -D easy-api-test</span>
+</code></pre>
+</li>
+</ul>
 
-<span class="hljs-comment">// Define a second test</span>
-test(<span class="hljs-string">&#x27;Get a user&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-  <span class="hljs-comment">// Tests run in the defined order, so localStorage will always contain the user.</span>
-  <span class="hljs-keyword">const</span> user = <span class="hljs-built_in">localStorage</span>.getItem(<span class="hljs-string">&#x27;user&#x27;</span>)
+<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+  <h2>Usage</h2>
+</a>
+<!-- prettier-ignore-start -->
+<pre><code class="language-javascript"><span class="hl-1">// test.js</span><br/><br/><span class="hl-2">const</span><span class="hl-0"> { </span><span class="hl-3">use</span><span class="hl-0">, </span><span class="hl-3">test</span><span class="hl-0">, </span><span class="hl-3">get</span><span class="hl-0">, </span><span class="hl-3">localStorage</span><span class="hl-0"> } = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;easy-api-test&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-1">// Tell Easy API Test which URL we&#39;ll be testing</span><br/><span class="hl-4">use</span><span class="hl-0">(</span><span class="hl-5">&#39;http://localhost:3000/&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-1">// Define a first test</span><br/><span class="hl-4">test</span><span class="hl-0">(</span><span class="hl-5">&#39;Create a user&#39;</span><span class="hl-0">, </span><span class="hl-2">async</span><span class="hl-0"> () </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">response</span><span class="hl-0"> = </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-4">post</span><span class="hl-0">(</span><span class="hl-5">&#39;/users&#39;</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-4">send</span><span class="hl-0">({ </span><span class="hl-7">username:</span><span class="hl-0"> </span><span class="hl-5">&#39;Nay&#39;</span><span class="hl-0"> })</span><br/><span class="hl-0">    .</span><span class="hl-4">expect</span><span class="hl-0">(</span><span class="hl-8">200</span><span class="hl-0">)</span><br/><span class="hl-0">  </span><br/><span class="hl-0">  </span><span class="hl-1">// Save the user for later use</span><br/><span class="hl-0">  </span><span class="hl-7">localStorage</span><span class="hl-0">.</span><span class="hl-4">setItem</span><span class="hl-0">(</span><span class="hl-5">&#39;user&#39;</span><span class="hl-0">, </span><span class="hl-7">response</span><span class="hl-0">.</span><span class="hl-7">body</span><span class="hl-0">)</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-1">// Define a second test</span><br/><span class="hl-4">test</span><span class="hl-0">(</span><span class="hl-5">&#39;Get a user&#39;</span><span class="hl-0">, </span><span class="hl-2">async</span><span class="hl-0"> () </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-1">// Tests run in the defined order, so localStorage will always contain the user.</span><br/><span class="hl-0">  </span><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">user</span><span class="hl-0"> = </span><span class="hl-7">localStorage</span><span class="hl-0">.</span><span class="hl-4">getItem</span><span class="hl-0">(</span><span class="hl-5">&#39;user&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-0">  </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-4">get</span><span class="hl-0">(</span><span class="hl-5">`/users/</span><span class="hl-2">${</span><span class="hl-7">user</span><span class="hl-9">.</span><span class="hl-7">id</span><span class="hl-2">}</span><span class="hl-5">`</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-4">expect</span><span class="hl-0">(</span><span class="hl-8">200</span><span class="hl-0">, </span><span class="hl-7">user</span><span class="hl-0">)</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-1">// Run the tests</span><br/><span class="hl-4">run</span><span class="hl-0">()</span>
+</code></pre>
+<!-- prettier-ignore-end -->
 
-  <span class="hljs-keyword">await</span> get(<span class="hljs-string">`/users/<span class="hljs-subst">${user.id}</span>`</span>)
-    .expect(<span class="hljs-number">200</span>, user)
-})
+<p>To run the tests that you wrote in <code>test.js</code>, you simply need to execute the script:</p>
+<ul>
+<li><p>With <strong>JavaScript</strong> (node):</p>
+<pre><code class="language-bash"><span class="hl-0">node test.js</span>
+</code></pre>
+</li>
+<li><p>With <strong>ES6+</strong> or <strong>Flow</strong> (<a href="https://www.npmjs.com/package/@babel/node">babel-node</a>):</p>
+<pre><code class="language-bash"><span class="hl-0">babel-node test.js</span>
+</code></pre>
+</li>
+<li><p>With <strong>Typescript</strong> (<a href="https://www.npmjs.com/package/ts-node">ts-node</a>):</p>
+<pre><code class="language-bash"><span class="hl-0">ts-node test.ts</span>
+</code></pre>
+</li>
+</ul>
 
-<span class="hljs-comment">// Run the tests</span>
-run()</code></pre>
-				<!-- prettier-ignore-end -->
-				<p>To run the tests that you wrote in <code>test.js</code>, you simply need to execute the script:</p>
-				<ul>
-					<li><p>With <strong>JavaScript</strong> (node):</p>
-						<pre><code class="language-bash">node test.js</code></pre>
-					</li>
-					<li><p>With <strong>ES6+</strong> or <strong>Flow</strong> (<a href="https://www.npmjs.com/package/@babel/node">babel-node</a>):</p>
-						<pre><code class="language-bash">babel-node test.js</code></pre>
-					</li>
-					<li><p>With <strong>Typescript</strong> (<a href="https://www.npmjs.com/package/ts-node">ts-node</a>):</p>
-						<pre><code class="language-bash">ts-node test.ts</code></pre>
-					</li>
-				</ul>
-				<a href="#example-1-http" id="example-1-http" style="color: inherit; text-decoration: none;">
-					<h2>Example #1 (HTTP)</h2>
-				</a>
-				<!-- prettier-ignore-start -->
-				<p>The code of the example is available <a href="https://github.com/purplnay/easy-api-test/tree/main/examples/http">here</a>.</p>
-				<ul>
-					<li>
-						<a href="#creating-a-project" id="creating-a-project" style="color: inherit; text-decoration: none;">
-							<h3>Creating a project</h3>
-						</a>
-						<p>Let&#39;s say we are building an express app that exposes this API:</p>
-						<pre><code class="language-text">- /             {*}     -&gt; Say &#x27;hello&#x27;
+<a href="#example-1-http" id="example-1-http" style="color: inherit; text-decoration: none;">
+  <h2>Example #1 (HTTP)</h2>
+</a>
+<!-- prettier-ignore-start -->
+
+<p>The code of the example is available <a href="https://github.com/purplnay/easy-api-test/tree/main/examples/http">here</a>.</p>
+<ul>
+<li>
+<a href="#creating-a-project" id="creating-a-project" style="color: inherit; text-decoration: none;">
+  <h3>Creating a project</h3>
+</a>
+<p>Let&#39;s say we are building an express app that exposes this API:</p>
+<pre><code class="language-text">- /             {*}     -&gt; Say &#39;hello&#39;
 - /recipes      {GET}   -&gt; Get all the recipes
 - /recipes/:id  {GET}   -&gt; Get a recipe by ID
-- /recipes      {POST}  -&gt; Create a recipe</code></pre>
-						<p>First, let&#39;s create a new folder:</p>
-						<pre><code class="language-bash">mkdir my-recipe-api</code></pre>
-						<p>Move to the project&#39;s directory:</p>
-						<pre><code class="language-bash"><span class="hljs-built_in">cd</span> my-recipe-api</code></pre>
-						<p>Initialize a new NPM project:</p>
-						<pre><code class="language-bash">npm init -y</code></pre>
-					</li>
-					<li>
-						<a href="#installing-the-dependencies" id="installing-the-dependencies" style="color: inherit; text-decoration: none;">
-							<h3>Installing the dependencies</h3>
-						</a>
-						<hr>
-						<p>We are going to use <a href="https://www.npmjs.com/package/express">express</a>, and <a href="https://www.npmjs.com/package/body-parser">body-parser</a> to parse JSON. Let&#39;s install them:</p>
-						<pre><code class="language-bash">npm install --save express body-parser</code></pre>
-						<p>And for our tests, <a href="https://www.npmjs.com/package/easy-api-test">easy-api-test</a> is all that we will need, let&#39;s install it as a dev dependency:</p>
-						<pre><code class="language-bash">npm install --save-dev easy-api-test</code></pre>
-					</li>
-					<li>
-						<a href="#writing-the-app" id="writing-the-app" style="color: inherit; text-decoration: none;">
-							<h3>Writing the app</h3>
-						</a>
-						<p>To keep things clean, we are going to create an <code>src/</code> folder that will contain our code, and a <code>test/</code> folder that will contain our test files.</p>
-						<p>Let&#39;s start by writing our app in the <code>src/</code> folder, in a file that we will name <code>app.js</code>.</p>
-						<pre><code class="language-javascript"><span class="hljs-comment">// src/app.js</span>
-
-<span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>)
-
-<span class="hljs-comment">// Import express and body-parser</span>
-<span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>)
-<span class="hljs-keyword">const</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;body-parser&#x27;</span>)
-
-<span class="hljs-comment">// Create a new express app</span>
-<span class="hljs-keyword">const</span> app = express()
-
-<span class="hljs-comment">// This is were we will store the recipes</span>
-<span class="hljs-keyword">const</span> recipes = []
-
-<span class="hljs-comment">// Add the bodyParser&#x27;s json middleware to our app</span>
-app.use(bodyParser.json())
-
-<span class="hljs-comment">// We return &#x27;hello&#x27; at the root, regardless of the method</span>
-app.all(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-  res.end(<span class="hljs-string">&#x27;hello&#x27;</span>)
-})
-
-<span class="hljs-comment">// We return all the recipes at /recipes</span>
-app.get(<span class="hljs-string">&#x27;/recipes&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-  res.json(recipes)
-})
-
-<span class="hljs-comment">// We return a recipe by id</span>
-app.get(<span class="hljs-string">&#x27;/recipes/:id&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-  <span class="hljs-keyword">const</span> id = req.params.id
-
-  <span class="hljs-comment">// Check if the recipe exists</span>
-  <span class="hljs-keyword">if</span> (recipes[id]) {
-    <span class="hljs-keyword">return</span> res.json(recipes[id])
-  }
-
-  <span class="hljs-comment">// Send a 404 &#x27;Not found&#x27; error if the id does not exist.</span>
-  res.statusCode = <span class="hljs-number">404</span>
-  res.end()
-})
-
-<span class="hljs-comment">// We create a new recipe</span>
-app.post(<span class="hljs-string">&#x27;/recipes&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-  <span class="hljs-comment">// Check if the fields are correct</span>
-  <span class="hljs-keyword">if</span> (req.body.name &amp;&amp; req.body.content) {
-    <span class="hljs-comment">// Create the recipe</span>
-    <span class="hljs-keyword">const</span> recipe = {
-      <span class="hljs-attr">id</span>: recipes.length,
-      <span class="hljs-attr">name</span>: req.body.name,
-      <span class="hljs-attr">content</span>: req.body.content,
-    }
-
-    recipes.push(recipe)
-
-    <span class="hljs-comment">// And return it</span>
-    <span class="hljs-keyword">return</span> res.json(recipe)
-  }
-
-  <span class="hljs-comment">// Send a 400 &#x27;Bad request&#x27; error if the fields were not correct</span>
-  res.statusCode = <span class="hljs-number">400</span>
-  res.end()
-})
-
-<span class="hljs-comment">// Wrap the app into a Server instance and export it</span>
-<span class="hljs-built_in">module</span>.exports = http.createServer(app)</code></pre>
-						<p>We can create an <code>src/index.js</code> file to run our app:</p>
-						<pre><code class="language-javascript"><span class="hljs-comment">// src/index.js</span>
-
-<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./app&#x27;</span>)
-
-<span class="hljs-comment">// Start the app</span>
-app.listen()</code></pre>
-					</li>
-					<li>
-						<a href="#writing-the-tests" id="writing-the-tests" style="color: inherit; text-decoration: none;">
-							<h3>Writing the tests</h3>
-						</a>
-						<p>Our tests will be written in the <code>test/</code> folder, let&#39;s start by creating a <code>test/index.js</code> file:</p>
-						<pre><code class="language-javascript"><span class="hljs-comment">// test/index.js</span>
-
-<span class="hljs-comment">// Import what we&#x27;ll need and our server</span>
-<span class="hljs-keyword">const</span> { use, start, end, run } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
-<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../src/app&#x27;</span>)
-
-<span class="hljs-comment">// We can tell Easy API Test which URL to test,</span>
-<span class="hljs-comment">// here we will use the port 3000</span>
-use(<span class="hljs-string">&#x27;http://localhost:3000/&#x27;</span>)
-
-<span class="hljs-comment">// Any function passed to `start()` will run before the tests</span>
-start(<span class="hljs-function">() =&gt;</span> {
-  <span class="hljs-comment">// Return a promise that resolves once the server started</span>
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
-    app.listen(<span class="hljs-number">3000</span>, resolve)
-  })
-})
-
-<span class="hljs-comment">// Any function passed to `stop()` will run after the tests, even</span>
-<span class="hljs-comment">// if a test has failed.</span>
-end(<span class="hljs-function">() =&gt;</span> {
-  app.close()
-})
-
-<span class="hljs-comment">/**
- * We will import our tests here
- */</span>
-
-<span class="hljs-comment">// Run the tests.</span>
-run()</code></pre>
-						<p>What this file does, for now, is:</p>
-						<ul>
-							<li>Telling Easy API Test that we will be testing <code>http://localhost:3000/</code>.</li>
-							<li>Start the server before the tests begin</li>
-							<li>Close the server after the tests ran, or after a test failed.</li>
-						</ul>
-						<p>Now, we will write our tests! Let&#39;s start by testing the root <code>/</code> path of our API. Remember? It should always return &#39;hello&#39;, let&#39;s write a test in <code>test/01-root.js</code>:</p>
-						<pre><code class="language-javascript"><span class="hljs-comment">//test/01-root.js</span>
-
-<span class="hljs-keyword">const</span> { suite, test, get, post } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
-
-<span class="hljs-comment">// Suites are optional, but they let us group tests together, which</span>
-<span class="hljs-comment">// makes visual feedback clearer</span>
-suite(<span class="hljs-string">&#x27;/ Root&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-  <span class="hljs-comment">// Tests require a name, and a function to run</span>
-  test(<span class="hljs-string">&#x27;Say hello&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-keyword">await</span> get(<span class="hljs-string">&#x27;/&#x27;</span>).expect(<span class="hljs-number">200</span>, <span class="hljs-string">&#x27;hello&#x27;</span>) <span class="hljs-comment">// Expect status 200 and content &#x27;hello&#x27;</span>
-  })
-
-  test(<span class="hljs-string">&#x27;Say hello even with the POST method&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-keyword">await</span> post(<span class="hljs-string">&#x27;/&#x27;</span>).expect(<span class="hljs-number">200</span>, <span class="hljs-string">&#x27;hello&#x27;</span>)
-  })
-})</code></pre>
-						<p>Tests will run in the same order as you declared them.</p>
-						<p>It is a good idea to start your test file names with a number so your file explorer or text editor or brain can list them in ascending order.</p>
-						<p>Here, we used <code>get()</code> and <code>post()</code>. These are helper methods built on top of <a href="https://www.npmjs.com/package/supertest">SuperTest</a>, hence SuperTest&#39;s API is available for you to use, along with some <a href="https://purplnay.github.io/easy-api-test/interfaces/irequest.html">extra methods</a>.</p>
-						<p>Anything that throws will work in the tests, so feel free to use any library you wish!</p>
-						<p>So, we created our tests for <code>/</code>, but we now need to add them to our test pipeline in <code>test/index.js</code>:</p>
-						<pre><code class="language-javascript"><span class="hljs-comment">// test/index.js</span>
-
-<span class="hljs-keyword">const</span> { use, start, end, run } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
-<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../src/app&#x27;</span>)
-
-use(<span class="hljs-string">&#x27;http://localhost:3000/&#x27;</span>)
-
-start(<span class="hljs-function">() =&gt;</span> {
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
-    app.listen(<span class="hljs-number">3000</span>, resolve)
-  })
-})
-
-end(<span class="hljs-function">() =&gt;</span> {
-  app.close()
-})
-
-<span class="hljs-comment">/**
- * We import our tests here
- */</span>
-<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./01-root&#x27;</span>) <span class="hljs-comment">// &lt;====== here</span>
-
-run()</code></pre>
-						<p>Next, we want to test our <code>/recipes</code> endpoint. We don&#39;t have any recipe yet, so let&#39;s test if our API creates recipes as expected in a new file <code>test/create-recipe.js</code>:</p>
-						<pre><code class="language-javascript"><span class="hljs-comment">// test/02-create-recipe.js</span>
-
-<span class="hljs-keyword">const</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;assert&#x27;</span>)
-<span class="hljs-keyword">const</span> { suite, test, post, <span class="hljs-built_in">localStorage</span> } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
-
-suite(<span class="hljs-string">&#x27;/recipes Create new recipes&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-  <span class="hljs-comment">// Let&#x27;s first see if our API rejects invalid recipes</span>
-  test(<span class="hljs-string">&#x27;Reject an invalid recipe&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">// We expect a 400 error in case of incorrect fields</span>
-    <span class="hljs-keyword">await</span> post(<span class="hljs-string">&#x27;/recipes&#x27;</span>).send({ <span class="hljs-attr">ayaya</span>: <span class="hljs-string">&#x27;clap&#x27;</span> }).expect(<span class="hljs-number">400</span>)
-  })
-
-  <span class="hljs-comment">// Now let&#x27;s test creating a recipe</span>
-  test(<span class="hljs-string">&#x27;Create a valid recipe&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-keyword">const</span> recipe = {
-      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;tomatoes&#x27;</span>,
-      <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;Put tomatoes in a plate.&#x27;</span>,
-    }
-
-    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> post(<span class="hljs-string">&#x27;/recipes&#x27;</span>).send(recipe)
-
-    <span class="hljs-comment">// We can use `assert` to test anything</span>
-    assert.strictEqual(response.status, <span class="hljs-number">200</span>)
-    assert.strictEqual(response.body.name, recipe.name)
-
-    <span class="hljs-comment">// localStorage is a helper object from Easy API Test, to store data</span>
-    <span class="hljs-comment">// and retrieve it easily in later tests.</span>
-    <span class="hljs-built_in">localStorage</span>.setItem(<span class="hljs-string">&#x27;recipe&#x27;</span>, response.body)
-  })
-})</code></pre>
-						<p>It might sound scary to have stateful tests where one test requires the result of another test, but don&#39;t worry, this actually is intended! We are not testing units of our application, we are testing an actual user flow through the API. If one test crashes, the test suites will end, so you will not have a test missing some external data.</p>
-						<p>Let&#39;s add this new suite to our pipeline in <code>test/index.js</code>:</p>
-						<pre><code class="language-javascript"><span class="hljs-comment">// test/index.js</span>
-
-<span class="hljs-keyword">const</span> { use, start, end, run } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
-<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../src/app&#x27;</span>)
-
-use(<span class="hljs-string">&#x27;http://localhost:3000/&#x27;</span>)
-
-start(<span class="hljs-function">() =&gt;</span> {
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
-    app.listen(<span class="hljs-number">3000</span>, resolve)
-  })
-})
-
-end(<span class="hljs-function">() =&gt;</span> {
-  app.close()
-})
-
-<span class="hljs-comment">/**
- * We import our tests here
- */</span>
-<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./01-root&#x27;</span>)
-<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./02-create-recipe&#x27;</span>) <span class="hljs-comment">// &lt;====== here</span>
-
-run()</code></pre>
-						<p>And let&#39;s finish by writing tests for the <code>/recipes</code> GET endpoint, and <code>/recipes/:id</code> endpoint in a file nammed <code>test/get-recipe.js</code>:</p>
-						<pre><code class="language-javascript"><span class="hljs-comment">// test/03-get-recipe.js</span>
-
-<span class="hljs-keyword">const</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;assert&#x27;</span>)
-<span class="hljs-keyword">const</span> { suite, test, get, <span class="hljs-built_in">localStorage</span> } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
-
-suite(<span class="hljs-string">&#x27;/recipes Get recipes&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-  <span class="hljs-comment">// This will run after we have created our recipe, so if the endpoint works,</span>
-  <span class="hljs-comment">// it should return an array with at least 1 element.</span>
-  test(<span class="hljs-string">&#x27;Get all the recipes&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> get(<span class="hljs-string">&#x27;/recipes&#x27;</span>)
-
-    assert(response.body.length &gt; <span class="hljs-number">0</span>)
-  })
-
-  test(<span class="hljs-string">&#x27;Get a recipe by id&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">// Our recipe is in the localStorage, so we can grab its ID</span>
-    <span class="hljs-keyword">const</span> recipe = <span class="hljs-built_in">localStorage</span>.getItem(<span class="hljs-string">&#x27;recipe&#x27;</span>)
-
-    <span class="hljs-keyword">await</span> get(<span class="hljs-string">`/recipes/<span class="hljs-subst">${recipe.id}</span>`</span>).expect(<span class="hljs-number">200</span>, recipe)
-  })
-
-  <span class="hljs-comment">// Check if an invalid ID returns 404</span>
-  test(<span class="hljs-string">&#x27;Get 404 when the recipe does not exist&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-keyword">await</span> get(<span class="hljs-string">&#x27;/recipes/ayaya&#x27;</span>).expect(<span class="hljs-number">404</span>)
-  })
-})</code></pre>
-						<p>And again, add this to our pipeline:</p>
-						<pre><code class="language-javascript"><span class="hljs-comment">// test/index.js</span>
-
-<span class="hljs-keyword">const</span> { use, start, end, run } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
-<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../src/app&#x27;</span>)
-
-use(<span class="hljs-string">&#x27;http://localhost:3000/&#x27;</span>)
-
-start(<span class="hljs-function">() =&gt;</span> {
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
-    app.listen(<span class="hljs-number">3000</span>, resolve)
-  })
-})
-
-end(<span class="hljs-function">() =&gt;</span> {
-  app.close()
-})
-
-<span class="hljs-comment">/**
- * We import our tests here
- */</span>
-<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./01-root&#x27;</span>)
-<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./02-create-recipe&#x27;</span>)
-<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./03-get-recipe&#x27;</span>) <span class="hljs-comment">// &lt;====== here</span>
-
-run()</code></pre>
-						<p>That&#39;s it! Now let&#39;s see if our app works as expected by running the tests:</p>
-						<pre><code class="language-bash">node <span class="hljs-built_in">test</span>/index.js</code></pre>
-						<p>and the result:</p>
-						<pre><code class="language-bash">/ Root:
-  - Say hello: PASS (29ms)
-  - Say hello even with the POST method: PASS (4ms)
-
-/recipes Create new recipes:
-  - Reject an invalid recipe: PASS (15ms)
-  - Create a valid recipe: PASS (6ms)
-
-/recipes Get recipes:
-  - Get all the recipes: PASS (3ms)
-  - Get a recipe by id: PASS (4ms)
-  - Get 404 when the recipe does not exist: PASS (2ms)</code></pre>
-					</li>
-				</ul>
-				<a href="#example-2-websocket" id="example-2-websocket" style="color: inherit; text-decoration: none;">
-					<h2>Example 2 (WebSocket)</h2>
-				</a>
-				<p>It is common to have data go through both an HTTP API and WebSocket events, but how to test, for example, that a certain HTTP request from a user will trigger a WebSocket event to another user? This is what we are going to see now.</p>
-				<p>All the code for this example is available <a href="https://github.com/purplnay/easy-api-test/tree/main/examples/websocket">here</a></p>
-				<ul>
-					<li>
-						<a href="#write-the-application" id="write-the-application" style="color: inherit; text-decoration: none;">
-							<h3>Write the application</h3>
-						</a>
-						<p>We&#39;ll write a very minimal example here, just to show you how to use the WebSocket testing utility. Our application will consist of some kind of echo server. It will send back every message it receives, prepended with &#39;You said: &#39;.</p>
-						<p>For example, if we send &#39;Hello Server&#39;, we would receive &#39;You said: Hello Server&#39;.</p>
-						<ul>
-							<li><p>Let&#39;s first create a new directory:</p>
-								<pre><code class="language-bash">mkdir websocket-example</code></pre>
-							</li>
-							<li><p>Initialize a new NPM project:</p>
-								<pre><code class="language-bash">npm init -y</code></pre>
-							</li>
-							<li><p>And install what we will need:</p>
-								<pre><code class="language-bash">npm install ws easy-api-test</code></pre>
-							</li>
-						</ul>
-						<p>We will be using <a href="https://www.npmjs.com/package/ws">ws</a> for the WebSocket server. This is also the library used by Easy API Test for the WebSocket testing utility.</p>
-						<p>Let&#39;s create an <code>src/</code> folder and write some code in it:</p>
-						<pre><code class="language-javascript"><span class="hljs-comment">// src/index.js</span>
-
-<span class="hljs-keyword">const</span> { createServer } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>)
-<span class="hljs-keyword">const</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;ws&#x27;</span>)
-
-<span class="hljs-comment">// Create an HTTP server</span>
-<span class="hljs-keyword">const</span> server = createServer()
-
-<span class="hljs-comment">// Create a websocket server on port 3000</span>
-<span class="hljs-keyword">const</span> wss = <span class="hljs-keyword">new</span> ws.Server({ server })
-
-<span class="hljs-comment">// Listen to connection events</span>
-wss.on(<span class="hljs-string">&#x27;connection&#x27;</span>, <span class="hljs-function"><span class="hljs-params">ws</span> =&gt;</span> {
-  <span class="hljs-comment">// Listen to socket message events</span>
-  ws.on(<span class="hljs-string">&#x27;message&#x27;</span>, <span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
-    <span class="hljs-comment">// Send &#x27;You said: &#x27; followed by the message.</span>
-    ws.send(<span class="hljs-string">`You said: <span class="hljs-subst">${data.toString()}</span>`</span>)
-  })
-})
-
-server.listen(<span class="hljs-number">3000</span>)
-
-<span class="hljs-built_in">module</span>.exports = server</code></pre>
-						<p>This code imports the createServer function from the NodeJS <code>http</code> module, as well as the <code>ws</code> package that will let us create a WebSocket server.</p>
-						<p>We then create an HTTP server, and a WebSocket server attached to that HTTP server, and tell our WebSocket server to listen to socket messages and send them back prepending &#39;You said: &#39; to each of them.</p>
-						<p>The last two instructions make the server listen on port <code>3000</code>, and export the server so that we can <code>require()</code> it in our tests and close it once our tests are done. If we don&#39;t close the server, the NodeJS process will not exit on its own. T-T</p>
-						<p>Now let&#39;s write some tests, we can create a <code>test/</code> directory at the root of our project, and write our tests. We&#39;ll use a single file because there is not much to test:</p>
-						<pre><code class="language-javascript"><span class="hljs-comment">// test/index.js</span>
-
-<span class="hljs-keyword">const</span> { test, WebSocket, end, run } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;easy-api-test&#x27;</span>)
-<span class="hljs-keyword">const</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;assert&#x27;</span>)
-
-<span class="hljs-comment">// Import the server</span>
-<span class="hljs-keyword">const</span> server = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../src&#x27;</span>)
-
-test(<span class="hljs-string">&#x27;Connect to WebSocket server&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-  <span class="hljs-comment">// Connect to the websocket server</span>
-  <span class="hljs-keyword">const</span> ws = <span class="hljs-keyword">await</span> WebSocket(<span class="hljs-string">&#x27;ws://localhost:3000&#x27;</span>)
-
-  assert(ws.connected === <span class="hljs-literal">true</span>)
-})
-
-test(<span class="hljs-string">&#x27;Echo the messages sent to the server&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
-  <span class="hljs-keyword">const</span> ws = <span class="hljs-keyword">await</span> WebSocket(<span class="hljs-string">&#x27;ws://localhost:3000&#x27;</span>)
-
-  <span class="hljs-comment">// Send &#x27;Hello&#x27;</span>
-  ws.send(<span class="hljs-string">&#x27;Hello&#x27;</span>)
-
-  <span class="hljs-comment">// Get the next message from the server</span>
-  <span class="hljs-keyword">const</span> message = <span class="hljs-keyword">await</span> ws.message
-
-  <span class="hljs-comment">// Check if it is what we expected</span>
-  assert(message === <span class="hljs-string">&#x27;You said: Hello&#x27;</span>)
-})
-
-end(<span class="hljs-function">() =&gt;</span> {
-  <span class="hljs-comment">// Close the server after the tests end</span>
-  server.close()
-})
-
-<span class="hljs-comment">// Run the tests</span>
-run()</code></pre>
-						<p>So, to create a WebSocket connection, simply <em>import</em> WebSocket from <code>easy-api-test</code>, and call the function. It returns a promise that resolves into a WebSocketClient object.</p>
-						<p>The WebSocketClient object lets you easily get the incoming WebSocket messages, send messages and even automatically parse and serialize the messages.
-						Every opened WebSocketClient is closed automatically upon tests ending or failing, so no need to manually close those connections.</p>
-						<ul>
-							<li><p>We can now run our tests:</p>
-								<pre><code class="language-bash">node <span class="hljs-built_in">test</span>/index.js</code></pre>
-							</li>
-							<li><p>You should be getting this output:</p>
-								<pre><code class="language-bash">- Connect to WebSocket server: PASS (23ms)
-- Echo the messages sent to the server: PASS (5ms)</code></pre>
-							</li>
-							<li><p>It is working! We can now start our app and enjoy that high quality echo server:</p>
-								<pre><code class="language-bash">node src/index.js</code></pre>
-							</li>
-						</ul>
-						<p>Of course, you can test API calls using the <code>get</code>, <code>post</code>, etc... helpers and WebSocket messages using the <code>WebSocket</code> utility together in the same tests. Let&#39;s say you want to test a realtime chat that uses HTTP to send messages, and WebSocket to receive messages, you could send a message using:</p>
-						<pre><code class="language-javascript">post(<span class="hljs-string">&#x27;path/to/messages&#x27;</span>)
-  .send({ <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Hello uwu&#x27;</span> })</code></pre>
-						<p>and listen to the WebSocket&#39;s next message using:</p>
-						<pre><code class="language-javascript"><span class="hljs-keyword">const</span> message = <span class="hljs-keyword">await</span> ws.message</code></pre>
-						<p>just like we did just before. Make sure to use <code>await ws.message</code> <strong>after</strong> <code>post()</code> otherwise the <code>await</code> keyword will block execution.</p>
-					</li>
-				</ul>
-				<!-- prettier-ignore-end -->
-				<a href="#contributions" id="contributions" style="color: inherit; text-decoration: none;">
-					<h2>Contributions</h2>
-				</a>
-				<p>The Code of Conduct is available <a href="https://github.com/purplnay/easy-api-test/blob/main/CODE_OF_CONDUCT.md">here</a>.</p>
-				<p>If you wish to help to improve Easy API Test by adding new features, performance improvements or documentation corrections, you can do so by forking the <a href="https://github.com/purplnay/easy-api-test">repository</a>, applying your changes and sending a pull request.</p>
-				<p>If you enconter any issue regarding the repository, or wish to suggest new features, you can fill an <a href="https://github.com/purplnay/easy-api-test/issues">issue</a>. Make sure to check that your issue doesn&#39;t exist yet.</p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="classes/websocketclient.html" class="tsd-kind-icon">Web<wbr>Socket<wbr>Client</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/irequest.html" class="tsd-kind-icon">IRequest</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/websocketoptions.html" class="tsd-kind-icon">Web<wbr>Socket<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#resolvable" class="tsd-kind-icon">Resolvable</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#request" class="tsd-kind-icon">request</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#websocket" class="tsd-kind-icon">Web<wbr>Socket</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#del" class="tsd-kind-icon">del</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#disablelogs" class="tsd-kind-icon">disable<wbr>Logs</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#end" class="tsd-kind-icon">end</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#get" class="tsd-kind-icon">get</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#head" class="tsd-kind-icon">head</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#options" class="tsd-kind-icon">options</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#patch" class="tsd-kind-icon">patch</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#post" class="tsd-kind-icon">post</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#put" class="tsd-kind-icon">put</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#run" class="tsd-kind-icon">run</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#sleep" class="tsd-kind-icon">sleep</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#start" class="tsd-kind-icon">start</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#suite" class="tsd-kind-icon">suite</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#test" class="tsd-kind-icon">test</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#use" class="tsd-kind-icon">use</a>
-					</li>
-					<li class=" tsd-kind-object-literal">
-						<a href="globals.html#localstorage" class="tsd-kind-icon">local<wbr>Storage</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
+- /recipes      {POST}  -&gt; Create a recipe
+</code></pre>
+<p>First, let&#39;s create a new folder:</p>
+<pre><code class="language-bash"><span class="hl-0">mkdir my-recipe-api</span>
+</code></pre>
+<p>Move to the project&#39;s directory:</p>
+<pre><code class="language-bash"><span class="hl-4">cd</span><span class="hl-0"> my-recipe-api</span>
+</code></pre>
+<p>Initialize a new NPM project:</p>
+<pre><code class="language-bash"><span class="hl-0">npm init -y</span>
+</code></pre>
+</li>
+<li>
+<a href="#installing-the-dependencies" id="installing-the-dependencies" style="color: inherit; text-decoration: none;">
+  <h3>Installing the dependencies</h3>
+</a>
+<hr>
+<p>We are going to use <a href="https://www.npmjs.com/package/express">express</a>, and <a href="https://www.npmjs.com/package/body-parser">body-parser</a> to parse JSON. Let&#39;s install them:</p>
+<pre><code class="language-bash"><span class="hl-0">npm install --save express body-parser</span>
+</code></pre>
+<p>And for our tests, <a href="https://www.npmjs.com/package/easy-api-test">easy-api-test</a> is all that we will need, let&#39;s install it as a dev dependency:</p>
+<pre><code class="language-bash"><span class="hl-0">npm install --save-dev easy-api-test</span>
+</code></pre>
+</li>
+<li>
+<a href="#writing-the-app" id="writing-the-app" style="color: inherit; text-decoration: none;">
+  <h3>Writing the app</h3>
+</a>
+<p>To keep things clean, we are going to create an <code>src/</code> folder that will contain our code, and a <code>test/</code> folder that will contain our test files.</p>
+<p>Let&#39;s start by writing our app in the <code>src/</code> folder, in a file that we will name <code>app.js</code>.</p>
+<pre><code class="language-javascript"><span class="hl-1">// src/app.js</span><br/><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">http</span><span class="hl-0"> = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;http&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-1">// Import express and body-parser</span><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">express</span><span class="hl-0"> = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;express&#39;</span><span class="hl-0">)</span><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">bodyParser</span><span class="hl-0"> = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;body-parser&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-1">// Create a new express app</span><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">app</span><span class="hl-0"> = </span><span class="hl-4">express</span><span class="hl-0">()</span><br/><br/><span class="hl-1">// This is were we will store the recipes</span><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">recipes</span><span class="hl-0"> = []</span><br/><br/><span class="hl-1">// Add the bodyParser&#39;s json middleware to our app</span><br/><span class="hl-7">app</span><span class="hl-0">.</span><span class="hl-4">use</span><span class="hl-0">(</span><span class="hl-7">bodyParser</span><span class="hl-0">.</span><span class="hl-4">json</span><span class="hl-0">())</span><br/><br/><span class="hl-1">// We return &#39;hello&#39; at the root, regardless of the method</span><br/><span class="hl-7">app</span><span class="hl-0">.</span><span class="hl-4">all</span><span class="hl-0">(</span><span class="hl-5">&#39;/&#39;</span><span class="hl-0">, (</span><span class="hl-7">req</span><span class="hl-0">, </span><span class="hl-7">res</span><span class="hl-0">) </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-7">res</span><span class="hl-0">.</span><span class="hl-4">end</span><span class="hl-0">(</span><span class="hl-5">&#39;hello&#39;</span><span class="hl-0">)</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-1">// We return all the recipes at /recipes</span><br/><span class="hl-7">app</span><span class="hl-0">.</span><span class="hl-4">get</span><span class="hl-0">(</span><span class="hl-5">&#39;/recipes&#39;</span><span class="hl-0">, (</span><span class="hl-7">req</span><span class="hl-0">, </span><span class="hl-7">res</span><span class="hl-0">) </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-7">res</span><span class="hl-0">.</span><span class="hl-4">json</span><span class="hl-0">(</span><span class="hl-7">recipes</span><span class="hl-0">)</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-1">// We return a recipe by id</span><br/><span class="hl-7">app</span><span class="hl-0">.</span><span class="hl-4">get</span><span class="hl-0">(</span><span class="hl-5">&#39;/recipes/:id&#39;</span><span class="hl-0">, (</span><span class="hl-7">req</span><span class="hl-0">, </span><span class="hl-7">res</span><span class="hl-0">) </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">id</span><span class="hl-0"> = </span><span class="hl-7">req</span><span class="hl-0">.</span><span class="hl-7">params</span><span class="hl-0">.</span><span class="hl-7">id</span><br/><br/><span class="hl-0">  </span><span class="hl-1">// Check if the recipe exists</span><br/><span class="hl-0">  </span><span class="hl-6">if</span><span class="hl-0"> (</span><span class="hl-7">recipes</span><span class="hl-0">[</span><span class="hl-7">id</span><span class="hl-0">]) {</span><br/><span class="hl-0">    </span><span class="hl-6">return</span><span class="hl-0"> </span><span class="hl-7">res</span><span class="hl-0">.</span><span class="hl-4">json</span><span class="hl-0">(</span><span class="hl-7">recipes</span><span class="hl-0">[</span><span class="hl-7">id</span><span class="hl-0">])</span><br/><span class="hl-0">  }</span><br/><br/><span class="hl-0">  </span><span class="hl-1">// Send a 404 &#39;Not found&#39; error if the id does not exist.</span><br/><span class="hl-0">  </span><span class="hl-7">res</span><span class="hl-0">.</span><span class="hl-7">statusCode</span><span class="hl-0"> = </span><span class="hl-8">404</span><br/><span class="hl-0">  </span><span class="hl-7">res</span><span class="hl-0">.</span><span class="hl-4">end</span><span class="hl-0">()</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-1">// We create a new recipe</span><br/><span class="hl-7">app</span><span class="hl-0">.</span><span class="hl-4">post</span><span class="hl-0">(</span><span class="hl-5">&#39;/recipes&#39;</span><span class="hl-0">, (</span><span class="hl-7">req</span><span class="hl-0">, </span><span class="hl-7">res</span><span class="hl-0">) </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-1">// Check if the fields are correct</span><br/><span class="hl-0">  </span><span class="hl-6">if</span><span class="hl-0"> (</span><span class="hl-7">req</span><span class="hl-0">.</span><span class="hl-7">body</span><span class="hl-0">.</span><span class="hl-7">name</span><span class="hl-0"> &amp;&amp; </span><span class="hl-7">req</span><span class="hl-0">.</span><span class="hl-7">body</span><span class="hl-0">.</span><span class="hl-7">content</span><span class="hl-0">) {</span><br/><span class="hl-0">    </span><span class="hl-1">// Create the recipe</span><br/><span class="hl-0">    </span><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">recipe</span><span class="hl-0"> = {</span><br/><span class="hl-0">      </span><span class="hl-7">id:</span><span class="hl-0"> </span><span class="hl-7">recipes</span><span class="hl-0">.</span><span class="hl-7">length</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-7">name:</span><span class="hl-0"> </span><span class="hl-7">req</span><span class="hl-0">.</span><span class="hl-7">body</span><span class="hl-0">.</span><span class="hl-7">name</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-7">content:</span><span class="hl-0"> </span><span class="hl-7">req</span><span class="hl-0">.</span><span class="hl-7">body</span><span class="hl-0">.</span><span class="hl-7">content</span><span class="hl-0">,</span><br/><span class="hl-0">    }</span><br/><br/><span class="hl-0">    </span><span class="hl-7">recipes</span><span class="hl-0">.</span><span class="hl-4">push</span><span class="hl-0">(</span><span class="hl-7">recipe</span><span class="hl-0">)</span><br/><br/><span class="hl-0">    </span><span class="hl-1">// And return it</span><br/><span class="hl-0">    </span><span class="hl-6">return</span><span class="hl-0"> </span><span class="hl-7">res</span><span class="hl-0">.</span><span class="hl-4">json</span><span class="hl-0">(</span><span class="hl-7">recipe</span><span class="hl-0">)</span><br/><span class="hl-0">  }</span><br/><br/><span class="hl-0">  </span><span class="hl-1">// Send a 400 &#39;Bad request&#39; error if the fields were not correct</span><br/><span class="hl-0">  </span><span class="hl-7">res</span><span class="hl-0">.</span><span class="hl-7">statusCode</span><span class="hl-0"> = </span><span class="hl-8">400</span><br/><span class="hl-0">  </span><span class="hl-7">res</span><span class="hl-0">.</span><span class="hl-4">end</span><span class="hl-0">()</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-1">// Wrap the app into a Server instance and export it</span><br/><span class="hl-10">module</span><span class="hl-0">.</span><span class="hl-10">exports</span><span class="hl-0"> = </span><span class="hl-7">http</span><span class="hl-0">.</span><span class="hl-4">createServer</span><span class="hl-0">(</span><span class="hl-7">app</span><span class="hl-0">)</span>
+</code></pre>
+<p>We can create an <code>src/index.js</code> file to run our app:</p>
+<pre><code class="language-javascript"><span class="hl-1">// src/index.js</span><br/><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">app</span><span class="hl-0"> = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;./app&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-1">// Start the app</span><br/><span class="hl-7">app</span><span class="hl-0">.</span><span class="hl-4">listen</span><span class="hl-0">()</span>
+</code></pre>
+</li>
+<li>
+<a href="#writing-the-tests" id="writing-the-tests" style="color: inherit; text-decoration: none;">
+  <h3>Writing the tests</h3>
+</a>
+<p>Our tests will be written in the <code>test/</code> folder, let&#39;s start by creating a <code>test/index.js</code> file:</p>
+<pre><code class="language-javascript"><span class="hl-1">// test/index.js</span><br/><br/><span class="hl-1">// Import what we&#39;ll need and our server</span><br/><span class="hl-2">const</span><span class="hl-0"> { </span><span class="hl-3">use</span><span class="hl-0">, </span><span class="hl-3">start</span><span class="hl-0">, </span><span class="hl-3">end</span><span class="hl-0">, </span><span class="hl-3">run</span><span class="hl-0"> } = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;easy-api-test&#39;</span><span class="hl-0">)</span><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">app</span><span class="hl-0"> = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;../src/app&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-1">// We can tell Easy API Test which URL to test,</span><br/><span class="hl-1">// here we will use the port 3000</span><br/><span class="hl-4">use</span><span class="hl-0">(</span><span class="hl-5">&#39;http://localhost:3000/&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-1">// Any function passed to `start()` will run before the tests</span><br/><span class="hl-4">start</span><span class="hl-0">(() </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-1">// Return a promise that resolves once the server started</span><br/><span class="hl-0">  </span><span class="hl-6">return</span><span class="hl-0"> </span><span class="hl-2">new</span><span class="hl-0"> </span><span class="hl-10">Promise</span><span class="hl-0">(</span><span class="hl-7">resolve</span><span class="hl-0"> </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-7">app</span><span class="hl-0">.</span><span class="hl-4">listen</span><span class="hl-0">(</span><span class="hl-8">3000</span><span class="hl-0">, </span><span class="hl-7">resolve</span><span class="hl-0">)</span><br/><span class="hl-0">  })</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-1">// Any function passed to `stop()` will run after the tests, even</span><br/><span class="hl-1">// if a test has failed.</span><br/><span class="hl-4">end</span><span class="hl-0">(() </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-7">app</span><span class="hl-0">.</span><span class="hl-4">close</span><span class="hl-0">()</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-1">/**</span><br/><span class="hl-1"> * We will import our tests here</span><br/><span class="hl-1"> */</span><br/><br/><span class="hl-1">// Run the tests.</span><br/><span class="hl-4">run</span><span class="hl-0">()</span>
+</code></pre>
+<p>What this file does, for now, is:</p>
+<ul>
+<li>Telling Easy API Test that we will be testing <code>http://localhost:3000/</code>.</li>
+<li>Start the server before the tests begin</li>
+<li>Close the server after the tests ran, or after a test failed.</li>
+</ul>
+<p>Now, we will write our tests! Let&#39;s start by testing the root <code>/</code> path of our API. Remember? It should always return &#39;hello&#39;, let&#39;s write a test in <code>test/01-root.js</code>:</p>
+<pre><code class="language-javascript"><span class="hl-1">//test/01-root.js</span><br/><br/><span class="hl-2">const</span><span class="hl-0"> { </span><span class="hl-3">suite</span><span class="hl-0">, </span><span class="hl-3">test</span><span class="hl-0">, </span><span class="hl-3">get</span><span class="hl-0">, </span><span class="hl-3">post</span><span class="hl-0"> } = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;easy-api-test&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-1">// Suites are optional, but they let us group tests together, which</span><br/><span class="hl-1">// makes visual feedback clearer</span><br/><span class="hl-4">suite</span><span class="hl-0">(</span><span class="hl-5">&#39;/ Root&#39;</span><span class="hl-0">, () </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-1">// Tests require a name, and a function to run</span><br/><span class="hl-0">  </span><span class="hl-4">test</span><span class="hl-0">(</span><span class="hl-5">&#39;Say hello&#39;</span><span class="hl-0">, </span><span class="hl-2">async</span><span class="hl-0"> () </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-4">get</span><span class="hl-0">(</span><span class="hl-5">&#39;/&#39;</span><span class="hl-0">).</span><span class="hl-4">expect</span><span class="hl-0">(</span><span class="hl-8">200</span><span class="hl-0">, </span><span class="hl-5">&#39;hello&#39;</span><span class="hl-0">) </span><span class="hl-1">// Expect status 200 and content &#39;hello&#39;</span><br/><span class="hl-0">  })</span><br/><br/><span class="hl-0">  </span><span class="hl-4">test</span><span class="hl-0">(</span><span class="hl-5">&#39;Say hello even with the POST method&#39;</span><span class="hl-0">, </span><span class="hl-2">async</span><span class="hl-0"> () </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-4">post</span><span class="hl-0">(</span><span class="hl-5">&#39;/&#39;</span><span class="hl-0">).</span><span class="hl-4">expect</span><span class="hl-0">(</span><span class="hl-8">200</span><span class="hl-0">, </span><span class="hl-5">&#39;hello&#39;</span><span class="hl-0">)</span><br/><span class="hl-0">  })</span><br/><span class="hl-0">})</span>
+</code></pre>
+<p>Tests will run in the same order as you declared them.</p>
+<p>It is a good idea to start your test file names with a number so your file explorer or text editor or brain can list them in ascending order.</p>
+<p>Here, we used <code>get()</code> and <code>post()</code>. These are helper methods built on top of <a href="https://www.npmjs.com/package/supertest">SuperTest</a>, hence SuperTest&#39;s API is available for you to use, along with some <a href="https://purplnay.github.io/easy-api-test/interfaces/irequest.html">extra methods</a>.</p>
+<p>Anything that throws will work in the tests, so feel free to use any library you wish!</p>
+<p>So, we created our tests for <code>/</code>, but we now need to add them to our test pipeline in <code>test/index.js</code>:</p>
+<pre><code class="language-javascript"><span class="hl-1">// test/index.js</span><br/><br/><span class="hl-2">const</span><span class="hl-0"> { </span><span class="hl-3">use</span><span class="hl-0">, </span><span class="hl-3">start</span><span class="hl-0">, </span><span class="hl-3">end</span><span class="hl-0">, </span><span class="hl-3">run</span><span class="hl-0"> } = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;easy-api-test&#39;</span><span class="hl-0">)</span><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">app</span><span class="hl-0"> = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;../src/app&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-4">use</span><span class="hl-0">(</span><span class="hl-5">&#39;http://localhost:3000/&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-4">start</span><span class="hl-0">(() </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-6">return</span><span class="hl-0"> </span><span class="hl-2">new</span><span class="hl-0"> </span><span class="hl-10">Promise</span><span class="hl-0">(</span><span class="hl-7">resolve</span><span class="hl-0"> </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-7">app</span><span class="hl-0">.</span><span class="hl-4">listen</span><span class="hl-0">(</span><span class="hl-8">3000</span><span class="hl-0">, </span><span class="hl-7">resolve</span><span class="hl-0">)</span><br/><span class="hl-0">  })</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-4">end</span><span class="hl-0">(() </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-7">app</span><span class="hl-0">.</span><span class="hl-4">close</span><span class="hl-0">()</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-1">/**</span><br/><span class="hl-1"> * We import our tests here</span><br/><span class="hl-1"> */</span><br/><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;./01-root&#39;</span><span class="hl-0">) </span><span class="hl-1">// &lt;====== here</span><br/><br/><span class="hl-4">run</span><span class="hl-0">()</span>
+</code></pre>
+<p>Next, we want to test our <code>/recipes</code> endpoint. We don&#39;t have any recipe yet, so let&#39;s test if our API creates recipes as expected in a new file <code>test/create-recipe.js</code>:</p>
+<pre><code class="language-javascript"><span class="hl-1">// test/02-create-recipe.js</span><br/><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">assert</span><span class="hl-0"> = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;assert&#39;</span><span class="hl-0">)</span><br/><span class="hl-2">const</span><span class="hl-0"> { </span><span class="hl-3">suite</span><span class="hl-0">, </span><span class="hl-3">test</span><span class="hl-0">, </span><span class="hl-3">post</span><span class="hl-0">, </span><span class="hl-3">localStorage</span><span class="hl-0"> } = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;easy-api-test&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-4">suite</span><span class="hl-0">(</span><span class="hl-5">&#39;/recipes Create new recipes&#39;</span><span class="hl-0">, () </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-1">// Let&#39;s first see if our API rejects invalid recipes</span><br/><span class="hl-0">  </span><span class="hl-4">test</span><span class="hl-0">(</span><span class="hl-5">&#39;Reject an invalid recipe&#39;</span><span class="hl-0">, </span><span class="hl-2">async</span><span class="hl-0"> () </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-1">// We expect a 400 error in case of incorrect fields</span><br/><span class="hl-0">    </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-4">post</span><span class="hl-0">(</span><span class="hl-5">&#39;/recipes&#39;</span><span class="hl-0">).</span><span class="hl-4">send</span><span class="hl-0">({ </span><span class="hl-7">ayaya:</span><span class="hl-0"> </span><span class="hl-5">&#39;clap&#39;</span><span class="hl-0"> }).</span><span class="hl-4">expect</span><span class="hl-0">(</span><span class="hl-8">400</span><span class="hl-0">)</span><br/><span class="hl-0">  })</span><br/><br/><span class="hl-0">  </span><span class="hl-1">// Now let&#39;s test creating a recipe</span><br/><span class="hl-0">  </span><span class="hl-4">test</span><span class="hl-0">(</span><span class="hl-5">&#39;Create a valid recipe&#39;</span><span class="hl-0">, </span><span class="hl-2">async</span><span class="hl-0"> () </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">recipe</span><span class="hl-0"> = {</span><br/><span class="hl-0">      </span><span class="hl-7">name:</span><span class="hl-0"> </span><span class="hl-5">&#39;tomatoes&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-7">content:</span><span class="hl-0"> </span><span class="hl-5">&#39;Put tomatoes in a plate.&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">    }</span><br/><br/><span class="hl-0">    </span><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">response</span><span class="hl-0"> = </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-4">post</span><span class="hl-0">(</span><span class="hl-5">&#39;/recipes&#39;</span><span class="hl-0">).</span><span class="hl-4">send</span><span class="hl-0">(</span><span class="hl-7">recipe</span><span class="hl-0">)</span><br/><br/><span class="hl-0">    </span><span class="hl-1">// We can use `assert` to test anything</span><br/><span class="hl-0">    </span><span class="hl-7">assert</span><span class="hl-0">.</span><span class="hl-4">strictEqual</span><span class="hl-0">(</span><span class="hl-7">response</span><span class="hl-0">.</span><span class="hl-7">status</span><span class="hl-0">, </span><span class="hl-8">200</span><span class="hl-0">)</span><br/><span class="hl-0">    </span><span class="hl-7">assert</span><span class="hl-0">.</span><span class="hl-4">strictEqual</span><span class="hl-0">(</span><span class="hl-7">response</span><span class="hl-0">.</span><span class="hl-7">body</span><span class="hl-0">.</span><span class="hl-7">name</span><span class="hl-0">, </span><span class="hl-7">recipe</span><span class="hl-0">.</span><span class="hl-7">name</span><span class="hl-0">)</span><br/><br/><span class="hl-0">    </span><span class="hl-1">// localStorage is a helper object from Easy API Test, to store data</span><br/><span class="hl-0">    </span><span class="hl-1">// and retrieve it easily in later tests.</span><br/><span class="hl-0">    </span><span class="hl-7">localStorage</span><span class="hl-0">.</span><span class="hl-4">setItem</span><span class="hl-0">(</span><span class="hl-5">&#39;recipe&#39;</span><span class="hl-0">, </span><span class="hl-7">response</span><span class="hl-0">.</span><span class="hl-7">body</span><span class="hl-0">)</span><br/><span class="hl-0">  })</span><br/><span class="hl-0">})</span>
+</code></pre>
+<p>It might sound scary to have stateful tests where one test requires the result of another test, but don&#39;t worry, this actually is intended! We are not testing units of our application, we are testing an actual user flow through the API. If one test crashes, the test suites will end, so you will not have a test missing some external data.</p>
+<p>Let&#39;s add this new suite to our pipeline in <code>test/index.js</code>:</p>
+<pre><code class="language-javascript"><span class="hl-1">// test/index.js</span><br/><br/><span class="hl-2">const</span><span class="hl-0"> { </span><span class="hl-3">use</span><span class="hl-0">, </span><span class="hl-3">start</span><span class="hl-0">, </span><span class="hl-3">end</span><span class="hl-0">, </span><span class="hl-3">run</span><span class="hl-0"> } = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;easy-api-test&#39;</span><span class="hl-0">)</span><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">app</span><span class="hl-0"> = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;../src/app&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-4">use</span><span class="hl-0">(</span><span class="hl-5">&#39;http://localhost:3000/&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-4">start</span><span class="hl-0">(() </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-6">return</span><span class="hl-0"> </span><span class="hl-2">new</span><span class="hl-0"> </span><span class="hl-10">Promise</span><span class="hl-0">(</span><span class="hl-7">resolve</span><span class="hl-0"> </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-7">app</span><span class="hl-0">.</span><span class="hl-4">listen</span><span class="hl-0">(</span><span class="hl-8">3000</span><span class="hl-0">, </span><span class="hl-7">resolve</span><span class="hl-0">)</span><br/><span class="hl-0">  })</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-4">end</span><span class="hl-0">(() </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-7">app</span><span class="hl-0">.</span><span class="hl-4">close</span><span class="hl-0">()</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-1">/**</span><br/><span class="hl-1"> * We import our tests here</span><br/><span class="hl-1"> */</span><br/><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;./01-root&#39;</span><span class="hl-0">)</span><br/><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;./02-create-recipe&#39;</span><span class="hl-0">) </span><span class="hl-1">// &lt;====== here</span><br/><br/><span class="hl-4">run</span><span class="hl-0">()</span>
+</code></pre>
+<p>And let&#39;s finish by writing tests for the <code>/recipes</code> GET endpoint, and <code>/recipes/:id</code> endpoint in a file nammed <code>test/get-recipe.js</code>:</p>
+<pre><code class="language-javascript"><span class="hl-1">// test/03-get-recipe.js</span><br/><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">assert</span><span class="hl-0"> = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;assert&#39;</span><span class="hl-0">)</span><br/><span class="hl-2">const</span><span class="hl-0"> { </span><span class="hl-3">suite</span><span class="hl-0">, </span><span class="hl-3">test</span><span class="hl-0">, </span><span class="hl-3">get</span><span class="hl-0">, </span><span class="hl-3">localStorage</span><span class="hl-0"> } = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;easy-api-test&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-4">suite</span><span class="hl-0">(</span><span class="hl-5">&#39;/recipes Get recipes&#39;</span><span class="hl-0">, () </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-1">// This will run after we have created our recipe, so if the endpoint works,</span><br/><span class="hl-0">  </span><span class="hl-1">// it should return an array with at least 1 element.</span><br/><span class="hl-0">  </span><span class="hl-4">test</span><span class="hl-0">(</span><span class="hl-5">&#39;Get all the recipes&#39;</span><span class="hl-0">, </span><span class="hl-2">async</span><span class="hl-0"> () </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">response</span><span class="hl-0"> = </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-4">get</span><span class="hl-0">(</span><span class="hl-5">&#39;/recipes&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-0">    </span><span class="hl-4">assert</span><span class="hl-0">(</span><span class="hl-7">response</span><span class="hl-0">.</span><span class="hl-7">body</span><span class="hl-0">.</span><span class="hl-7">length</span><span class="hl-0"> &gt; </span><span class="hl-8">0</span><span class="hl-0">)</span><br/><span class="hl-0">  })</span><br/><br/><span class="hl-0">  </span><span class="hl-4">test</span><span class="hl-0">(</span><span class="hl-5">&#39;Get a recipe by id&#39;</span><span class="hl-0">, </span><span class="hl-2">async</span><span class="hl-0"> () </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-1">// Our recipe is in the localStorage, so we can grab its ID</span><br/><span class="hl-0">    </span><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">recipe</span><span class="hl-0"> = </span><span class="hl-7">localStorage</span><span class="hl-0">.</span><span class="hl-4">getItem</span><span class="hl-0">(</span><span class="hl-5">&#39;recipe&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-0">    </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-4">get</span><span class="hl-0">(</span><span class="hl-5">`/recipes/</span><span class="hl-2">${</span><span class="hl-7">recipe</span><span class="hl-9">.</span><span class="hl-7">id</span><span class="hl-2">}</span><span class="hl-5">`</span><span class="hl-0">).</span><span class="hl-4">expect</span><span class="hl-0">(</span><span class="hl-8">200</span><span class="hl-0">, </span><span class="hl-7">recipe</span><span class="hl-0">)</span><br/><span class="hl-0">  })</span><br/><br/><span class="hl-0">  </span><span class="hl-1">// Check if an invalid ID returns 404</span><br/><span class="hl-0">  </span><span class="hl-4">test</span><span class="hl-0">(</span><span class="hl-5">&#39;Get 404 when the recipe does not exist&#39;</span><span class="hl-0">, </span><span class="hl-2">async</span><span class="hl-0"> () </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-4">get</span><span class="hl-0">(</span><span class="hl-5">&#39;/recipes/ayaya&#39;</span><span class="hl-0">).</span><span class="hl-4">expect</span><span class="hl-0">(</span><span class="hl-8">404</span><span class="hl-0">)</span><br/><span class="hl-0">  })</span><br/><span class="hl-0">})</span>
+</code></pre>
+<p>And again, add this to our pipeline:</p>
+<pre><code class="language-javascript"><span class="hl-1">// test/index.js</span><br/><br/><span class="hl-2">const</span><span class="hl-0"> { </span><span class="hl-3">use</span><span class="hl-0">, </span><span class="hl-3">start</span><span class="hl-0">, </span><span class="hl-3">end</span><span class="hl-0">, </span><span class="hl-3">run</span><span class="hl-0"> } = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;easy-api-test&#39;</span><span class="hl-0">)</span><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">app</span><span class="hl-0"> = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;../src/app&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-4">use</span><span class="hl-0">(</span><span class="hl-5">&#39;http://localhost:3000/&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-4">start</span><span class="hl-0">(() </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-6">return</span><span class="hl-0"> </span><span class="hl-2">new</span><span class="hl-0"> </span><span class="hl-10">Promise</span><span class="hl-0">(</span><span class="hl-7">resolve</span><span class="hl-0"> </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-7">app</span><span class="hl-0">.</span><span class="hl-4">listen</span><span class="hl-0">(</span><span class="hl-8">3000</span><span class="hl-0">, </span><span class="hl-7">resolve</span><span class="hl-0">)</span><br/><span class="hl-0">  })</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-4">end</span><span class="hl-0">(() </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-7">app</span><span class="hl-0">.</span><span class="hl-4">close</span><span class="hl-0">()</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-1">/**</span><br/><span class="hl-1"> * We import our tests here</span><br/><span class="hl-1"> */</span><br/><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;./01-root&#39;</span><span class="hl-0">)</span><br/><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;./02-create-recipe&#39;</span><span class="hl-0">)</span><br/><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;./03-get-recipe&#39;</span><span class="hl-0">) </span><span class="hl-1">// &lt;====== here</span><br/><br/><span class="hl-4">run</span><span class="hl-0">()</span>
+</code></pre>
+<p>That&#39;s it! Now let&#39;s see if our app works as expected by running the tests:</p>
+<pre><code class="language-bash"><span class="hl-0">node test/index.js</span>
+</code></pre>
+<p>and the result:</p>
+<pre><code class="language-bash"><span class="hl-0">/ Root:</span><br/><span class="hl-0">  - Say hello: PASS (29ms)</span><br/><span class="hl-0">  - Say hello even with the POST method: PASS (4ms)</span><br/><br/><span class="hl-0">/recipes Create new recipes:</span><br/><span class="hl-0">  - Reject an invalid recipe: PASS (15ms)</span><br/><span class="hl-0">  - Create a valid recipe: PASS (6ms)</span><br/><br/><span class="hl-0">/recipes Get recipes:</span><br/><span class="hl-0">  - Get all the recipes: PASS (3ms)</span><br/><span class="hl-0">  - Get a recipe by id: PASS (4ms)</span><br/><span class="hl-0">  - Get 404 when the recipe does not exist: PASS (2ms)</span>
+</code></pre>
+</li>
+</ul>
+
+<a href="#example-2-websocket" id="example-2-websocket" style="color: inherit; text-decoration: none;">
+  <h2>Example 2 (WebSocket)</h2>
+</a>
+<p>It is common to have data go through both an HTTP API and WebSocket events, but how to test, for example, that a certain HTTP request from a user will trigger a WebSocket event to another user? This is what we are going to see now.</p>
+<p>All the code for this example is available <a href="https://github.com/purplnay/easy-api-test/tree/main/examples/websocket">here</a></p>
+<ul>
+<li>
+<a href="#write-the-application" id="write-the-application" style="color: inherit; text-decoration: none;">
+  <h3>Write the application</h3>
+</a>
+<p>We&#39;ll write a very minimal example here, just to show you how to use the WebSocket testing utility. Our application will consist of some kind of echo server. It will send back every message it receives, prepended with &#39;You said: &#39;.</p>
+<p>For example, if we send &#39;Hello Server&#39;, we would receive &#39;You said: Hello Server&#39;.</p>
+<ul>
+<li><p>Let&#39;s first create a new directory:</p>
+<pre><code class="language-bash"><span class="hl-0">mkdir websocket-example</span>
+</code></pre>
+</li>
+<li><p>Initialize a new NPM project:</p>
+<pre><code class="language-bash"><span class="hl-0">npm init -y</span>
+</code></pre>
+</li>
+<li><p>And install what we will need:</p>
+<pre><code class="language-bash"><span class="hl-0">npm install ws easy-api-test</span>
+</code></pre>
+</li>
+</ul>
+<p>We will be using <a href="https://www.npmjs.com/package/ws">ws</a> for the WebSocket server. This is also the library used by Easy API Test for the WebSocket testing utility.</p>
+<p>Let&#39;s create an <code>src/</code> folder and write some code in it:</p>
+<pre><code class="language-javascript"><span class="hl-1">// src/index.js</span><br/><br/><span class="hl-2">const</span><span class="hl-0"> { </span><span class="hl-3">createServer</span><span class="hl-0"> } = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;http&#39;</span><span class="hl-0">)</span><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">ws</span><span class="hl-0"> = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;ws&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-1">// Create an HTTP server</span><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">server</span><span class="hl-0"> = </span><span class="hl-4">createServer</span><span class="hl-0">()</span><br/><br/><span class="hl-1">// Create a websocket server on port 3000</span><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">wss</span><span class="hl-0"> = </span><span class="hl-2">new</span><span class="hl-0"> </span><span class="hl-7">ws</span><span class="hl-0">.</span><span class="hl-4">Server</span><span class="hl-0">({ </span><span class="hl-7">server</span><span class="hl-0"> })</span><br/><br/><span class="hl-1">// Listen to connection events</span><br/><span class="hl-7">wss</span><span class="hl-0">.</span><span class="hl-4">on</span><span class="hl-0">(</span><span class="hl-5">&#39;connection&#39;</span><span class="hl-0">, </span><span class="hl-7">ws</span><span class="hl-0"> </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-1">// Listen to socket message events</span><br/><span class="hl-0">  </span><span class="hl-7">ws</span><span class="hl-0">.</span><span class="hl-4">on</span><span class="hl-0">(</span><span class="hl-5">&#39;message&#39;</span><span class="hl-0">, </span><span class="hl-7">data</span><span class="hl-0"> </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-1">// Send &#39;You said: &#39; followed by the message.</span><br/><span class="hl-0">    </span><span class="hl-7">ws</span><span class="hl-0">.</span><span class="hl-4">send</span><span class="hl-0">(</span><span class="hl-5">`You said: </span><span class="hl-2">${</span><span class="hl-7">data</span><span class="hl-9">.</span><span class="hl-4">toString</span><span class="hl-9">()</span><span class="hl-2">}</span><span class="hl-5">`</span><span class="hl-0">)</span><br/><span class="hl-0">  })</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-7">server</span><span class="hl-0">.</span><span class="hl-4">listen</span><span class="hl-0">(</span><span class="hl-8">3000</span><span class="hl-0">)</span><br/><br/><span class="hl-10">module</span><span class="hl-0">.</span><span class="hl-10">exports</span><span class="hl-0"> = </span><span class="hl-7">server</span>
+</code></pre>
+<p>This code imports the createServer function from the NodeJS <code>http</code> module, as well as the <code>ws</code> package that will let us create a WebSocket server.</p>
+<p>We then create an HTTP server, and a WebSocket server attached to that HTTP server, and tell our WebSocket server to listen to socket messages and send them back prepending &#39;You said: &#39; to each of them.</p>
+<p>The last two instructions make the server listen on port <code>3000</code>, and export the server so that we can <code>require()</code> it in our tests and close it once our tests are done. If we don&#39;t close the server, the NodeJS process will not exit on its own. T-T</p>
+<p>Now let&#39;s write some tests, we can create a <code>test/</code> directory at the root of our project, and write our tests. We&#39;ll use a single file because there is not much to test:</p>
+<pre><code class="language-javascript"><span class="hl-1">// test/index.js</span><br/><br/><span class="hl-2">const</span><span class="hl-0"> { </span><span class="hl-3">test</span><span class="hl-0">, </span><span class="hl-3">WebSocket</span><span class="hl-0">, </span><span class="hl-3">end</span><span class="hl-0">, </span><span class="hl-3">run</span><span class="hl-0"> } = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;easy-api-test&#39;</span><span class="hl-0">)</span><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">assert</span><span class="hl-0"> = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;assert&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-1">// Import the server</span><br/><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">server</span><span class="hl-0"> = </span><span class="hl-4">require</span><span class="hl-0">(</span><span class="hl-5">&#39;../src&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-4">test</span><span class="hl-0">(</span><span class="hl-5">&#39;Connect to WebSocket server&#39;</span><span class="hl-0">, </span><span class="hl-2">async</span><span class="hl-0"> () </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-1">// Connect to the websocket server</span><br/><span class="hl-0">  </span><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">ws</span><span class="hl-0"> = </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-4">WebSocket</span><span class="hl-0">(</span><span class="hl-5">&#39;ws://localhost:3000&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-0">  </span><span class="hl-4">assert</span><span class="hl-0">(</span><span class="hl-7">ws</span><span class="hl-0">.</span><span class="hl-7">connected</span><span class="hl-0"> === </span><span class="hl-2">true</span><span class="hl-0">)</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-4">test</span><span class="hl-0">(</span><span class="hl-5">&#39;Echo the messages sent to the server&#39;</span><span class="hl-0">, </span><span class="hl-2">async</span><span class="hl-0"> () </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">ws</span><span class="hl-0"> = </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-4">WebSocket</span><span class="hl-0">(</span><span class="hl-5">&#39;ws://localhost:3000&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-0">  </span><span class="hl-1">// Send &#39;Hello&#39;</span><br/><span class="hl-0">  </span><span class="hl-7">ws</span><span class="hl-0">.</span><span class="hl-4">send</span><span class="hl-0">(</span><span class="hl-5">&#39;Hello&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-0">  </span><span class="hl-1">// Get the next message from the server</span><br/><span class="hl-0">  </span><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">message</span><span class="hl-0"> = </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-7">ws</span><span class="hl-0">.</span><span class="hl-7">message</span><br/><br/><span class="hl-0">  </span><span class="hl-1">// Check if it is what we expected</span><br/><span class="hl-0">  </span><span class="hl-4">assert</span><span class="hl-0">(</span><span class="hl-7">message</span><span class="hl-0"> === </span><span class="hl-5">&#39;You said: Hello&#39;</span><span class="hl-0">)</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-4">end</span><span class="hl-0">(() </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-1">// Close the server after the tests end</span><br/><span class="hl-0">  </span><span class="hl-7">server</span><span class="hl-0">.</span><span class="hl-4">close</span><span class="hl-0">()</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-1">// Run the tests</span><br/><span class="hl-4">run</span><span class="hl-0">()</span>
+</code></pre>
+<p>So, to create a WebSocket connection, simply <em>import</em> WebSocket from <code>easy-api-test</code>, and call the function. It returns a promise that resolves into a WebSocketClient object.</p>
+<p>The WebSocketClient object lets you easily get the incoming WebSocket messages, send messages and even automatically parse and serialize the messages.
+Every opened WebSocketClient is closed automatically upon tests ending or failing, so no need to manually close those connections.</p>
+<ul>
+<li><p>We can now run our tests:</p>
+<pre><code class="language-bash"><span class="hl-0">node test/index.js</span>
+</code></pre>
+</li>
+<li><p>You should be getting this output:</p>
+<pre><code class="language-bash"><span class="hl-0">- Connect to WebSocket server: PASS (23ms)</span><br/><span class="hl-0">- Echo the messages sent to the server: PASS (5ms)</span>
+</code></pre>
+</li>
+<li><p>It is working! We can now start our app and enjoy that high quality echo server:</p>
+<pre><code class="language-bash"><span class="hl-0">node src/index.js</span>
+</code></pre>
+</li>
+</ul>
+<p>Of course, you can test API calls using the <code>get</code>, <code>post</code>, etc... helpers and WebSocket messages using the <code>WebSocket</code> utility together in the same tests. Let&#39;s say you want to test a realtime chat that uses HTTP to send messages, and WebSocket to receive messages, you could send a message using:</p>
+<pre><code class="language-javascript"><span class="hl-4">post</span><span class="hl-0">(</span><span class="hl-5">&#39;path/to/messages&#39;</span><span class="hl-0">)</span><br/><span class="hl-0">  .</span><span class="hl-4">send</span><span class="hl-0">({ </span><span class="hl-7">message:</span><span class="hl-0"> </span><span class="hl-5">&#39;Hello uwu&#39;</span><span class="hl-0"> })</span>
+</code></pre>
+<p>and listen to the WebSocket&#39;s next message using:</p>
+<pre><code class="language-javascript"><span class="hl-2">const</span><span class="hl-0"> </span><span class="hl-3">message</span><span class="hl-0"> = </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-7">ws</span><span class="hl-0">.</span><span class="hl-7">message</span>
+</code></pre>
+<p>just like we did just before. Make sure to use <code>await ws.message</code> <strong>after</strong> <code>post()</code> otherwise the <code>await</code> keyword will block execution.</p>
+</li>
+</ul>
+<!-- prettier-ignore-end -->
+
+
+<a href="#contributions" id="contributions" style="color: inherit; text-decoration: none;">
+  <h2>Contributions</h2>
+</a>
+<p>The Code of Conduct is available <a href="https://github.com/purplnay/easy-api-test/blob/main/CODE_OF_CONDUCT.md">here</a>.</p>
+<p>If you wish to help to improve Easy API Test by adding new features, performance improvements or documentation corrections, you can do so by forking the <a href="https://github.com/purplnay/easy-api-test">repository</a>, applying your changes and sending a pull request.</p>
+<p>If you enconter any issue regarding the repository, or wish to suggest new features, you can fill an <a href="https://github.com/purplnay/easy-api-test/issues">issue</a>. Make sure to check that your issue doesn&#39;t exist yet.</p>
+</div></div>
+<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<nav class="tsd-navigation primary">
+<details class="tsd-index-accordion" open><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Modules</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li class="current selected"><a href="modules.html">easy-<wbr/>api-<wbr/>test</a>
+<ul></ul></li></ul></div></details></nav>
+<nav class="tsd-navigation secondary menu-sticky">
+<ul>
+<li class="tsd-kind-class"><a href="classes/WebSocketClient.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-class)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-128-path"></rect><path d="M11.898 16.1201C11.098 16.1201 10.466 15.8961 10.002 15.4481C9.53803 15.0001 9.30603 14.3841 9.30603 13.6001V9.64012C9.30603 8.85612 9.53803 8.24012 10.002 7.79212C10.466 7.34412 11.098 7.12012 11.898 7.12012C12.682 7.12012 13.306 7.34812 13.77 7.80412C14.234 8.25212 14.466 8.86412 14.466 9.64012H13.386C13.386 9.14412 13.254 8.76412 12.99 8.50012C12.734 8.22812 12.37 8.09212 11.898 8.09212C11.426 8.09212 11.054 8.22412 10.782 8.48812C10.518 8.75212 10.386 9.13212 10.386 9.62812V13.6001C10.386 14.0961 10.518 14.4801 10.782 14.7521C11.054 15.0161 11.426 15.1481 11.898 15.1481C12.37 15.1481 12.734 15.0161 12.99 14.7521C13.254 14.4801 13.386 14.0961 13.386 13.6001H14.466C14.466 14.3761 14.234 14.9921 13.77 15.4481C13.306 15.8961 12.682 16.1201 11.898 16.1201Z" fill="var(--color-text)" id="icon-128-text"></path></svg>Web<wbr/>Socket<wbr/>Client</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/IRequest.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-256-path"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)" id="icon-256-text"></path></svg>IRequest</a></li>
+<li class="tsd-kind-interface"><a href="interfaces/WebSocketOptions.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Web<wbr/>Socket<wbr/>Options</a></li>
+<li class="tsd-kind-type-alias"><a href="types/Resolvable.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-4194304-path"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)" id="icon-4194304-text"></path></svg>Resolvable</a></li>
+<li class="tsd-kind-variable"><a href="variables/localStorage.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-variable)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-32-path"></rect><path d="M11.106 16L8.85 7.24H9.966L11.454 13.192C11.558 13.608 11.646 13.996 11.718 14.356C11.79 14.708 11.842 14.976 11.874 15.16C11.906 14.976 11.954 14.708 12.018 14.356C12.09 13.996 12.178 13.608 12.282 13.192L13.758 7.24H14.85L12.582 16H11.106Z" fill="var(--color-text)" id="icon-32-text"></path></svg>local<wbr/>Storage</a></li>
+<li class="tsd-kind-function"><a href="functions/WebSocket.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-64-path"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)" id="icon-64-text"></path></svg>Web<wbr/>Socket</a></li>
+<li class="tsd-kind-function"><a href="functions/del.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>del</a></li>
+<li class="tsd-kind-function"><a href="functions/disableLogs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>disable<wbr/>Logs</a></li>
+<li class="tsd-kind-function"><a href="functions/end.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>end</a></li>
+<li class="tsd-kind-function"><a href="functions/get.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>get</a></li>
+<li class="tsd-kind-function"><a href="functions/head.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>head</a></li>
+<li class="tsd-kind-function"><a href="functions/options.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>options</a></li>
+<li class="tsd-kind-function"><a href="functions/patch.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>patch</a></li>
+<li class="tsd-kind-function"><a href="functions/post.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>post</a></li>
+<li class="tsd-kind-function"><a href="functions/put.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>put</a></li>
+<li class="tsd-kind-function"><a href="functions/request.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>request</a></li>
+<li class="tsd-kind-function"><a href="functions/run.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>run</a></li>
+<li class="tsd-kind-function"><a href="functions/sleep.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>sleep</a></li>
+<li class="tsd-kind-function"><a href="functions/start.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>start</a></li>
+<li class="tsd-kind-function"><a href="functions/suite.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>suite</a></li>
+<li class="tsd-kind-function"><a href="functions/test.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>test</a></li>
+<li class="tsd-kind-function"><a href="functions/use.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>use</a></li></ul></nav></div></div>
 <div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
+<div class="overlay"></div><script src="assets/main.js"></script></body></html>

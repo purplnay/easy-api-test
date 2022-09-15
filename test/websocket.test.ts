@@ -50,6 +50,21 @@ describe('WebSocket module', () => {
     expect(message).toEqual('Some message')
   })
 
+  it('should save consecutive messages in a queue', async () => {
+    const ws = await WebSocket(address)
+
+    ws.send('Some message 1')
+    ws.send('Some message 2')
+    ws.send('Some message 3')
+
+    const message1 = await ws.message
+    expect(message1).toEqual('Some message 1')
+    const message2 = await ws.message
+    expect(message2).toEqual('Some message 2')
+    const message3 = await ws.message
+    expect(message3).toEqual('Some message 3')
+  })
+
   it('should wait for a pong event when it sends a ping', async () => {
     const ws = await WebSocket(address)
 
